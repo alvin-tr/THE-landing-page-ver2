@@ -3,7 +3,7 @@
     <div class="w-full h-[64px] bg-[#1310] flex flex-row items-center justify-between">
       <div class="flex flex-row items-center">
         <div class=" my-[14px] ml-[80px]">
-        <img src="/assets/img/logoHeader.svg" />
+        <img src="/public/img/logoHeader.svg" />
       </div>
       <div class="flex flex-row justify-between ml-[109px]">
         <span class="text-[14px] leading-[20px] font-medium text-[#FFFFFF99] ">Về THE</span>

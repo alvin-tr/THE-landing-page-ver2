@@ -1,6 +1,7 @@
 html {
     font-size: 14px;
     font-weight: 500;
-    font-family: 'Inter' sans-serif;
-    color: black
+    font-family: 'Inter';
+    color: white;
+    line-height: 20px;
 }
