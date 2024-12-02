@@ -39,7 +39,10 @@ const interestItem = [
 </script>
 
 <template>
-    <div class="flex flex-wrap gap-8 w-full justify-center">
+    <div class="flex flex-wrap gap-8 w-full justify-center
+    size-sm:gap-10
+    size-md:gap-12
+    ">
         <div v-for="(item, index) in interestItem" :key="index"
             class="flex flex-col items-center text-center rounded-lg p-6 w-[31%] ">
             <video 

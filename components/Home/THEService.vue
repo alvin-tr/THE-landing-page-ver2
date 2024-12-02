@@ -1,22 +1,35 @@
 <template>
   <div
-    class="px-[60px] w-full max-h-[914px] overflow-y-hidden bg-white rounded-[12px]"
-  >
-    <div class="w-full flex flex-col">
+    class="px-[60px] w-full max-h-[914px] overflow-y-hidden bg-white rounded-[12px] 
+    size-xs:max-h-max 
+    size-lg:max-h-[914px] size-lg:pb-[1150px]
+    ">
+    <div class="w-full flex flex-col 
+    size-xs:items-center size-xs:px-[10px]
+    size-lg:items-start
+    ">
       <p
-        class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px]"
-      >
+        class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px]
+        size-xs:text-center size-xs:text-[30px] size-xs:mt-[20px] size-xs:px-[10px]
+        size-lg:px-0
+        ">
         Dịch vụ của THE
       </p>
       <p
-        class="text-[16px] w-[42%] text-[#868689] font-medium leading-[24px] mt-[14px]"
-      >
+        class="text-[16px] w-[42%] text-[#868689] font-medium leading-[24px] mt-[14px]
+        size-xs:text-center size-xs:w-[50%] size-xs:text-[16px]
+        size-lg:text-start
+        ">
         Dịch vụ ổn định và tiết kiệm chi phí,được nhiều khách hàng tin tưởng và
         đánh giá cao
       </p>
       <div class="mt-[56px] flex flex-row w-full justify-between">
         <!-- list of contents -->
-        <div class="flex flex-col w-[20%]">
+        <div class="flex flex-col w-[20%] 
+        size-xs:hidden 
+        size-lg:flex size-lg:w-[25%] size-lg:pb-[650px]
+        
+        ">
           <p
             v-for="(content, index) in listOfContents"
             :key="index"
@@ -32,33 +45,55 @@
         </div>
         <!-- content -->
         <div
-          class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto"
-        >
+          class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto
+          size-xs:w-full size-xs:max-h-max
+          size-lg:overflow-y-auto size-lg:max-h-[914px] size-lg:w-[75%] size-lg:mb-[65px]
+          size-xl:overflow-y-auto 
+          ">
           <div
             v-for="(item, index) in services"
-            class="flex flex-row mb-[65px]"
+            class="flex flex-row mb-[65px] 
+            size-xs:flex-col size-xs:w-full 
+            size-lg:flex-row
+            "
             :id="`service-${index}`"
             :key="index"
           >
             <!-- img -->
-            <div>
+            <div class=" 
+            size-xs:flex size-xs:justify-center 
+            size-lg:flex size-lg:justify-start
+            
+            ">
               <img
                 :src="item.image"
                 alt="economyDelivery"
-                class="min-w-[476px] bg-cover bg-center"
-              />
+                class="min-w-[476px] bg-cover bg-center 
+                size-xs:min-w-[300px] size-xs:w-[350px]
+                size-lg:min-w-[350px] size-lg:w-[450px]
+                size-xl:min-w-[476px]
+                "/>
             </div>
             <!-- content -->
-            <div class="flex flex-col ml-[48px]">
-              <p class="text-[32px] text-[#1E1F24] leading-[44px] font-medium">
+            <div class="flex flex-col ml-[48px] 
+            size-xs:items-center size-xs:mt-[20px] size-xs:ml-0
+            size-lg:ml-[38px] size-lg:mt-0 
+            ">
+              <p class="text-[32px] text-[#1E1F24] leading-[44px] font-medium ">
                 {{ item.title }}
               </p>
               <p
-                class="mt-[14px] text-[#868689] font-[500] leading-[24px] mb-[8px]"
-              >
+                class="mt-[14px] text-[#868689] font-[500] leading-[24px] mb-[8px] 
+                size-xs:text-center size-xs:w-[50%]
+                size-lg:text-left size-lg:w-full
+                ">
                 {{ item.description }}
               </p>
-              <div class="flex flex-col">
+              <!-- item -->
+              <div class="flex flex-col 
+              size-xs:w-[50%] 
+              size-lg:w-full
+              ">
                 <div
                   v-for="criterialItem in item.criteria"
                   class="flex flex-row mt-[28px] items-center"
@@ -200,7 +235,7 @@ const selectedService = ref(0)
 const scrollToService = (index) => {
   const target = document.getElementById(`service-${index}`)
   if (target) {
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' })
     selectedService.value = index
   }
 }

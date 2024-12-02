@@ -1,16 +1,13 @@
 module.exports = {
     theme: {
-        extends: {
-
-        },
         screens: {
-            '2xl': '2560px',
-            'xl': '1440px',
-            'lg': '1025px',
-            'md': '778px',
-            'sm': '640px',
-            'pro': '425px',
-            'xs': '376px',
+            'size-2xl': '2560px',
+            'size-xl': '1440px',
+            'size-lg': '1024px',
+            'size-md': '768px',
+            'size-sm': '640px',
+            'size-pro': '425px',
+            'size-xs': '375px',
         }
     }
 }
