@@ -26,13 +26,9 @@
             class="text-[#E8173C] ml-[2px]">*</p></span>
         <div class="flex flex-row p-[12px] bg-[#394154] rounded-[6px] mt-[6px]">
           <img src="/public/icon/iconInputWeight.svg">
-          <UInput placeholder="Nhập trọng lượng" class="w-[266px] ml-[8px] text-[#ffffff] rounded-[6px]"
-            :color="{
-              // variant: {
-              //   outline: 'shadow-none bg-transparent text-white focus:ring-0 focus:shadow-none',
-              //   none: 'bg-transparent focus:ring-0 focus:shadow-none text-white'
-              // },
-            }" />
+          <UInput placeholder="Nhập trọng lượng" type='number' variant="none" class="w-[266px] ml-[8px] text-[#ffffff] rounded-[6px] "
+            input-class="text-white"
+            />
           <p class="text-[#FFFFFF] font-normal ml-[8px]">gram</p>
         </div>
       </div>
@@ -44,13 +40,9 @@
               class="text-[#E8173C] ml-[2px]">*</p></span>
           <div class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center">
             <UInput 
-            class=" text-[#ffffff] bg-[#394154] rounded-[6px]"
-            :color="{
-              // variant: {
-              //   outline: 'shadow-none bg-transparent text-white focus:ring-0 focus:shadow-none',
-              //   none: 'bg-transparent focus:ring-0 focus:shadow-none text-white'
-              // },
-            }"
+            type='number'
+            variant="none"
+            class=" text-[#ffffff]  bg-[#394154] rounded-[6px] "
             />
             <p class="text-white ml-[5px]">cm</p>
           </div>
@@ -61,13 +53,9 @@
               class="text-[#E8173C] ml-[2px]">*</p></span>
               <div class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center">
             <UInput 
+            type='number'
+            variant= 'none'
             class=" text-[#ffffff] bg-[#394154] rounded-[6px]"
-            :color="{
-              // variant: {
-              //   outline: 'shadow-none bg-transparent text-white focus:ring-0 focus:shadow-none',
-              //   none: 'bg-transparent focus:ring-0 focus:shadow-none text-white'
-              // },
-            }"
             />
             <p class="text-white ml-[5px]">cm</p>
           </div>
@@ -77,14 +65,10 @@
           <span class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]">Cao<p
               class="text-[#E8173C] ml-[2px]">*</p></span>
               <div class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center">
-            <UInput 
+            <UInput
+            type='number'
+            variant= 'none' 
             class=" text-[#ffffff] bg-[#394154] rounded-[6px]"
-            :color="{
-              // variant: {
-              //   outline: 'shadow-none bg-transparent text-white focus:ring-0 focus:shadow-none',
-              //   none: 'bg-transparent focus:ring-0 focus:shadow-none text-white'
-              // },
-            }"
             />
             <p class="text-white ml-[5px]">cm</p>
           </div>
