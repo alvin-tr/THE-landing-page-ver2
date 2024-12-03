@@ -1,126 +1,123 @@
 <template>
-  <div
-    class="px-[60px] w-full max-h-[914px] overflow-y-hidden bg-white rounded-[12px] 
-    size-xs:max-h-max 
-    size-lg:max-h-[914px] size-lg:pb-[1150px]
-    ">
-    <div class="w-full flex flex-col 
-    size-xs:items-center size-xs:px-[10px]
-    size-lg:items-start
-    ">
-      <p
-        class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px]
-        size-xs:text-center size-xs:text-[30px] size-xs:mt-[20px] size-xs:px-[10px]
-        size-lg:px-0
+  <BaseLayout>
+    <div
+      class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
+    >
+      <div
+        class="px-[60px] w-full max-h-[914px] overflow-y-scroll bg-white rounded-[12px] mt-[100px] 
+        max-size-lg:px-[15px] 
+        max-size-md:px-[50px] 
+        max-size-sm:px-[20px] 
+        max-size-pro:px-[10px]
         ">
-        Dịch vụ của THE
-      </p>
-      <p
-        class="text-[16px] w-[42%] text-[#868689] font-medium leading-[24px] mt-[14px]
-        size-xs:text-center size-xs:w-[50%] size-xs:text-[16px]
-        size-lg:text-start
-        ">
-        Dịch vụ ổn định và tiết kiệm chi phí,được nhiều khách hàng tin tưởng và
-        đánh giá cao
-      </p>
-      <div class="mt-[56px] flex flex-row w-full justify-between">
-        <!-- list of contents -->
-        <div class="flex flex-col w-[20%] 
-        size-xs:hidden 
-        size-lg:flex size-lg:w-[25%] size-lg:pb-[650px]
-        
-        ">
+        <div class="w-full flex flex-col max-size-lg:items-center">
           <p
-            v-for="(content, index) in listOfContents"
-            :key="index"
-            @click="scrollToService(index)"
-            :class="[
-              'text-[16px] font-medium leading-[24px] mb-[24px]',
-              selectedService === index ? 'text-[#0066FF]' : 'text-[#868689]',
-            ]"
-            class="cursor-pointer"
+            class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px]"
           >
-            {{ content }}
+            Dịch vụ của THE
           </p>
-        </div>
-        <!-- content -->
-        <div
-          class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto
-          size-xs:w-full size-xs:max-h-max
-          size-lg:overflow-y-auto size-lg:max-h-[914px] size-lg:w-[75%] size-lg:mb-[65px]
-          size-xl:overflow-y-auto 
-          ">
-          <div
-            v-for="(item, index) in services"
-            class="flex flex-row mb-[65px] 
-            size-xs:flex-col size-xs:w-full 
-            size-lg:flex-row
-            "
-            :id="`service-${index}`"
-            :key="index"
+          <p
+            class="text-[16px] w-[42%] text-[#868689] font-medium leading-[24px] mt-[14px] max-size-lg:w-full max-size-lg:text-center"
           >
-            <!-- img -->
-            <div class=" 
-            size-xs:flex size-xs:justify-center 
-            size-lg:flex size-lg:justify-start
-            
-            ">
-              <img
-                :src="item.image"
-                alt="economyDelivery"
-                class="min-w-[476px] bg-cover bg-center 
-                size-xs:min-w-[300px] size-xs:w-[350px]
-                size-lg:min-w-[350px] size-lg:w-[450px]
-                size-xl:min-w-[476px]
-                "/>
+            Dịch vụ ổn định và tiết kiệm chi phí,được nhiều khách hàng tin tưởng
+            và đánh giá cao
+          </p>
+          <!--  -->
+          <div class="mt-[56px] flex flex-row w-full justify-between">
+            <!-- list of contents -->
+            <div class="flex flex-col w-[20%] max-size-lg:w-[30%]">
+              <p
+                v-for="(content, index) in listOfContents"
+                :key="index"
+                @click="scrollToService(index)"
+                :class="[
+                  'text-[16px] font-medium leading-[24px] mb-[24px]',
+                  selectedService === index
+                    ? 'text-[#0066FF]'
+                    : 'text-[#868689]',
+                ]"
+                class="cursor-pointer"
+              >
+                {{ content }}
+              </p>
             </div>
             <!-- content -->
-            <div class="flex flex-col ml-[48px] 
-            size-xs:items-center size-xs:mt-[20px] size-xs:ml-0
-            size-lg:ml-[38px] size-lg:mt-0 
-            ">
-              <p class="text-[32px] text-[#1E1F24] leading-[44px] font-medium ">
-                {{ item.title }}
-              </p>
-              <p
-                class="mt-[14px] text-[#868689] font-[500] leading-[24px] mb-[8px] 
-                size-xs:text-center size-xs:w-[50%]
-                size-lg:text-left size-lg:w-full
-                ">
-                {{ item.description }}
-              </p>
-              <!-- item -->
-              <div class="flex flex-col 
-              size-xs:w-[50%] 
-              size-lg:w-full
+            <div
+              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto 
+              max-size-lg:w-[60%] 
+              max-size-md:w-[70%]
+              max-size-sm:w-[65%]
               ">
+              <div
+                v-for="(item, index) in services"
+                class="flex flex-row mb-[65px] 
+                max-size-lg:flex-col
+                max-size-md:ml-[30px]
+                max-size-pro:ml-0
+                "
+                :id="`service-${index}`"
+                :key="index"
+              >
+                <!-- img -->
+                  <img
+                    :src="item.image"
+                    alt="economyDelivery"
+                    class="min-w-[476px] bg-cover bg-center 
+                    max-size-md:min-w-[350px] max-size-md:max-w-[200px]
+                    max-size-pro:min-w-[150px] max-size-pro:max-w-[230px] 
+                    max-size-xs:min-w-[100px] 
+                    max-size-xs:max-w-[210px]
+                    "/>
+                <!-- children -->
                 <div
-                  v-for="criterialItem in item.criteria"
-                  class="flex flex-row mt-[28px] items-center"
-                >
-                  <div class="p-[11px] mr-[14px] bg-[#EFF0F2] rounded-[6px]">
-                    <img :src="criterialItem.icon" class="w-[24px]" />
-                  </div>
+                  class="flex flex-col ml-[48px] 
+                  max-size-lg:ml-0 
+                  max-size-md:mt-[20px] 
+                  ">
+                  <p
+                    class="text-[32px] text-[#1E1F24] leading-[44px] font-medium"
+                  >
+                    {{ item.title }}
+                  </p>
+                  <p
+                    class="mt-[14px] text-[#868689] font-[500] leading-[24px] mb-[8px]"
+                  >
+                    {{ item.description }}
+                  </p>
+                  <!-- item -->
                   <div class="flex flex-col">
-                    <p
-                      class="text-[16px] text-[#868689] font-medium leading-[24px]"
+                    <div
+                      v-for="criterialItem in item.criteria"
+                      class="flex flex-row mt-[28px] items-center max-size-lg:mt-[10px]"
                     >
-                      {{ criterialItem.title }}
-                    </p>
-                    <p
-                      class="text-[18px] text-[#1E1F24] font-medium leading-[24px] mt-[6px]"
-                    >
-                      {{ criterialItem.description }}
-                    </p>
+                      <div
+                        class="p-[11px] mr-[14px] bg-[#EFF0F2] rounded-[6px]"
+                      >
+                        <img :src="criterialItem.icon" class="w-[24px]" />
+                      </div>
+                      <div class="flex flex-col">
+                        <p
+                          class="text-[16px] text-[#868689] font-medium leading-[24px]"
+                        >
+                          {{ criterialItem.title }}
+                        </p>
+                        <p
+                          class="text-[18px] text-[#1E1F24] font-medium leading-[24px] mt-[6px]"
+                        >
+                          {{ criterialItem.description }}
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <!--  -->
         </div>
       </div>
     </div>
-  </div>
+  </BaseLayout>
 </template>
 
 <script setup>
@@ -145,7 +142,7 @@ const services = [
       {
         icon: '/icon/dollarIcon.svg',
         title: 'Chi phí',
-        description: 'Từ $5.6',
+        description: 'Từ $5.1',
       },
       {
         icon: '/icon/mapIcon.svg',
@@ -168,7 +165,7 @@ const services = [
       {
         icon: '/icon/dollarIcon.svg',
         title: 'Chi phí',
-        description: 'Từ $5.7',
+        description: 'Từ $6.1',
       },
       {
         icon: '/icon/mapIcon.svg',

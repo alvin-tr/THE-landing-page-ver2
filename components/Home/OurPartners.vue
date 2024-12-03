@@ -1,9 +1,16 @@
 <template>
     <div 
-    class="w-full bg-cover bg-no-repeat bg-center bg-[url('/img/transparentEarth.svg')] flex flex-col items-center justify-center ">
+    class="w-full bg-cover bg-no-repeat bg-center bg-[url('/img/transparentEarth.svg')] flex flex-col items-center justify-center mt-[72px]
+    max-size-lg:mt-0
+    
+    ">
         <div class="flex flex-col items-center mt-[150px]">
-          <p class="text-[34px] text-[#333333] leading-[50px] font-medium ">Đối tác của chúng tôi</p>
-        <div class="w-[100px] h-[6px] bg-[#0066FF] mt-[20px]"/>
+          <p class="text-[34px] text-[#333333] leading-[50px] font-medium 
+          max-size-pro:text-[30px]
+          ">Đối tác của chúng tôi</p>
+        <div class="w-[100px] h-[6px] bg-[#0066FF] mt-[20px] 
+        max-size-pro:mt-[5px]
+        "/>
         </div>
 
         <div class="marquee-wrapper overflow-hidden relative mt-[28px]">
