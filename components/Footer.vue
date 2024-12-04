@@ -52,18 +52,24 @@
           <div class="flex flex-row items-center mt-[36px]
           max-size-pro:mt-[10px]
           ">
+          <a href="">
             <img
               src="/img/footer/zaloFooter.svg"
               class="w-[24px] cursor-pointer"
             />
+          </a>
+          <a href="https://www.facebook.com/thehumanexpress">
             <img
               src="/img/footer/facebookFooter.svg"
               class="ml-[20px] w-[24px] cursor-pointer"
             />
+          </a>
+          <a href="">
             <img
               src="/img/footer/youtubeFooter.svg"
               class="ml-[20px] w-[24px] cursor-pointer"
             />
+          </a>
           </div>
         </div>
         <!-- dịch vụ -->
@@ -75,32 +81,27 @@
             Dịch vụ
           </p>
           <a
-            href=""
+            @click="(() => {
+
+            })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px]
             "
             >Chuyển phát quốc tế</a
           >
           <a
-            href=""
+            @click="(() => {})"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px]
             "
             >Chuyển phát Tiktok US</a
           >
           <a
-            href=""
+            @click="(() => {})"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px]
             "
             >Chuyển phát hàng FBA amazon</a
-          >
-          <a
-            href=""
-            class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
-            max-size-pro:mt-[10px]
-            "
-            >Chuyển phát Epackage</a
           >
         </div>
         <!-- hỗ trợ -->
@@ -126,7 +127,7 @@
             >Hướng dẫn sử dụng</a
           >
           <a
-            href=""
+            href="https://docs.thehuman.express/"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px]
             "
@@ -150,16 +151,18 @@
             </div>
           </div>
           <div class="flex flex-row mt-[104px] w-full justify-end">
-            <div
+            <a
               class="px-[14px] py-[12px] w-[128px] rounded-[4px] bg-white text-[#1E1F24] flex items-center justify-center"
+              href="https://app.thehuman.express/sign-up"
             >
               Đăng ký
-            </div>
-            <div
+            </a>
+            <a
               class="px-[14px] py-[12px] w-[128px] rounded-[4px] bg-[#0066FF] text-white ml-[12px] flex items-center justify-center"
+              href="https://app.thehuman.express/sign-in"
             >
               Đăng nhập
-            </div>
+            </a>
           </div>
         </div>
       
@@ -174,6 +177,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const router = useRouter()
+</script>
 
 <style lang="scss" scoped></style>

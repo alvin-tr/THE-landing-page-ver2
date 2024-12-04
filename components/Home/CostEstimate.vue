@@ -1,7 +1,10 @@
 <template>
   <div
-    class="rounded-[12px] w-[464px] py-[24px] mt-[87px] bg-cover bg-center bg-no-repeat bg-[url('/public/img/backgroundOfCostEstimate.png')] max-size-lg:w-full max-size-md:mt-[50px]"
-  >
+    class="rounded-[12px] w-[464px] h-[631px] py-[24px] mt-[87px] bg-cover bg-center bg-no-repeat bg-[url('/public/img/backgroundOfCostEstimate.png')] max-h-[631px]
+    max-size-lg:w-full 
+    max-size-md:mt-[50px]
+
+    ">
     <!-- 1button title -->
     <div
       class="flex flex-row border-b-[2px] border-[#FFFFFF80] px-[52px] max-size-sm:px-[20px] max-size-xs:px-0"
@@ -151,27 +154,27 @@
           <p class="text-[20px] leading-[32px]">$1000.00</p>
         </div>
         <div class="w-[50%] flex items-center justify-end">
-          <UButton class="bg-[#0066FF] font-medium px-[30px] py-[12px]"
+          <UButton class="bg-[#0066FF] hover:bg-[#0066FF] font-medium px-[30px] py-[12px]"
             >Tính giá</UButton
           >
         </div>
       </div>
       <!-- click vào đây -->
-      <div class="mt-[74px] w-full max-size-xs:mt-[30px]">
-        <span class="text-[12px] text-[#FFFFFF80] font-normal"
-          >Cước tính chỉ mang tính chất tham khảo.
-          <a href="" class="underline cursor-pointer text-white"
-            >Click vào đây</a
-          >
-          để xem bảng giá chi tiết</span
+      <div class="mt-[44px] w-full max-size-xs:mt-[30px]">
+        <span class=" flex flex-row items-center">
+          <UIcon class="mr-[5px]" name="mingcute:warning-line" />
+          <p class="leading-[20px] text-[#FFFFFF80]">Cước tính chỉ mang tính chất tham khảo</p>
+          </span
         >
       </div>
     </div>
     <!-- 2 -->
     <div
       :class="tabChangeCostEstimate === 1 ? 'block' : 'hidden'"
-      class="px-[52px] mt-[32px]"
-    >
+      class="px-[52px] mt-[32px]
+      max-size-md:px-[20px]
+      max-size-xs:px-[10px]
+      ">
       <p class="text-[34px] leading-[44px] text-white font-medium">
         Tra cứu hành trình đơn hàng
       </p>
@@ -184,11 +187,14 @@
         >
 
         <div
-          class="w-[360px] h-[302px] bg-[#394154] mt-[6px] rounded-[6px]"
-        >
+          class="w-[360px] h-[302px] bg-[#394154] mt-[6px] rounded-[6px]
+            max-size-md:w-full
+          ">
           <textarea
             placeholder="Vui lòng nhập mã tracking, các mã được phân tách với nhau bởi dấu Enter"
-            class="w-full h-full resize-none bg-[#394154] border-0 p-[12px] rounded-[6px]"
+            class="w-full h-full resize-none bg-[#394154] border-0 p-[12px] rounded-[6px]
+            
+            "
             rows="4"
           ></textarea>
         </div>

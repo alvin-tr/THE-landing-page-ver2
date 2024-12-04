@@ -1,17 +1,14 @@
 <template>
-  <div>
-    <div
-      class="relative w-full bg-cover pb-[69px] bg-center bg-no-repeat bg-[url('/img/costEstimateBg.svg')]"
-    >
-      <div class="w-full">
-        <Header />
-      </div>
-      <HomeGolobalMarketEstimate />
-    </div>
-    <!-- body -->
+  <HomeGlobalMarketEstimate class="relative">
+    <Header class="absolute top-0"/>
+  </HomeGlobalMarketEstimate>
     <div
       class="w-full flex flex-col items-center bg-[#F7F8FA]">
-      
+        <p
+          class="text-[40px] w-[60%] text-center mt-[100px] text-[#1E1F24] font-medium leading-[60px] tracking-[-0.8px] max-md max-size-pro:text-[30px] max-size-md:text-center"
+        >
+          Dịch vụ vận chuyển quốc tế hàng đầu cho doanh nghiệp Việt
+        </p>
         <HomeInterest />
         <HomeTHEService />
         <HomeCreateOrderToday />
@@ -20,7 +17,6 @@
         <HomeExperienceTheDifference />
       
     </div>
-  </div>
 </template>
 
 <script setup></script>

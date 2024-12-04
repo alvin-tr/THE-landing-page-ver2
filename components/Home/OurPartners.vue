@@ -13,42 +13,12 @@
         "/>
         </div>
 
-        <div class="marquee-wrapper overflow-hidden relative mt-[28px]">
-            <div class="marquee flex items-center space-x-[50px]">
-              <img v-for="(item, index) in logos" :key="index" :src="item.url" class="logo-item " />
-
-              <img
-                v-for="(item, index) in logos"
-                :key="'repeat-' + index"
-                :src="item.url"
-                class="logo-item "
-              />
-            </div>
-          </div>
+        <Swiper/>
     </div>
 </template>
 
 <script setup>
-const logos = [
-  {
-    url: '/img/logoPartner/logo-fedex.svg',
-  },
-  {
-    url: '/img/logoPartner/logo-dhl.svg',
-  },
-  {
-    url: '/img/logoPartner/logo-ups.svg',
-  },
-  {
-    url: '/img/logoPartner/logo-usps.svg',
-  },
-  {
-    url: '/img/logoPartner/logo-yoycol.svg',
-  },
-  {
-    url: '/img/logoPartner/logo-burgerprint.svg',
-  },
-]
+
 </script>
 
 <style scoped>

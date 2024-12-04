@@ -44,14 +44,8 @@ const interestItem = [
     <div class="px-[100px] 
     max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]">
       <div
-        class="mt-[100px] w-full flex flex-col items-center justify-center max-size-pro:mt-[50px]"
+        class=" w-full flex flex-col items-center justify-center max-size-pro:mt-[50px]"
       >
-        <p
-          class="text-[40px] text-[#1E1F24] font-medium leading-[60px] tracking-[-0.8px] max-md max-size-pro:text-[30px] max-size-md:text-center"
-        >
-          Lựa chọn hàng đầu của doanh nghiệp Việt
-        </p>
-  
         <img
           src="/public/img/backgroundOfChooseSolution.jpg"
           class="mt-[48px] w-full bg-cover bg-center max-size-md:mt-[20px]"
