@@ -16,7 +16,7 @@
             tabChangeCostEstimate === 0 ? 'text-white' : 'text-[#FFFFFF80]'
           "
         >
-          Ước tính chi phí
+          {{ $t('home.estimatingPrice') }}
         </p>
         <div
           :class="

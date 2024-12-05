@@ -82,7 +82,7 @@
           </p>
           <a
             @click="(() => {
-
+              router.push('/internationalExpress')
             })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px]
@@ -90,14 +90,18 @@
             >Chuyển phát quốc tế</a
           >
           <a
-            @click="(() => {})"
+            @click="(() => {
+              router.push('/tiktokExpress')
+            })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px]
             "
             >Chuyển phát Tiktok US</a
           >
           <a
-            @click="(() => {})"
+            @click="(() => {
+              router.push('/fba-express')
+            })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px]
             "

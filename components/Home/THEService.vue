@@ -1,15 +1,11 @@
 <template>
-  <BaseLayout>
+  <BaseLayout ref="currentElementRef">
     <div
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
       <div
-        class="px-[60px] w-full max-h-[914px] overflow-y-scroll bg-white rounded-[12px] mt-[100px] 
-        max-size-lg:px-[15px] 
-        max-size-md:px-[50px] 
-        max-size-sm:px-[20px] 
-        max-size-pro:px-[10px]
-        ">
+        class="px-[60px] w-full max-h-[914px] overflow-hidden bg-white rounded-[12px] mt-[100px] max-size-lg:px-[15px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
+      >
         <div class="w-full flex flex-col max-size-lg:items-center">
           <p
             class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px]"
@@ -43,37 +39,25 @@
             </div>
             <!-- content -->
             <div
-              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto 
-              max-size-lg:w-[60%] 
-              max-size-md:w-[70%]
-              max-size-sm:w-[65%]
-              ">
+              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto max-size-lg:w-[60%] max-size-md:w-[70%] max-size-sm:w-[65%]"
+              onSlideMove()
+            >
               <div
                 v-for="(item, index) in services"
-                class="flex flex-row mb-[65px] 
-                max-size-lg:flex-col
-                max-size-md:ml-[30px]
-                max-size-pro:ml-0
-                "
+                class="flex flex-row mb-[65px] max-size-lg:flex-col max-size-md:ml-[30px] max-size-pro:ml-0"
                 :id="`service-${index}`"
                 :key="index"
               >
                 <!-- img -->
-                  <img
-                    :src="item.image"
-                    alt="economyDelivery"
-                    class="min-w-[476px] bg-cover bg-center 
-                    max-size-md:min-w-[350px] max-size-md:max-w-[200px]
-                    max-size-pro:min-w-[150px] max-size-pro:max-w-[230px] 
-                    max-size-xs:min-w-[100px] 
-                    max-size-xs:max-w-[210px]
-                    "/>
+                <img
+                  :src="item.image"
+                  alt="economyDelivery"
+                  class="min-w-[476px] bg-cover bg-center max-size-md:min-w-[350px] max-size-md:max-w-[200px] max-size-pro:min-w-[150px] max-size-pro:max-w-[230px] max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"
+                />
                 <!-- children -->
                 <div
-                  class="flex flex-col ml-[48px] 
-                  max-size-lg:ml-0 
-                  max-size-md:mt-[20px] 
-                  ">
+                  class="flex flex-col ml-[48px] max-size-lg:ml-0 max-size-md:mt-[20px]"
+                >
                   <p
                     class="text-[32px] text-[#1E1F24] leading-[44px] font-medium"
                   >
@@ -121,6 +105,7 @@
 </template>
 
 <script setup>
+const currentElementRef = ref()
 const listOfContents = [
   'Chuyển phát tiết kiệm',
   'Chuyển phát Tốc độ',
@@ -228,7 +213,6 @@ const services = [
 ]
 
 const selectedService = ref(0)
-
 const scrollToService = (index) => {
   const target = document.getElementById(`service-${index}`)
   if (target) {
@@ -236,6 +220,45 @@ const scrollToService = (index) => {
     selectedService.value = index
   }
 }
+function getScrollPosition(element) {
+  return {
+    currentScrollTop: element.scrollTop,
+    maxScrollTop: element.scrollHeight - element.clientHeight,
+    currentScrollLeft: element.scrollLeft,
+    maxScrollLeft: element.scrollWidth - element.clientWidth,
+  }
+}
+onMounted(() => {
+  document.addEventListener('scroll', (e) => {
+    if (currentElementRef.value) {
+      const scrollPosition = getScrollPosition(currentElementRef.value)
+      console.log('Scroll Position:', scrollPosition)
+    }
+  })
+})
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+/* Định dạng thanh cuộn */
+::-webkit-scrollbar {
+  width: 8px; /* Độ rộng của thanh cuộn */
+  height: 8px; /* Độ cao (nếu là thanh cuộn ngang) */
+}
+
+/* Định dạng thanh cuộn (track) */
+::-webkit-scrollbar-track {
+  background: #f0f0f0b7; /* Màu nền track */
+  border-radius: 10px; /* Bo tròn track */
+}
+
+/* Định dạng thanh cuộn (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #c9c9c9; /* Màu của thanh cuộn */
+  border-radius: 10px; /* Bo tròn thanh cuộn */
+}
+
+/* Định dạng thanh cuộn khi hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #004fcc; /* Màu thanh cuộn khi hover */
+}
+</style>

@@ -132,7 +132,7 @@
       >
         <!-- EN | VN -->
         <div class="mr-[24px] max-size-xs:hidden">
-          <span class="text-white">EN | VN</span>
+          <span class="text-white"><span @click="setLocale('en')">EN</span> | <span @click="setLocale('vi')">VN</span></span>
         </div>
         <!-- phone -->
         <span
@@ -168,14 +168,16 @@
   </header>
 </template>
 
-<script setup>
+<script setup lang="ts">
+const { locale, locales, setLocale } = useI18n()
+
 const router = useRouter()
 
 const hoverAboutTHE = [
   {
     icon: '/icon/hoverAboutTHE/warning-hoverAboutTHE.svg',
     title: 'Giới thiệu về THE',
-    to: '/aboutTHE'
+    to: '/about'
   },
   {
     icon: '/icon/hoverAboutTHE/headphone-hoverAboutTHE.svg',

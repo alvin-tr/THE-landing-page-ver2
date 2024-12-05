@@ -8,18 +8,26 @@
         max-size-lg:flex-col max-size-lg:items-center
         ">
           <!-- 1 -->
-          <div class="w-[53%] mt-[300px]
+          <div class="w-[53%] mt-[300px] flex flex-col 
           max-size-lg:mt-[50px] max-size-lg:w-full max-size-lg:flex max-size-lg:items-center max-size-lg:flex-col
           ">
-            <p class="text-white text-[60px] font-semibold leading-[82px] mb-[60px]
+            <span class="text-white text-[60px] font-semibold leading-[82px] mb-[30px]
             max-size-lg:text-[50px] max-size-lg:text-center max-size-lg:mb-[20px]
             max-size-md:text-[45px] max-size-md:leading-[65px]
             max-size-pro:text-[30px] max-size-pro:text-center max-size-pro:leading-[45px]
             ">
-              Cầu nối Doanh nghiệp Việt đến thị trường Hoa Kỳ | Châu Âu | Toàn Cầu
-            </p>
+              Cầu nối Doanh nghiệp Việt đến thị trường 
+              <div class="txtChange-container">
+
+                <Transition name="slide-up">
+                  <span class="txtChange" v-if="docState === 'america'">Hoa Kỳ</span>
+                  <span class="txtChange" v-else-if="docState === 'europe'">Châu Âu</span>
+                  <span class="txtChange" v-else-if="docState === 'global'">Toàn Cầu</span>
+                </Transition>
+              </div>
+            </span>
             <UButton
-              label="Đăng ký"
+              :label="$t('home.register')"
               class="p-[14px] rounded-[6px] bg-white text-[#1E1F24] w-[180px] items-center justify-center hover:bg-white"
               to="https://app.thehuman.express/sign-up"
               />
@@ -35,6 +43,56 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const docState = ref('america')
 
-<style scoped></style>
+const cycleStates = () => {
+  if (docState.value === 'america') {
+    docState.value = 'europe'
+  } else if (docState.value === 'europe') {
+    docState.value = 'global'
+  } else if (docState.value === 'global') {
+    docState.value = 'america'
+  }
+}
+
+let intervalId
+
+onMounted(() => {
+  intervalId = setInterval(cycleStates, 5000) 
+})
+
+onBeforeUnmount(() => {
+  clearInterval(intervalId)
+})
+
+</script>
+
+<style scoped>
+.txtChange-container {
+  display: inline-block;
+  position: relative;
+  height: 1em;
+}
+
+.txtChange {
+  position: absolute;
+  color: #0066FF;
+  width: 300px;
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+</style>

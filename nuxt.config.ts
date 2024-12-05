@@ -17,20 +17,9 @@ export default defineNuxtConfig({
       ],
     }
   },
-  modules: ['@nuxt/ui'],
-  // i18n: {
-  //   locales: [
-  //     { code: 'en', name: 'English', iso: 'en-US', file: 'lang/en.json' },
-  //     { code: 'vn', name: 'Tiếng Việt', iso: 'vi-VN', file: 'lang/vn.json' },
-  //   ],
-  //   lazy: true, // Tải bản dịch khi cần
-  //   langDir: 'lang/', // Thư mục chứa các tệp ngôn ngữ
-  //   defaultLocale: 'en',
-  //   vueI18n: {
-  //     legacy: false, // Sử dụng Composition API của Vue I18n
-  //     locale: 'en',
-  //     fallbackLocale: 'en',
-  //   },
-  // },
+  modules: ['@nuxtjs/i18n', '@nuxt/ui'],
+  i18n: {
+    vueI18n: './i18n/i18n.config.ts' // if you are using custom path, default
+  },
   css: ['~/assets/css/style.css']
 })
