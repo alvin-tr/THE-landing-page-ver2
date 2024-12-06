@@ -132,7 +132,10 @@
       >
         <!-- EN | VN -->
         <div class="mr-[24px] max-size-xs:hidden">
-          <span class="text-white"><span @click="setLocale('en')">EN</span> | <span @click="setLocale('vi')">VN</span></span>
+          <span class="text-white">
+            <span @click="setLocale('en') " class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">EN</span> 
+            <span class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500"> | </span>
+            <span @click="setLocale('vi') " class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">VN</span></span>
         </div>
         <!-- phone -->
         <span

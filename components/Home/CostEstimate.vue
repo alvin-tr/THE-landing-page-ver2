@@ -76,7 +76,6 @@
             class="w-[266px] ml-[8px] text-[#ffffff] rounded-[6px] max-size-lg:w-full"
             input-class="text-white 
             max-size-lg:text-[20px] max-size-md:text-[15px]
-            
             "
           />
           <p class="text-[#FFFFFF] font-normal ml-[8px]">gram</p>

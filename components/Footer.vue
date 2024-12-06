@@ -28,7 +28,7 @@
           </div>
           <!-- email -->
           <div class="flex flex-row items-center mt-[30px] cursor-pointer
-          max-size-pro:mt-[10px]
+          max-size-pro:mt-[10px] 
           ">
             <img src="/img/footer/mailFooter.svg" class="w-[24px]" />
             <p
@@ -85,7 +85,7 @@
               router.push('/internationalExpress')
             })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
-            max-size-pro:mt-[10px]
+            max-size-pro:mt-[10px] cursor-pointer
             "
             >Chuyển phát quốc tế</a
           >
@@ -94,7 +94,7 @@
               router.push('/tiktokExpress')
             })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
-            max-size-pro:mt-[10px]
+            max-size-pro:mt-[10px] cursor-pointer
             "
             >Chuyển phát Tiktok US</a
           >
@@ -103,7 +103,7 @@
               router.push('/fba-express')
             })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
-            max-size-pro:mt-[10px]
+            max-size-pro:mt-[10px] cursor-pointer
             "
             >Chuyển phát hàng FBA amazon</a
           >
@@ -117,23 +117,25 @@
             Hỗ trợ
           </p>
           <a
-            href=""
+            @click="(() => {
+              router.push('/term-policies')
+            })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
-            max-size-pro:mt-[10px]
+            max-size-pro:mt-[10px] cursor-pointer
             "
             >Điều khoản & chính sách</a
           >
           <a
             href=""
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
-            max-size-pro:mt-[10px]
+            max-size-pro:mt-[10px] cursor-pointer
             "
             >Hướng dẫn sử dụng</a
           >
           <a
             href="https://docs.thehuman.express/"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
-            max-size-pro:mt-[10px]
+            max-size-pro:mt-[10px] cursor-pointer
             "
             >Kết nối API</a
           >
