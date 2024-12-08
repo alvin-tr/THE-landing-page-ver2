@@ -17,9 +17,10 @@
             max-size-pro:text-[30px] max-size-pro:text-center max-size-pro:leading-[45px]
             ">
               Cầu nối Doanh nghiệp Việt đến thị trường 
+              <br>
               <div class="txtChange-container">
-
-                <Transition name="slide-up">
+                
+                <Transition class="max-size-lg:ml-[-150px]" name="slide-up">
                   <span class="txtChange" v-if="docState === 'america'">Hoa Kỳ</span>
                   <span class="txtChange" v-else-if="docState === 'europe'">Châu Âu</span>
                   <span class="txtChange" v-else-if="docState === 'global'">Toàn Cầu</span>

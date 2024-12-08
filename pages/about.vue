@@ -1,7 +1,6 @@
 <template>
     <div class="bg-[#F7F8FA] ">
-        <Header class=" bg-black"/>
-
+        <HeaderWhite/>
         <AboutAccompanyingVietnameseBusinesses/>
         <Swiper/>
         <AboutVisionAndMission/>

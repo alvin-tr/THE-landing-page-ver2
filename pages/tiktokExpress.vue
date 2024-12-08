@@ -11,7 +11,7 @@
         />
         <ExpressCustomerExperience :CustomerExperienceItem="CustomerExperienceItem"/>
         <ExpressOperatingProcedure/>
-        <HomeRateAndComment/>
+        <HomeRateAndComment class="max-size-sm:mt-[-100px] "/>
         <HomeExperienceTheDifference/>
     </div>
 </template>
