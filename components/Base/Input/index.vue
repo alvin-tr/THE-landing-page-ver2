@@ -3,7 +3,7 @@
     :="$attrs"
     @blur="
       () => {
-        $emit('blur')
+        $emit('blur');
       }
     "
     ref="refInput"
@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import type { InputTypeHTMLAttribute } from 'vue'
+import type { InputTypeHTMLAttribute } from "vue";
 const regex = {
   noSpecialRegex:
     /^[a-zA-Z0-9àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ\s]+$/,
@@ -30,34 +30,34 @@ const regex = {
   number: /\d+/g,
   notHasSpecial:
     /[^a-zA-Z0-9àáãạảăắằẳẵặâấầẩẫậèéẹẻẽêềếểễệđìíĩỉịòóõọỏôốồổỗộơớờởỡợùúũụủưứừửữựỳỵỷỹýÀÁÃẠẢĂẮẰẲẴẶÂẤẦẨẪẬÈÉẸẺẼÊỀẾỂỄỆĐÌÍĨỈỊÒÓÕỌỎÔỐỒỔỖỘƠỚỜỞỠỢÙÚŨỤỦƯỨỪỬỮỰỲỴỶỸÝ\s]+/g,
-}
-const refInput = ref<InputTypeHTMLAttribute | null>(null)
+};
+const refInput = ref<InputTypeHTMLAttribute | null>(null);
 const emit = defineEmits<{
-  (event: 'input', payload: InputEvent): void
-  (event: 'blur', payload: InputEvent): void
-}>()
-type TextTransform = 'uppercase' | 'lowercase' | 'normal'
-type InputType = 'numeric' | InputTypeHTMLAttribute
+  (event: "input", payload: InputEvent): void;
+  (event: "blur", payload: InputEvent): void;
+}>();
+type TextTransform = "uppercase" | "lowercase" | "normal";
+type InputType = "numeric" | InputTypeHTMLAttribute;
 interface IConfig {
-  maxLength?: number
-  textTransform?: TextTransform
-  type?: InputType
-  noSpecialChar?: boolean
-  convertVNChars?: boolean
-  maxDecimalLength?: number
-  noNumber?: boolean
+  maxLength?: number;
+  textTransform?: TextTransform;
+  type?: InputType;
+  noSpecialChar?: boolean;
+  convertVNChars?: boolean;
+  maxDecimalLength?: number;
+  noNumber?: boolean;
 }
 interface IProps {
-  config?: IConfig
-  modelValue: InputValue
+  config?: IConfig;
+  modelValue: InputValue;
 }
 
-type InputValue = number | string
-const props = defineProps<IProps>()
+type InputValue = number | string;
+const props = defineProps<IProps>();
 const config = computed<IConfig>(() => {
   return {
-    type: 'text',
-    textTransform: 'normal',
+    type: "text",
+    textTransform: "normal",
     noSpecialChar: false,
     convertVNChars: false,
     maxLength: 100,
@@ -68,10 +68,10 @@ const config = computed<IConfig>(() => {
       unFormat: (value: string): InputValue => value,
     },
     ...props.config,
-  }
-})
+  };
+});
 
-const originValue = defineModel<InputValue>()
+const originValue = defineModel<InputValue>();
 // const inputValue = computed<InputValue>(() => {
 //   return originValue.value as InputValue
 //   if (config.value.type === 'number' && !originValue.value) return '0'
@@ -79,36 +79,36 @@ const originValue = defineModel<InputValue>()
 // })
 
 function handleTypeNumber(value: string) {
-  if (config?.value.type !== 'number') return value
-  if (value === '') return 0
+  if (config?.value.type !== "number") return value;
+  if (value === "") return 0;
 }
 function handleNoNumber(value: string): string {
-  if (!config?.value?.noNumber) return value
+  if (!config?.value?.noNumber) return value;
 
   // Remove all numbers from the string
-  return value.replace(regex.number, '')
+  return value.replace(regex.number, "");
 }
 function handleNumber(value: string) {
-  return value
+  return value;
 }
 function handleNumeric(value: string) {
-  if (config.value.type !== 'numeric') return value
-  const numericValue = String(value).replace(/[^0-9.-]/g, '')
-  return numericValue
+  if (config.value.type !== "numeric") return value;
+  const numericValue = String(value).replace(/[^0-9.-]/g, "");
+  return numericValue;
 }
 function handleMaxLength(value: string) {
-  const maxLength = config.value.maxLength as number
+  const maxLength = config.value.maxLength as number;
   if (value.length >= maxLength) {
-    return originValue.value
+    return originValue.value;
   }
-  return value
+  return value;
 }
 
 function handleTransformText(value: string) {
-  const textTransform = config.value.textTransform as TextTransform
-  if (textTransform === 'uppercase') return value.toUpperCase()
-  if (textTransform === 'lowercase') return value.toLowerCase()
-  return value
+  const textTransform = config.value.textTransform as TextTransform;
+  if (textTransform === "uppercase") return value.toUpperCase();
+  if (textTransform === "lowercase") return value.toLowerCase();
+  return value;
 }
 
 // function handleNoSpecialChar(value: string): string {
@@ -118,23 +118,23 @@ function handleTransformText(value: string) {
 //   return value.replace(regex.noSpecialRegex, '')
 // }
 function handleNoSpecialChar(value: string): string {
-  if (!config?.value?.noSpecialChar) return value
-  return value.replace(regex.notHasSpecial, '')
+  if (!config?.value?.noSpecialChar) return value;
+  return value.replace(regex.notHasSpecial, "");
 }
 
 function handleConvertVNChars(value: string) {
-    return value
+  return value;
   const convertValue = config.value.convertVNChars
     ? String(replaceAccentedCharacters(value))
-    : value
-  return convertValue
+    : value;
+  return convertValue;
 }
 
 function handleInput(e: InputEvent) {
-  const target = e.target as HTMLInputElement
-  emit('input', e)
-  let caretPosition = target.selectionStart || 0
-  const originalPositionRight = target.value.length - caretPosition
+  const target = e.target as HTMLInputElement;
+  emit("input", e);
+  let caretPosition = target.selectionStart || 0;
+  const originalPositionRight = target.value.length - caretPosition;
   const listHandler = [
     handleConvertVNChars,
     // handleNoSpecialChar,
@@ -144,18 +144,18 @@ function handleInput(e: InputEvent) {
     handleNoNumber,
     handleNumeric,
     // handleTypeNumber,
-  ]
+  ];
 
   target.value = listHandler.reduce((acc, handler) => {
-    return handler(acc) as string
-  }, target.value)
+    return handler(acc) as string;
+  }, target.value);
   //keep caret position
 
-  originValue.value = target.value
+  originValue.value = target.value;
   nextTick(() => {
-    caretPosition = target.value.length - originalPositionRight
-    target.setSelectionRange(caretPosition, caretPosition)
-  })
+    caretPosition = target.value.length - originalPositionRight;
+    target.setSelectionRange(caretPosition, caretPosition);
+  });
 }
 </script>
 

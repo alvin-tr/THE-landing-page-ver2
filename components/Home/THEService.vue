@@ -105,137 +105,137 @@
 </template>
 
 <script setup>
-const currentElementRef = ref()
+const currentElementRef = ref();
 const listOfContents = [
-  'Chuyển phát tiết kiệm',
-  'Chuyển phát Tốc độ',
-  'Chuyển phát Đặc biệt',
-  'Chuyển phát Tikok US',
-]
+  "Chuyển phát tiết kiệm",
+  "Chuyển phát Tốc độ",
+  "Chuyển phát Đặc biệt",
+  "Chuyển phát Tikok US",
+];
 const services = [
   {
-    image: '/img/economyDelivery.svg',
-    title: 'Chuyển phát tiết kiệm',
+    image: "/img/economyDelivery.svg",
+    title: "Chuyển phát tiết kiệm",
     description:
-      'Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp',
+      "Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp",
     criteria: [
       {
-        icon: '/icon/watchIcon.svg',
-        title: 'Thời gian',
-        description: '7-10 ngày',
+        icon: "/icon/watchIcon.svg",
+        title: "Thời gian",
+        description: "7-10 ngày",
       },
       {
-        icon: '/icon/dollarIcon.svg',
-        title: 'Chi phí',
-        description: 'Từ $5.1',
+        icon: "/icon/dollarIcon.svg",
+        title: "Chi phí",
+        description: "Từ $5.1",
       },
       {
-        icon: '/icon/mapIcon.svg',
-        title: 'Theo dõi hành trình',
-        description: 'Minh bạch từng địa điểm',
+        icon: "/icon/mapIcon.svg",
+        title: "Theo dõi hành trình",
+        description: "Minh bạch từng địa điểm",
       },
     ],
   },
   {
-    image: '/img/speedDelivery.svg',
-    title: 'Chuyển phát Tốc độ',
+    image: "/img/speedDelivery.svg",
+    title: "Chuyển phát Tốc độ",
     description:
-      'Dịch vụ ưu tiên giao hàng thần tốc, đúng hẹn trên từng chặng đường',
+      "Dịch vụ ưu tiên giao hàng thần tốc, đúng hẹn trên từng chặng đường",
     criteria: [
       {
-        icon: '/icon/watchIcon.svg',
-        title: 'Thời gian',
-        description: '5-8 ngày',
+        icon: "/icon/watchIcon.svg",
+        title: "Thời gian",
+        description: "5-8 ngày",
       },
       {
-        icon: '/icon/dollarIcon.svg',
-        title: 'Chi phí',
-        description: 'Từ $6.1',
+        icon: "/icon/dollarIcon.svg",
+        title: "Chi phí",
+        description: "Từ $6.1",
       },
       {
-        icon: '/icon/mapIcon.svg',
-        title: 'Theo dõi hành trình',
-        description: 'Minh bạch từng địa điểm',
+        icon: "/icon/mapIcon.svg",
+        title: "Theo dõi hành trình",
+        description: "Minh bạch từng địa điểm",
       },
     ],
   },
   {
-    image: '/img/specialDelivery.svg',
-    title: 'Chuyển phát Đặc biệt',
+    image: "/img/specialDelivery.svg",
+    title: "Chuyển phát Đặc biệt",
     description:
-      'Giải pháp vận chuyển cho hàng hóa kích thước lớn (chiều dài trên 55cm), sản phẩm khó (mỹ phẩm, sản phẩm chứa pin, nam châm..)',
+      "Giải pháp vận chuyển cho hàng hóa kích thước lớn (chiều dài trên 55cm), sản phẩm khó (mỹ phẩm, sản phẩm chứa pin, nam châm..)",
     criteria: [
       {
-        icon: '/icon/boxIcon.svg',
-        title: 'Chất lượng',
-        description: 'An toàn & Đảm bảo',
+        icon: "/icon/boxIcon.svg",
+        title: "Chất lượng",
+        description: "An toàn & Đảm bảo",
       },
       {
-        icon: '/icon/dollarIcon.svg',
-        title: 'Chi phí',
-        description: 'Tiết kiệm & nhanh chóng',
+        icon: "/icon/dollarIcon.svg",
+        title: "Chi phí",
+        description: "Tiết kiệm & nhanh chóng",
       },
       {
-        icon: '/icon/mapIcon.svg',
-        title: 'Theo dõi hành trình',
-        description: 'Minh bạch từng địa điểm',
+        icon: "/icon/mapIcon.svg",
+        title: "Theo dõi hành trình",
+        description: "Minh bạch từng địa điểm",
       },
     ],
   },
   {
-    image: '/img/tiktokUSDelivery.svg',
-    title: 'Chuyển phát Tikok US',
+    image: "/img/tiktokUSDelivery.svg",
+    title: "Chuyển phát Tikok US",
     description:
-      'Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp',
+      "Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp",
     criteria: [
       {
-        icon: '/icon/watchIcon.svg',
-        title: 'Thời gian',
-        description: '6-9 ngày',
+        icon: "/icon/watchIcon.svg",
+        title: "Thời gian",
+        description: "6-9 ngày",
       },
       {
-        icon: '/icon/watchIcon.svg',
-        title: 'Thời gian kích hoạt in-transit',
-        description: 'Đảm bảo theo SLA TiktokUS: 24-48h',
+        icon: "/icon/watchIcon.svg",
+        title: "Thời gian kích hoạt in-transit",
+        description: "Đảm bảo theo SLA TiktokUS: 24-48h",
       },
       {
-        icon: '/icon/dollarIcon.svg',
-        title: 'Chi phí',
-        description: 'Từ $5.7',
+        icon: "/icon/dollarIcon.svg",
+        title: "Chi phí",
+        description: "Từ $5.7",
       },
       {
-        icon: '/icon/boxIcon.svg',
-        title: 'Đơn hàng',
-        description: 'Mọi kích cỡ và khối lượng',
+        icon: "/icon/boxIcon.svg",
+        title: "Đơn hàng",
+        description: "Mọi kích cỡ và khối lượng",
       },
     ],
   },
-]
+];
 
-const selectedService = ref(0)
+const selectedService = ref(0);
 const scrollToService = (index) => {
-  const target = document.getElementById(`service-${index}`)
+  const target = document.getElementById(`service-${index}`);
   if (target) {
-    target.scrollIntoView({ behavior: 'smooth', block: 'center' })
-    selectedService.value = index
+    target.scrollIntoView({ behavior: "smooth", block: "center" });
+    selectedService.value = index;
   }
-}
+};
 function getScrollPosition(element) {
   return {
     currentScrollTop: element.scrollTop,
     maxScrollTop: element.scrollHeight - element.clientHeight,
     currentScrollLeft: element.scrollLeft,
     maxScrollLeft: element.scrollWidth - element.clientWidth,
-  }
+  };
 }
 onMounted(() => {
-  document.addEventListener('scroll', (e) => {
-    if (currentElementRef.value) {
-      const scrollPosition = getScrollPosition(currentElementRef.value)
-      console.log('Scroll Position:', scrollPosition)
-    }
-  })
-})
+  // document.addEventListener('scroll', (e) => {
+  //   if (currentElementRef.value) {
+  //     const scrollPosition = getScrollPosition(currentElementRef.value)
+  //     console.log('Scroll Position:', scrollPosition)
+  //   }
+  // })
+});
 </script>
 
 <style scoped>
