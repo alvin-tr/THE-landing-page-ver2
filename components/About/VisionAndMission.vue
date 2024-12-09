@@ -1,14 +1,23 @@
 <template>
     <BaseLayout>
-    <div class="py-[56px] px-[100px] flex flex-row items-center">
+    <div class="py-[56px] px-[100px] flex flex-row items-center
+    max-size-md:flex-col max-size-md:px-[30px] max-size-md:justify-center
+    max-size-pro:px-[20px] max-size-md:py-0
+    ">
         <!-- 1 -->
-        <div class=" w-[45%]">
+        <div class=" w-[45%]
+        max-size-md:w-[60%]
+        ">
             <img src="/img/logoLargeAbout.svg" alt="">
         </div>
         <!-- 2 -->
-        <div class="w-[45%]">
+        <div class="w-[45%]
+        max-size-md:w-full max-size-md:mt-[20px]
+        ">
             <!-- vision -->
-            <div class="flex flex-col ml-[50px] w-full">
+            <div class="flex flex-col ml-[50px] w-full
+            max-size-md:ml-0
+            ">
                 <div class="flex flex-row">
                     <div class="p-[8px] bg-[#0066FF] rounded-[8px]">
                         <img src="/icon/visionAboutUs.svg" alt="">
@@ -18,7 +27,9 @@
                 <p class="text-[#868689] text-[22px] leading-[38px] mt-[28px]">Trở thành cầu nối vận chuyển thông minh, đưa hàng hóa Việt Nam hội nhập toàn cầu, khẳng định vị thế của người Việt trong chuỗi cung ứng quốc tế.</p>
             </div>
             <!-- mission -->
-             <div class="flex flex-col ml-[50px] mt-[48px] w-full">
+             <div class="flex flex-col ml-[50px] mt-[48px] w-full
+             max-size-md:ml-0
+             ">
                 <div class="flex flex-row">
                     <div class="p-[8px] bg-[#051063] rounded-[8px]">
                         <img src="/icon/missionAbout.svg" alt="">

@@ -1,8 +1,10 @@
 <template>
   <BaseLayout>
-    <div class="flex flex-row justify-center py-[64px]">
-      <!-- 1 -->
-      <div class="w-[45%] mt-[200px]">
+    <div class="flex flex-row justify-center py-[64px] relative">
+      <!-- 1: Phần văn bản -->
+      <div class="w-[45%] mt-[200px]
+        max-size-lg:mt-[100px]
+      ">
         <p class="text-[60px] leading-[82px] font-semibold text-[#1E1F24]">
           Đồng hành cùng doanh nghiệp Việt
         </p>
@@ -49,24 +51,62 @@
           />
         </div>
       </div>
-      <!-- 2 -->
+
+      <!-- 2: Ảnh chỉ sticky khi mở rộng -->
       <div class="w-[45%]">
-        <img
-          class="bg-cover bg-center"
-          src="/img/accompanyingVietnameseBusiness.svg"
-          alt=""
-        />
+        <div
+          :class="{
+            'sticky-image': isExpanded,
+          }"
+        >
+          <img
+            class="image-transition"
+            src="/img/accompanyingVietnameseBusiness.svg"
+            alt="Accompanying Vietnamese Business"
+          />
+        </div>
       </div>
     </div>
   </BaseLayout>
 </template>
 
+
 <script setup>
+const contentRef = ref(null);
+const imageHeight = ref(0);
 const isExpanded = ref(false)
 
 const toggleExpaned = () => {
     isExpanded.value = !isExpanded.value
+    updateImageHeight()
 }
+
+const updateImageHeight = () => {
+  if (contentRef.value) {
+    imageHeight.value = contentRef.value.offsetHeight + 200; // Thêm khoảng padding
+  } else {
+    imageHeight.value = 0;
+  }
+};
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.sticky-image {
+  position: sticky;
+  top: 20vh; 
+}
+
+.image-transition {
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.sticky-image img {
+  transform: scale(1.05); 
+  opacity: 1;
+}
+
+img {
+  transform: scale(1);
+  opacity: 0.9;
+}
+</style>
