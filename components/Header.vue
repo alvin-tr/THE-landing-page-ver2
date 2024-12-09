@@ -30,7 +30,7 @@
             Về THE
             <!-- hover -->
             <div
-              class="group-hover/aboutTHE:flex hidden absolute top-[10px] w-full h-[50px] transition duration-500 z-100"
+              class="group-hover/aboutTHE:flex hidden absolute top-[10px] w-full h-[50px] transition duration-500"
             >
               <div
                 class="group-hover/aboutTHE:flex hidden absolute flex-col top-[40px] left-0 p-[4px] rounded-[8px] bg-white transition duration-500"
@@ -63,7 +63,7 @@
             Dịch vụ
             <!-- hover -->
             <div
-              class="group-hover/service:flex hidden absolute top-[10px] w-full h-[50px] z-100"
+              class="group-hover/service:flex hidden absolute top-[10px] w-full h-[50px]"
             >
               <div
                 class="hidden absolute top-[40px] right-[-700px] group-hover/service:flex flex-row bg-white rounded-[8px] max-size-lg:right-[-615px]"
@@ -97,7 +97,7 @@
             Hỗ trợ
             <!-- hover -->
             <div
-              class="group-hover/support:flex hidden absolute top-[10px] w-full h-[50px] z-100"
+              class="group-hover/support:flex hidden absolute top-[10px] w-full h-[50px]"
             ></div>
             <div
               class="group-hover/support:flex hidden absolute flex-col top-[40px] left-0 p-[4px] rounded-[8px] bg-white"

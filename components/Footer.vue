@@ -149,12 +149,12 @@
           <div class="flex items-center justify-end">
             <UButton
             @click="scrollToTop"
-              class="p-[20px] w-[54px] rounded-[50px] bg-white items-center justify-center"
-              
+              class="p-[20px] w-[54px] h-[54px] rounded-[50px] bg-white items-center justify-center group"
+              color="blue"
             >
-              <img
-                src="/img/footer/arrowUpFooter.svg"
-                class="text-[#1E1F24] font-[100]"
+              <UIcon
+                name="tabler:arrow-narrow-up"
+                class="text-[#1E1F24] text-[30px] font-[100] group-hover:text-white"
               />
             </UButton>
           </div>
