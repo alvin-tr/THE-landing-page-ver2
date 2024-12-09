@@ -30,8 +30,8 @@
         </div>
       </div>
       <!-- 2.2 -->
-       <div class="px-[20px] flex justify-between w-full mt-[14px]">
-        <div class="flex">
+       <div class=" flex justify-between w-full mt-[14px]">
+        <div class="flex ml-[20px]">
           <p class="blueTxt">2.2</p>
           <p class="blackStrongTxt">Phạm vi trách nhiệm</p>
         </div>
