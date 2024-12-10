@@ -126,7 +126,7 @@ function handleNoSpecialChar(value: string): string {
 
 function handleNoSpace(value: string): string {
   if (!config?.value?.noSpace) return value;
-  return value.replace(/\s/g, ""); 
+  return value.replace(/\s/g, "");
 }
 function handleConvertVNChars(value: string) {
   return value;
