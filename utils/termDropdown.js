@@ -50,7 +50,7 @@ const items = ref([
     {
         title: '4. Các Quy định khác', key: '4', status: false, children: [
             {
-                title: '4.1. Thời hạn khả dụng của THE tracking', key: '4-1', status: false, children: []
+                title: '4.1. Thời hạn khả dụng của THE tracking                                                                                                                                                                   ', key: '4-1', status: false, children: []
             },
             {
                 title: '4.2. Bảo hiểm', key: '4-2', status: false, children: []

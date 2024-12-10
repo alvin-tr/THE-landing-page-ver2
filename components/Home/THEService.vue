@@ -39,9 +39,7 @@
             </div>
             <!-- content -->
             <div
-              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto max-size-lg:w-[60%] max-size-md:w-[70%] max-size-sm:w-[65%]"
-              onSlideMove()
-            >
+              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto max-size-lg:w-[60%] max-size-md:w-[70%] max-size-sm:w-[65%]">
               <div
                 v-for="(item, index) in services"
                 class="flex flex-row mb-[65px] max-size-lg:flex-col max-size-md:ml-[30px] max-size-pro:ml-0"
@@ -54,7 +52,7 @@
                   alt="economyDelivery"
                   class="min-w-[476px] bg-cover bg-center max-size-md:min-w-[350px] max-size-md:max-w-[200px] max-size-pro:min-w-[150px] max-size-pro:max-w-[230px] max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"
                 />
-                <!-- children -->
+                <!-- content -->
                 <div
                   class="flex flex-col ml-[48px] max-size-lg:ml-0 max-size-md:mt-[20px]"
                 >
@@ -92,6 +90,14 @@
                         </p>
                       </div>
                     </div>
+                    <button @click="(() => {
+                      $router.push(item.to)
+                    })" class="w-[60%] mt-[30px]">
+                      <div class="bg-[#0066FF] px-[30px] py-[14px] flex flex-row rounded-[6px] items-center justify-center">
+                        <p class="text-[16px] text-white">Xem chi tiết</p>
+                        <UIcon name="mingcute:arrow-right-line" class="text-white text-[20px] ml-[5px]"/>
+                      </div>
+                    </button>
                   </div>
                 </div>
               </div>
@@ -105,12 +111,16 @@
 </template>
 
 <script setup>
+const router = useRouter()
+
 const currentElementRef = ref();
+
 const listOfContents = [
   "Chuyển phát tiết kiệm",
   "Chuyển phát Tốc độ",
   "Chuyển phát Đặc biệt",
   "Chuyển phát Tikok US",
+  "Chuyển phát hàng FBA"
 ];
 const services = [
   {
@@ -118,6 +128,7 @@ const services = [
     title: "Chuyển phát tiết kiệm",
     description:
       "Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp",
+    to:'/internationalExpress',
     criteria: [
       {
         icon: "/icon/watchIcon.svg",
@@ -141,6 +152,7 @@ const services = [
     title: "Chuyển phát Tốc độ",
     description:
       "Dịch vụ ưu tiên giao hàng thần tốc, đúng hẹn trên từng chặng đường",
+    to:'/internationalExpress',
     criteria: [
       {
         icon: "/icon/watchIcon.svg",
@@ -164,6 +176,7 @@ const services = [
     title: "Chuyển phát Đặc biệt",
     description:
       "Giải pháp vận chuyển cho hàng hóa kích thước lớn (chiều dài trên 55cm), sản phẩm khó (mỹ phẩm, sản phẩm chứa pin, nam châm..)",
+    to:'/internationalExpress',
     criteria: [
       {
         icon: "/icon/boxIcon.svg",
@@ -187,6 +200,7 @@ const services = [
     title: "Chuyển phát Tikok US",
     description:
       "Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp",
+    to:'/tiktokExpress',
     criteria: [
       {
         icon: "/icon/watchIcon.svg",
@@ -207,6 +221,35 @@ const services = [
         icon: "/icon/boxIcon.svg",
         title: "Đơn hàng",
         description: "Mọi kích cỡ và khối lượng",
+      },
+    ],
+  },
+  {
+    image: "/img/FBADelivery.svg",
+    title: "Chuyển phát Tikok US",
+    description:
+      "Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.",
+    to:'/fba-express',
+    criteria: [
+      {
+        icon: "/icon/watchIcon.svg",
+        title: "Thời gian",
+        description: "3-7 ngày",
+      },
+      {
+        icon: "/icon/mapIcon.svg",
+        title: "Theo dõi hành trình",
+        description: "Minh bạch từng địa điểm",
+      },
+      {
+        icon: "/icon/dollarIcon.svg",
+        title: "Chi phí",
+        description: "Từ $39/kg",
+      },
+      {
+        icon: "/icon/documentIcon.svg",
+        title: "Bảng chỉ báo kho FBA",
+        description: "Giúp nhà bán hàng theo dõi kế hoạch ghép đơn đi FBA",
       },
     ],
   },
@@ -239,10 +282,9 @@ onMounted(() => {
 </script>
 
 <style scoped>
-/* Định dạng thanh cuộn */
 ::-webkit-scrollbar {
-  width: 8px; /* Độ rộng của thanh cuộn */
-  height: 8px; /* Độ cao (nếu là thanh cuộn ngang) */
+  width: 8px; 
+  height: 8px; 
 }
 
 /* Định dạng thanh cuộn (track) */

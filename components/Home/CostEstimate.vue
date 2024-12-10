@@ -13,7 +13,7 @@
             tabChangeCostEstimate === 0 ? 'text-white' : 'text-[#FFFFFF80]'
           "
         >
-          {{ $t("home.estimatingPrice") }}
+          {{ $t('home.estimatingPrice') }}
         </p>
         <div
           :class="
@@ -52,89 +52,113 @@
         Vui lòng nhập các thông tin sau đây để ước tính chi phí vận chuyển đơn
         hàng của bạn
       </p>
-      <!-- Trọng lượng -->
-      <div class="flex flex-col mt-[32px]">
-        <span
-          class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
-          >Trọng lượng
-          <p class="text-[#E8173C] ml-[2px]">*</p></span
-        >
-        <div
-          class="flex flex-row p-[12px] bg-[#394154] rounded-[6px] mt-[6px] max-size-lg:items-center max-size-lg:justify-center"
-        >
-          <img
-            class="max-size-lg:w-[30px] max-size-md:w-[25px]"
-            src="/public/icon/iconInputWeight.svg"
-          />
-          <UInput
-            placeholder="Nhập trọng lượng"
-            type="number"
-            variant="none"
-            class="w-[266px] ml-[8px] text-[#ffffff] rounded-[6px] max-size-lg:w-full"
-            input-class="text-white 
-            max-size-lg:text-[20px] max-size-md:text-[15px]
-            "
-          />
-          <p class="text-[#FFFFFF] font-normal ml-[8px]">gram</p>
-        </div>
-      </div>
-      <!-- Dài | Rọng | Cao -->
-      <div class="flex flex-row mt-[16px]">
-        <!-- Dài -->
-        <div class="w-[35%]">
-          <span
-            class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
-            >Dài
-            <p class="text-[#E8173C] ml-[2px]">*</p></span
-          >
-          <div
-            class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
-          >
-            <UInput
-              type="number"
-              variant="none"
-              class="text-[#ffffff] bg-[#394154] rounded-[6px]"
-            />
-            <p class="text-white ml-[5px]">cm</p>
+      <UForm :schema="schemaPriceEstimate" :state="productInfo">
+        <UFormGroup name="weight">
+          <!-- Trọng lượng -->
+          <div class="flex flex-col mt-[32px]">
+            <span
+              class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
+              >Trọng lượng
+              <p class="text-[#E8173C] ml-[2px]">*</p></span
+            >
+            <div
+              class="flex flex-row p-[12px] bg-[#394154] rounded-[6px] mt-[6px] max-size-lg:items-center max-size-lg:justify-center"
+            >
+              <img
+                class="max-size-lg:w-[30px] max-size-md:w-[25px]"
+                src="/public/icon/iconInputWeight.svg"
+              />
+              <BaseInput
+                v-model="productInfo.weight"
+                variant="none"
+                placeholder="Nhập trọng lượng"
+                input-class="text-white max-size-lg:text-[20px] max-size-md:text-[15px]"
+                class="w-[266px] ml-[8px] text-[#ffffff] rounded-[6px] max-size-lg:w-full"
+                :config="{
+                  type: 'numeric',
+                  maxLength: 11,
+                }"
+              />
+              <p class="text-[#FFFFFF] font-normal ml-[8px]">gram</p>
+            </div>
           </div>
+        </UFormGroup>
+        <!-- Dài | Rọng | Cao -->
+        <div class="flex flex-row mt-[16px]">
+          <!-- Dài -->
+          <UFormGroup name="length">
+            <div class="w-[90%]">
+              <span
+                class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
+                >Dài
+                <p class="text-[#E8173C] ml-[2px]">*</p></span
+              >
+              <div
+                class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
+              >
+                <BaseInput
+                  v-model="productInfo.length"
+                  variant="none"
+                  class="text-[#ffffff] bg-[#394154] rounded-[6px]"
+                  :config="{
+                  type: 'numeric',
+                  maxLength: 11,
+                }"
+                />
+                <p class="text-white ml-[5px]">cm</p>
+              </div>
+            </div>
+          </UFormGroup>
+          <!-- Rộng -->
+          <UFormGroup name="width">
+            <div class=" w-[90%]">
+              <span
+                class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
+                >Rộng
+                <p class="text-[#E8173C] ml-[2px]">*</p></span
+              >
+              <div
+                class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
+              >
+                <BaseInput
+                  v-model="productInfo.width"
+                  variant="none"
+                  class="text-[#ffffff] bg-[#394154] rounded-[6px]"
+                  :config="{
+                  type: 'numeric',
+                  maxLength: 11,
+                }"
+                />
+                <p class="text-white ml-[5px]">cm</p>
+              </div>
+            </div>
+          </UFormGroup>
+          <!-- Cao -->
+          <UFormGroup name="height">
+            <div class=" w-[90%]">
+              <span
+                class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
+                >Cao
+                <p class="text-[#E8173C] ml-[2px]">*</p></span
+              >
+              <div
+                class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
+              >
+                <BaseInput
+                  v-model="productInfo.height"
+                  variant="none"
+                  class="text-[#ffffff] bg-[#394154] rounded-[6px]"
+                  :config="{
+                  type: 'numeric',
+                  maxLength: 11,
+                }"
+                />
+                <p class="text-white ml-[5px]">cm</p>
+              </div>
+            </div>
+          </UFormGroup>
         </div>
-        <!-- Rộng -->
-        <div class="ml-[12px] w-[35%]">
-          <span
-            class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
-            >Rộng
-            <p class="text-[#E8173C] ml-[2px]">*</p></span
-          >
-          <div
-            class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
-          >
-            <UInput
-              type="number"
-              variant="none"
-              class="text-[#ffffff] bg-[#394154] rounded-[6px]"
-            />
-            <p class="text-white ml-[5px]">cm</p>
-          </div>
-        </div>
-        <!-- Cao -->
-        <div class="ml-[12px] w-[35%]">
-          <span
-            class="text-[12px] font-normal flex flex-row text-[#FFFFFF] ml-[4px]"
-            >Cao
-            <p class="text-[#E8173C] ml-[2px]">*</p></span
-          >
-          <div
-            class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
-          >
-            <UInput
-              type="number"
-              variant="none"
-              class="text-[#ffffff] bg-[#394154] rounded-[6px]"
-            />
-            <p class="text-white ml-[5px]">cm</p>
-          </div>
-        </div>
-      </div>
+      </UForm>
       <!-- ----- -->
       <div
         class="w-[360px] overflow-hidden h-[20px] flex items-center mt-[32px] max-size-lg:w-full"
@@ -156,7 +180,7 @@
           >
         </div>
       </div>
-      <!-- click vào đây -->
+      <!-- Uớc tính chỉ mang tính chất tham khảo -->
       <div class="mt-[44px] w-full max-size-xs:mt-[30px]">
         <span class="flex flex-row items-center">
           <UIcon class="mr-[5px]" name="mingcute:warning-line" />
@@ -182,7 +206,7 @@
             $router.push({
               path: '/trackings',
               query: { tracking: trackings },
-            });
+            })
           }
         "
       >
@@ -233,8 +257,90 @@
 </template>
 
 <script setup>
-const tabChangeCostEstimate = ref(0);
-const trackings = ref([]);
+import axios from 'axios'
+import * as Yup from 'yup'
+
+const { startLoading, isLoading } = useLoading()
+
+const tabChangeCostEstimate = ref(0)
+const trackings = ref([])
+const errorMessage = ref([])
+const price = ref(0.0)
+
+const productInfo = reactive({
+  weight: '',
+  width: '',
+  length: '',
+  height: '',
+})
+
+const state = {}
+
+const schemaPriceEstimate = Yup.object().shape({
+  weight: Yup.number()
+    .typeError('Trọng lượng là bắt buộc')
+    .required('Trọng lượng là bắt buộc')
+    .max(19949.99, 'Trọng lượng không được vượt quá 19949.99 gram')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value.toString())
+    ),
+  width: Yup.number()
+    .typeError('Chiều rộng là bắt buộc')
+    .required('Chiều rộng là bắt buộc')
+    .max(243, 'Chiều rộng không được vượt quá 243 cm')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value.toString())
+    ),
+  height: Yup.number()
+    .typeError('Chiều cao là bắt buộc')
+    .required('Chiều cao là bắt buộc')
+    .max(243, 'Chiều cao không được vượt quá 243 cm')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value.toString())
+    ),
+  length: Yup.number()
+    .typeError('Chiều cao là bắt buộc')
+    .required('Chiều dài là bắt buộc')
+    .max(243, 'Chiều dài không được vượt quá 243 cm')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+      /^\d+(\.\d{1,2})?$/.test(value.toString())
+    ),
+})
+
+async function getPrice(event) {
+  errorMessage.value = []
+
+  if (productInfo.weight === 0) {
+    errorMessage.value.push('Trọng lượng không hợp lệ')
+  }
+  if (productInfo.length === 0) {
+    errorMessage.value.push('Chiều dài không hợp lệ')
+  }
+  if (productInfo.width === 0) {
+    errorMessage.value.push('Chiều rộng không hợp lệ')
+  }
+  if (productInfo.height === 0) {
+    errorMessage.value.push('Chiều cao không hợp lệ')
+  }
+
+  if (errorMessage.value.length) return
+
+  await startLoading(async () => {
+    try {
+      const response = await axios.post(
+        url + '/v1/customer/services/price',
+        event.data
+      )
+      // const response = await axios.post('https://api.thehuman.express/v1/customer/services/price', event.data)
+      // const response = await axios.post('https://api-dev.humanbay.express/v1/customer/services/price', event.data)
+      price.value = response.data.price
+    } catch (error) {
+      errorMessage.value = error.response.data.messages
+      price.value = 0.0
+    } finally {
+    }
+  })
+}
 </script>
 
 <style scoped></style>
