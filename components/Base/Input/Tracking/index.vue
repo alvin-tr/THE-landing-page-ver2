@@ -15,7 +15,7 @@
       :config="{
         textTransform: 'uppercase',
         maxLength: 16,
-        noSpecialChart: true,
+        noSpecialChar: true,
       }"
       inputClass="!bg-transparent border-none outline-none pl-[0]"
       variant="none"

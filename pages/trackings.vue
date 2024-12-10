@@ -1,67 +1,7 @@
 <template>
   <div class="pt-16 max-w-[1900px] mx-auto">
     <div class="grid grid-cols-4 gap-4 w-11/12 mx-auto mt-8">
-      <div
-        class="relative box-tracking flex-col justify-between lg:col-span-1 col-span-4 max-h-[350px] py-5 lg:relative bg-[#FFFFFF]"
-      >
-        <div class="box-tracking-title p-4 w-full">
-          <span class="text-[20px] leading-[32px] font-bold"
-            >Tracking code</span
-          >
-          <span class="font-medium text-[14px] leading-5 text-[#747592]"
-            >{{ inputs?.length }}/40</span
-          >
-        </div>
-        <div class="h-48 overflow-y-auto custom-scrollbar">
-          <div
-            v-for="(input, index) in inputs"
-            :class="{
-              'flex items-center px-3 py-2': true,
-              'bg-[#F5F5FA]': index % 2 == 0,
-            }"
-          >
-            <span :style="{ color: isShowPlaceholder ? '#b3b8c2' : '#747592' }"
-              >{{ index + 1 }}.
-            </span>
-            <input
-              :placeholder="
-                isShowPlaceholder ? 'Enter up to 40 numbers, one per line ' : ''
-              "
-              :class="{
-                'w-full text-[14px] leading-5 text-[#747592] p-1 border-none focus:border-none focus:outline-none bg-transparent': true,
-              }"
-              :ref="(el) => (inputRefs[index] = el)"
-              :value="input.value"
-              @input="
-                (event) => {
-                  input.value = event.target.value.toUpperCase();
-                  console.log('Input updated:', inputs[index].value, inputs);
-                }
-              "
-              @keydown="
-                (event) => handleKeydown(event, index, inputs, inputRefs)
-              "
-            />
-            <img
-              class="w-[15px] h-[15px]"
-              src="/old/close.svg"
-              @click="removeInput(index, inputs, inputRefs)"
-            />
-          </div>
-        </div>
-        <div class="flex w-full justify-center">
-          <button
-            @click="() => trackNumbers()"
-            class="button w-[60%] text-white"
-          >
-            Track
-            <img src="/old/track.svg" />
-          </button>
-          <div @click="removeAll" class="flex lg:justify-center ml-2">
-            <img src="/old/bin.svg" />
-          </div>
-        </div>
-      </div>
+      <TrackingsMultipleInput />
       <div
         class="track-content min-h-[85vh] lg:col-span-3 col-span-4 py-2 px-3 bg-[#FFFFFF]"
       >
@@ -300,8 +240,13 @@
 <script setup>
 const route = useRoute();
 const router = useRouter();
+const currentTrackings = Array.isArray(route.query.trackings)
+  ? [...route.query.trackings]
+  : [route.query.trackings];
+const inputRefs = ref([]);
+const inputs = ref(currentTrackings);
 useHead({ title: "Packet Tracking" });
-const tabs = ref([
+const tabsStatus = ref([
   // { key: "pending", label: "Pending", shipments: [] },
   { key: "pre-transit", label: "Pre-transit", shipments: [] },
   { key: "in-transit", label: "In-Transit", shipments: [] },
@@ -311,11 +256,11 @@ const tabs = ref([
   { key: "archived", label: "Archived", shipments: [] },
   { key: "undelivered", label: "Undelivered", shipments: [] },
 ]);
-const fullTabs = computed(() => {
+const tabs = computed(() => {
   const allTab = {
     key: "All",
     label: "All",
-    shipments: tabs.value.reduce((acc, curr) => {
+    shipments: tabsStatus.value.reduce((acc, curr) => {
       acc = [...acc, ...curr.shipments];
       return acc;
     }, []),
@@ -324,11 +269,11 @@ const fullTabs = computed(() => {
   const alertTab = {
     key: "alert",
     label: "Alert",
-    shipments: tabs.value.flatMap((tab) =>
+    shipments: tabsStatus.value.flatMap((tab) =>
       tab.shipments.filter((shipment) => shipment.alert === 3)
     ),
   };
-  return [allTab, ...tabs.value, alertTab];
+  return [allTab, ...tabsStatus.value, alertTab];
 });
 // const {
 //   isLoading,

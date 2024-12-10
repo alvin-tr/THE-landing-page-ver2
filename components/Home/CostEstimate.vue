@@ -181,7 +181,7 @@
           () => {
             $router.push({
               path: '/trackings',
-              query: { tracking: trackings },
+              query: { trackings },
             });
           }
         "

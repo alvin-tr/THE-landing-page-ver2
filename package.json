@@ -13,6 +13,7 @@
     "@nuxt/ui": "^2.19.2",
     "@nuxtjs/i18n": "9.0.0-rc.2",
     "@splidejs/vue-splide": "^0.6.12",
+    "axios": "^1.7.9",
     "nuxt": "^3.14.1592",
     "pinia": "^2.3.0",
     "vue": "latest",
