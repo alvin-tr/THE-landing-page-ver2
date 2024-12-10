@@ -4,6 +4,7 @@
             <Header/>
         </HomeGlobalMarketEstimate>
         <ExpressOptimalShippingServiceForSellers
+        topic="Chuyển phát Tiktok Shop US"
         title="Dịch vụ chuyên biệt dành cho nhà bán hàng TiktokUS"
         descriptionRightSide="Dịch vụ Vận tải chuyên biệt cho seller TikTok US của The Human Express giúp các seller Việt tối ưu quy trình vận chuyển và mở rộng kinh doanh tại thị trường Mỹ nhanh chóng, an toàn và hiệu quả."
         imgSrc="/img/express/tiktokExpress.svg"

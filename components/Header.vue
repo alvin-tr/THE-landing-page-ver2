@@ -68,7 +68,8 @@
               <div
                 class="hidden absolute top-[40px] right-[-700px] group-hover/service:flex flex-row bg-white rounded-[8px] max-size-lg:right-[-615px]"
               >
-                <div
+                <a
+                  :href="itemService.to"
                   v-for="itemService in hoverService"
                   class="flex flex-col w-full min-w-[312px] p-[16px]"
                 >
@@ -83,7 +84,7 @@
                   >
                     {{ itemService.description }}
                   </p>
-                </div>
+                </a>
               </div>
             </div>
           </span>
@@ -133,9 +134,9 @@
         <!-- EN | VN -->
         <div class="mr-[24px] max-size-xs:hidden">
           <span class="text-white">
-            <span @click="setLocale('en') " class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">EN</span> 
+            <span @click="setLocale('en')" class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">EN</span> 
             <span class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500"> | </span>
-            <span @click="setLocale('vi') " class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">VN</span></span>
+            <span @click="setLocale('vi')" class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">VN</span></span>
         </div>
         <!-- phone -->
         <span
@@ -198,25 +199,28 @@ const hoverService = [
     img: '/icon/hoverServiceHeader/internationalExpress.svg',
     title: 'Chuyển phát quốc tế',
     description: 'Dịch vụ chuyển phát nhanh quốc tế đáp ứng mọi nhu cầu.',
+    to: "/international-express"
   },
   {
     img: '/icon/hoverServiceHeader/tiktokExpress.svg',
     title: 'Chuyển phát Tiktok US',
     description:
       'Dịch vụ vận chuyển chuyên biệt dành cho các seller Tiktok US.',
+      to: "/tiktok-express"
   },
   {
     img: '/icon/hoverServiceHeader/fbaExpress.svg',
     title: 'Chuyển phát hàng FBA',
     description:
       'Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.',
+      to: "/fba-express"
   },
 ]
 const hoverSupport = [
   {
     icon: '/icon/hoverSupportHeader/document-hoverSupport.svg',
     title: 'Điều khoản & chính sách',
-    to: '',
+    to: '/term-policies',
   },
   {
     icon: '/icon/hoverSupportHeader/pencil-hoverSupport.svg',

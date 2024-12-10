@@ -52,7 +52,7 @@
           <div class="flex flex-row items-center mt-[36px]
           max-size-pro:mt-[10px]
           ">
-          <a href="">
+          <a href="https://zalo.me/0974877007">
             <img
               src="/img/footer/zaloFooter.svg"
               class="w-[24px] cursor-pointer"
@@ -82,7 +82,7 @@
           </p>
           <a
             @click="(() => {
-              router.push('/internationalExpress')
+              router.push('/international-express')
             })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer
@@ -91,7 +91,7 @@
           >
           <a
             @click="(() => {
-              router.push('/tiktokExpress')
+              router.push('/tiktok-express')
             })"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer

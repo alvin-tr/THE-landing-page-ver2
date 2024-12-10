@@ -11,7 +11,7 @@
         <p class="text-[40px] leading-[60px] font-medium text-[#1E1F24]
         max-size-pro:text-[30px] max-size-pro:leading-[30px] max-size-pro:text-center
         ">
-          Chuyển phát Tiktok Shop US
+          {{ topic }}
         </p>
       </div>
       <div class="w-full">
@@ -82,6 +82,7 @@
 const openModalGetAQuote = ref(false)
 
 const props = defineProps({
+  topic: String,
   title: String,
   descriptionRightSide: String,
   items: {

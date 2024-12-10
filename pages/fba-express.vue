@@ -4,9 +4,10 @@
             <Header  />
         </HomeGlobalMarketEstimate>
         <ExpressOptimalShippingServiceForSellers
+        topic="Chuyển phát hàng FBA"
         title="Chuyển phát hàng FBA"
         descriptionRightSide="Dịch vụ chuyển phát hàng FBA của THE giúp tối ưu chi phí và thời gian vận chuyển, đảm bảo hàng hóa được gửi trực tiếp đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả."
-        imgSrc="/img/express/tiktokExpress.svg"
+        imgSrc="/img/express/fbaExpress.svg"
         :items="itemOfExpress"
         />
         <ExpressCustomerExperience :CustomerExperienceItem="CustomerExperienceItem"/>

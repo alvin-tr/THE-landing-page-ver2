@@ -225,11 +225,6 @@
               placeholder="Vui lòng nhập mã tracking, các mã được phân tách với nhau bởi dấu Enter"
             />
           </UFormGroup>
-          <!-- <textarea
-            placeholder="Vui lòng nhập mã tracking, các mã được phân tách với nhau bởi dấu Enter"
-            class="w-full h-full resize-none bg-[#394154] border-0 p-[12px] rounded-[6px]"
-            rows="4"
-          ></textarea> -->
         </div>
 
         <!-- trash -->

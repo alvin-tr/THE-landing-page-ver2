@@ -6,6 +6,7 @@ import homeEn from './en/home'
 export default {
     legacy: false,
     locales: ['en', 'vi'],
+    defaultLocale: 'vi',
     fallbackLocale: 'vi',
     detectBrowserLanguage: false,
     messages: {

@@ -1,84 +1,147 @@
 <template>
-  <div class="flex flex-col">
-    <!-- 1 -->
-    <div class="layoutDropdown" @click="scrollToSection('#target-section-1')">
-      <p class="blueTxt">1.</p>
-      <p class="blackTxt">Các thuật ngữ</p>
-    </div>
-    <!-- 2 -->
-    <div class="layoutDropdown flex-col">
-      <!-- to nhat -->
-      <div class="flex justify-between w-full">
-        <div class="flex">
-          <p class="blueTxt">2.</p>
-          <p class="blackStrongTxt">Chính sách hoàn tiền của THE</p>
-        </div>
-        <div
-          class="p-[4px] bg-[#F2F3F5] rounded-[4px] w-[20px] h-[20px] flex justify-center items-center"
-        >
-          <UIcon
-            name="tabler:chevron-down"
-            class="text-[#1E1F24] text-[12px]"
-          />
-        </div>
-      </div>
-      <!-- 2.1 -->
-      <div class="px-[20px] flex justify-between w-full mt-[14px]">
-        <div class="flex">
-          <p class="blueTxt">2.1</p>
-          <p class="blackStrongTxt">Phạm vi trách nhiệm</p>
-        </div>
-      </div>
-      <!-- 2.2 -->
-       <div class=" flex justify-between w-full mt-[14px]">
-        <div class="flex ml-[20px]">
-          <p class="blueTxt">2.2</p>
-          <p class="blackStrongTxt">Phạm vi trách nhiệm</p>
-        </div>
-        <div
-          class="p-[4px] bg-[#F2F3F5] rounded-[4px] w-[20px] h-[20px] flex justify-center items-center"
-        >
-          <UIcon
-            name="tabler:chevron-down"
-            class="text-[#1E1F24] text-[12px]"
-          />
-        </div>
-      </div>
-    </div>
-    <!-- 5 -->
-    <div class="layoutDropdown" @click="scrollToSection('#target-section-5')">
-      <span
-        class="text-[#0066FF] text-[16px] leading-[24px] font-medium mr-[14px]"
-        >5.
-        <span class="text-[#333333]"
-          >Hàng hóa hạn chế hoặc không nhận vận chuyển</span
-        ></span
-      >
-    </div>
+  <div class="bg-[#3737]">
+    <Questions
+    :parent="{}"
+    :ui="{ wrapper: 'bg-white mb-2' }"
+    v-model="currentQuestion"
+    :questions="questions"
+    class="mt-[40px] "
+  ></Questions>
   </div>
 </template>
 
 <script setup>
-const dropdowns = [
+import Questions from '../Questions.vue'
+const currentQuestion = ref('1')
+
+const questions = ref([
   {
-    label: '2. Chính sách hoàn tiền của THE',
+    title: 'Các thuật ngữ',
+    key: '1',
+    status: false,
+    children: [],
+    handleClick: () => console.log(33333),
+  },
+  {
+    title: 'Chính sách hoàn tiền của THE',
+    key: '2',
+    status: false,
     children: [
-      { label: '2.1. Phạm vi trách nhiệm', content: '' },
       {
-        label: '2.2. Các trường hợp và chính sách',
-        content: ' 2.2.1. Hủy đơn hàng',
+        title: 'Phạm vi trách nhiệm',
+        key: '2.1',
+        status: false,
+        children: [],
+      },
+      {
+        title: 'Các trường hợp và chính sách',
+        key: '2.2',
+        status: false,
+        ui: {
+          key: 'text-[#333333] font-medium',
+          title: 'text-[#333333] font-normal',
+          wrapper: 'border-l-[1px] border-[#e5e5e5] border-solid pl-2',
+          textWrapper: '!py-1',
+        },
         children: [
-          { label: '2.2.1. Hủy đơn hàng' },
-          { label: '2.2.2. Relabel' },
-          { label: '2.2.3. Đơn hàng thất lạc' },
-          { label: '2.2.4. Đơn hàng mất mát' },
-          { label: '2.2.5. Đơn hàng Hư hỏng' },
-          { label: '2.2.6. Đơn hàng trễ toàn trình' },
+          {
+            title: 'Hủy đơn hàng',
+            key: '2.2.1',
+            status: false,
+            children: [],
+          },
+          {
+            title: 'Relabel',
+            key: '2.2.2',
+            status: false,
+            children: [],
+          },
+          {
+            title: 'Đơn hàng thất lạc',
+            key: '2.2.3',
+            status: false,
+            children: [],
+          },
+          {
+            title: 'Đơn hàng mất mát',
+            key: '2.2.4',
+            status: false,
+            children: [],
+          },
+          {
+            title: 'Đơn hàng Hư hỏng',
+            key: '2.2.5',
+            status: false,
+            children: [],
+          },
+          {
+            title: 'Đơn hàng trễ toàn trình',
+            key: '2.2.6',
+            status: false,
+            children: [],
+          },
         ],
+      },
+      {
+        title: 'Lưu ý và quy định khác',
+        key: '2.3',
+        status: false,
+        children: [],
+      },
+      {
+        title: 'Miễn trừ trách nhiệm',
+        key: '2.4',
+        status: false,
+        children: [],
       },
     ],
   },
-]
+  {
+    title: 'Quy định về khiếu nại',
+    key: '3',
+    status: false,
+    children: [
+      {
+        title: 'Thời gian nộp khiếu nại',
+        key: '3.1',
+        status: false,
+        children: [],
+      },
+      {
+        title: 'Thời gian giải quyết khiếu nại',
+        key: '3.2',
+        status: false,
+        children: [],
+      },
+    ],
+  },
+  {
+    title: 'Các Quy định khác',
+    key: '4',
+    status: false,
+    children: [
+      {
+        title: 'Thời hạn khả dụng của THE tracking',
+        key: '4.1',
+        status: false,
+        children: [],
+      },
+      {
+        title: 'Bảo hiểm',
+        key: '4.2',
+        status: false,
+        children: [],
+      },
+    ],
+  },
+  {
+    title: 'Hàng hóa hạn chế hoặc không nhận vận chuyển',
+    key: '5',
+    status: false,
+    children: [],
+  },
+])
+
 const emit = defineEmits(['scroll-to-section'])
 
 const scrollToSection = (sectionId) => {

@@ -30,13 +30,14 @@
             <!-- content -->
             <div
               class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto max-size-lg:w-[60%] max-size-md:w-[70%] max-size-sm:w-[65%]"
-              @scroll="handleScroll"
+               @scroll="handleScroll"
               >
               <div
                 v-for="(item, index) in services"
                 class="flex flex-row mb-[65px] max-size-lg:flex-col max-size-md:ml-[30px] max-size-pro:ml-0"
                 :id="`service-${index}`"
                 :key="index"
+               
               >
                 <!-- img -->
                 <img
@@ -111,8 +112,6 @@ const listOfContents = [
   "Chuyển phát tiết kiệm",
   "Chuyển phát Tốc độ",
   "Chuyển phát Đặc biệt",
-  "Chuyển phát Tikok US",
-  "Chuyển phát hàng FBA"
 ];
 const services = [
   {
@@ -187,67 +186,11 @@ const services = [
       },
     ],
   },
-  {
-    image: "/img/tiktokUSDelivery.svg",
-    title: "Chuyển phát Tikok US",
-    description:
-      "Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp",
-    to:'/tiktok-express',
-    criteria: [
-      {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian",
-        description: "6-9 ngày",
-      },
-      {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian kích hoạt in-transit",
-        description: "Đảm bảo theo SLA TiktokUS: 24-48h",
-      },
-      {
-        icon: "/icon/dollarIcon.svg",
-        title: "Chi phí",
-        description: "Từ $5.7",
-      },
-      {
-        icon: "/icon/boxIcon.svg",
-        title: "Đơn hàng",
-        description: "Mọi kích cỡ và khối lượng",
-      },
-    ],
-  },
-  {
-    image: "/img/FBADelivery.svg",
-    title: "Chuyển phát Tikok US",
-    description:
-      "Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.",
-    to:'/fba-express',
-    criteria: [
-      {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian",
-        description: "3-7 ngày",
-      },
-      {
-        icon: "/icon/mapIcon.svg",
-        title: "Theo dõi hành trình",
-        description: "Minh bạch từng địa điểm",
-      },
-      {
-        icon: "/icon/dollarIcon.svg",
-        title: "Chi phí",
-        description: "Từ $39/kg",
-      },
-      {
-        icon: "/icon/documentIcon.svg",
-        title: "Bảng chỉ báo kho FBA",
-        description: "Giúp nhà bán hàng theo dõi kế hoạch ghép đơn đi FBA",
-      },
-    ],
-  },
+  
 ];
 
 const selectedService = ref(0);
+
 const scrollToService = (index) => {
   const target = document.getElementById(`service-${index}`);
   if (target) {
