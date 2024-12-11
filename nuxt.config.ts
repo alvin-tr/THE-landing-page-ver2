@@ -21,5 +21,33 @@ export default defineNuxtConfig({
   i18n: {
     vueI18n: './i18n/i18n.config.ts' // if you are using custom path, default
   },
-  css: ['~/assets/css/style.css']
+  css: ['~/assets/css/style.css'],
+
+  // devServer: {
+  //   port: 7000
+  // },
+  
+  runtimeConfig: {
+    app: {
+      mode: process.env.NODE_ENV || '',
+      api: {
+        baseURL: `${process.env.API_URL}`
+      }
+    }
+  },
+
+  imports: {
+    dirs: [
+      'composables',           // Tự động import các composables
+      'composables/*/index.{ts,js,mjs,mts}',
+      'stores',                // Tự động import các stores (Pinia)
+      'stores/**',
+      'utils',                 // Tự động import các hàm tiện ích (helpers)
+      'utils/**',
+      'middleware',            // Tự động import các middleware
+      'plugins/composables',   // Tự động import composables từ plugin
+      'modules/external-composables'
+    ]
+  },
+
 })

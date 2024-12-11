@@ -1,5 +1,5 @@
 <template>
-  <header class="w-[100vw] flex items-center justify-center hover:bg-white transition duration-500 group">
+  <header class="w-full flex items-center justify-center hover:bg-white transition duration-500 group">
     <div
       class="w-full max-w-[1440px] h-[64px] bg-[#1310] flex flex-row items-center justify-between 
       

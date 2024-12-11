@@ -683,6 +683,9 @@ const nonShippingGoods = [
         "C.O.D. (Trả tiền khi giao hàng).",
         "Các lô hàng có xuất xứ từ bất kỳ quốc gia nào theo giấy phép kiểm soát xuất khẩu quân sự."
       ]
+
+
+      
 </script>
 
 <style scoped>
