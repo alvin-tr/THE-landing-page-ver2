@@ -5,12 +5,11 @@ import homeEn from './en/home'
 
 export default {
     legacy: false,
-    locales: ['en', 'vi'],
-    fallbackLocale: {
-        default: 'vi',
-    },
+    locale: 'vi',
     detectBrowserLanguage: false,
-    cookie: true,
+    strategy: 'no_prefix',
+    locales: ['en', 'vi'],
+    useCookie: true,
     messages: {
         vi: {
             common: commonVi,
