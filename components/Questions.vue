@@ -14,11 +14,9 @@
         }"
         @click="
           () => {
-            currentQuestion =
-              currentQuestion === question.key
-                ? parent?.key || ''
-                : question.key
+            currentQuestion = currentQuestion === question.key ? parent?.key || '' : question.key
             question.handleClick && question.handleClick(question)
+            scrollToSection(question.key)
           }
         "
       >
@@ -26,13 +24,19 @@
           >{{ question.key }}.</span
         >
         <span :class="{ [ui.title]: ui.title }">{{ question.title }}</span>
+     
         <div
           v-if="question.children?.length"
-          class="w-[30px] ml-auto px-3 bg-[#F2F3F5] rounded-[4px] h-[30px] flex justify-center items-center"
+          icon="i-tabler-chevron-down"
+          class="ml-auto p-1 bg-[#F2F3F5] rounded-[4px] flex justify-center items-center"
         >
           <UIcon
-            name="tabler:chevron-down"
-            class="text-[#1E1F24] w-[12px]"
+            :name="
+     currentQuestion.startsWith(question.key)
+        ? 'tabler:chevron-down' 
+        : 'tabler:chevron-right'
+    "
+            class="text-[#1E1F24] size-[18px] transition-all duration-500"
           />
         </div>
       </div>
@@ -80,6 +84,13 @@ const ui = computed(() => {
     ...props?.ui,
   }
 })
+
+const scrollToSection = (key) => {
+  const section = document.getElementById(`section-${key}`)
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth' })
+  }
+}
 </script>
 
 <style scoped></style>

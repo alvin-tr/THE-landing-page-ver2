@@ -1,11 +1,11 @@
 <template>
-  <div class="bg-[#3737]">
+  <div class="">
     <Questions
     :parent="{}"
     :ui="{ wrapper: 'bg-white mb-2' }"
     v-model="currentQuestion"
     :questions="questions"
-    class="mt-[40px] "
+    class="mt-[40px] sticky top-[5vh]"
   ></Questions>
   </div>
 </template>
@@ -144,9 +144,6 @@ const questions = ref([
 
 const emit = defineEmits(['scroll-to-section'])
 
-const scrollToSection = (sectionId) => {
-  emit('scroll-to-section', sectionId)
-}
 </script>
 
 <style scoped>

@@ -84,10 +84,10 @@
                       </div>
                     </div>
                     <button @click="(() => {
-                      $router.push(item.to)
+                     openModalGetAQuote = true
                     })" class="w-[60%] mt-[30px]">
                       <div class="bg-[#0066FF] px-[30px] py-[14px] flex flex-row rounded-[6px] items-center justify-center">
-                        <p class="text-[16px] text-white">Xem chi tiết</p>
+                        <p class="text-[16px] text-white">Nhận báo giá</p>
                         <UIcon name="mingcute:arrow-right-line" class="text-white text-[20px] ml-[5px]"/>
                       </div>
                     </button>
@@ -97,6 +97,7 @@
             </div>
           </div>
           <!--  -->
+          <GetAQuote  v-model="openModalGetAQuote"/>
         </div>
       </div>
     </div>
@@ -107,6 +108,7 @@
 const router = useRouter()
 
 const currentElementRef = ref();
+const openModalGetAQuote = ref(false)
 
 const listOfContents = [
   "Chuyển phát tiết kiệm",

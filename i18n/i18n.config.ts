@@ -6,9 +6,11 @@ import homeEn from './en/home'
 export default {
     legacy: false,
     locales: ['en', 'vi'],
-    defaultLocale: 'vi',
-    fallbackLocale: 'vi',
+    fallbackLocale: {
+        default: 'vi',
+    },
     detectBrowserLanguage: false,
+    cookie: true,
     messages: {
         vi: {
             common: commonVi,
@@ -20,3 +22,19 @@ export default {
         }
     },
 }
+
+// export default defineNuxtConfig({
+//     i18n: {
+//         locales: ['en', 'fr', 'es'], // Define your locales
+//         defaultLocale: 'en',        // Default locale
+//         strategy: 'prefix_except_default',
+//         cookie: true,               // Enable cookie support
+//         cookieKey: 'i18n_redirected', // Default is 'i18n_redirected'
+//         detectBrowserLanguage: {
+//             useCookie: true,
+//             cookieKey: 'i18n_redirected',
+//             fallbackLocale: 'en',
+//             alwaysRedirect: false, // Redirect only if the detected locale is different
+//         },
+//     },
+// });

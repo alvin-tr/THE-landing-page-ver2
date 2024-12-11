@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full overflow-hidden">
+  <div class="w-full">
     <!-- <Header /> -->
     <NuxtPage />
     <Footer />

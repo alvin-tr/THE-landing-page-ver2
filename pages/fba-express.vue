@@ -42,7 +42,7 @@ const itemOfExpress = [
     {
         icon: '/icon/documentIcon.svg',
         title: 'Bảng chỉ báo kho FBA cho ngày hôm sau',
-        description: 'Giúp nhà bán hàng chuẩn bị kịp thời hàng tồn kho, đảm bảo sẵn sàng bán.'
+        description: 'Giúp nhà bán hàng dễ dàng theo dõi kế hoạch ghép đơn đi FBA.'
     },
 ]
 const CustomerExperienceItem = [

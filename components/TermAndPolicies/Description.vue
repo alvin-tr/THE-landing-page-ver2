@@ -3,7 +3,7 @@
     class="max-w-[844px] py-10 px-5 max-size-lg:py-0 max-size-pro:px-0"
   >
     <!--1. Các thuật ngữ -->
-    <section id="target-section-1">
+    <section id="section-1">
       <h1 class="text-[30px] font-medium leading-[40px] mb-6 text-black">
         <span class="text-[#0066FF] mr-[12px]">1.</span> Các thuật ngữ
       </h1>
@@ -14,12 +14,12 @@
       </ul>
     </section>
     <!--2. Chính sách hoàn tiền của THE -->
-    <section class="mt-[40px]">
+    <section id="section-2" class="mt-[40px]">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">2.</span> Chính sách hoàn tiền
         của THE
       </h1>
-      <h2>
+      <h2 id="section-2.1">
         <span class="text-[#0066FF] mr-[12px]">2.1</span> Phạm vi trách nhiệm
       </h2>
       <div class="mt-[20px]">
@@ -35,11 +35,12 @@
         >
       </div>
       <h2>
-        <span class="text-[#0066FF] mr-[12px]">2.2</span> Các trường hợp và
+        <span id="section-2.2" class="text-[#0066FF] mr-[12px]">2.2</span> Các trường hợp và
         chính sách
       </h2>
       <!-- 2.2.1. Hủy đơn hàng -->
       <h3
+      id="section-2.2.1"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.2.1</span>Hủy đơn hàng
@@ -174,6 +175,7 @@
       </div>
       <!-- 2.2.2 Relabel -->
       <h3
+      id="section-2.2.2"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.2.2</span>Relabel
@@ -257,6 +259,7 @@
       </table>
       <!-- 2.2.3. Đơn hàng thất lạc -->
       <h3
+      id="section-2.2.3"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.2.3</span>Đơn hàng thất lạc
@@ -289,6 +292,7 @@
       </table>
       <!-- 2.2.4. Đơn hàng mất mát -->
       <h3
+      id="section-2.2.4"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.2.4</span>Đơn hàng mất mát
@@ -322,6 +326,7 @@
       </table>
       <!-- 2.2.5. Đơn hàng Hư hỏng -->
       <h3
+      id="section-2.2.5"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.2.5</span>Đơn hàng Hư hỏng
@@ -381,6 +386,7 @@
       </table>
       <!-- 2.2.6. Đơn hàng trễ toàn trình -->
       <h3
+      id="section-2.2.6"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.2.6</span>Đơn hàng trễ toàn
@@ -395,6 +401,7 @@
       </p>
       <!-- 2.3Lưu ý và quy định khác -->
       <h3
+      id="section-2.3"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.3</span>Lưu ý và quy định khác
@@ -436,6 +443,7 @@
       </ul>
       <!-- 2.4 Miễn trừ trách nhiệm -->
       <h3
+      id="section-2.4"
         class="text-[20px] text-[#333333] font-medium leading-[32px] tracking-[-0.4px] mt-[20px]"
       >
         <span class="text-[#0066FF] mr-[12px]">2.4</span>Miễn trừ trách nhiệm
@@ -496,12 +504,14 @@
       </ul>
     </section>
     <!--3. Quy định về khiếu nại -->
-    <section class="mt-[40px]">
+    <section id="section-3" class="mt-[40px]">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">3.</span> Quy định về khiếu nại
       </h1>
       <h2>
-        <span class="text-[#0066FF] mr-[12px]">3.1</span>Thời hạn nộp khiếu nại
+        <span 
+        id="section-3.1"
+        class="text-[#0066FF] mr-[12px]">3.1</span>Thời hạn nộp khiếu nại
       </h2>
       <p class="txtTable mt-[5px]">
         Sau khi nhận được Đơn hàng, đối với trường hợp Đơn hàng mất mát hoặc Đơn
@@ -511,7 +521,9 @@
         nại sẽ được coi là không hợp lệ.
       </p>
       <h2>
-        <span class="text-[#0066FF] mr-[12px]">3.2</span>Thời hạn giải quyết
+        <span 
+        id="section-3.2"
+        class="text-[#0066FF] mr-[12px]">3.2</span>Thời hạn giải quyết
         khiếu nại
       </h2>
       <p class="txtTable mt-[5px]">
@@ -523,12 +535,12 @@
       </p>
     </section>
     <!-- 4. Các Quy định khác -->
-    <section class="mt-[40px]">
-      <h1 class="text-[30px] font-medium leading-[40px] text-black">
+    <section id="section-4" class="mt-[40px]">
+      <h1  class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">4.</span>Các Quy định khác
       </h1>
       <h2>
-        <span class="text-[#0066FF] mr-[12px]">4.1</span>Thời hạn khả dụng của
+        <span id="section-4.1" class="text-[#0066FF] mr-[12px]">4.1</span>Thời hạn khả dụng của
         THE tracking
       </h2>
       <p class="txtTable mt-[5px]">
@@ -538,14 +550,14 @@
         xoá bỏ khỏi hệ thống, hoặc có thể sử dụng lại cho những Đơn hàng mới
         trong tương lai
       </p>
-      <h2><span class="text-[#0066FF] mr-[12px]">4.2</span>Bảo hiểm</h2>
+      <h2><span id="section-4.2" class="text-[#0066FF] mr-[12px]">4.2</span>Bảo hiểm</h2>
       <p class="txtTable mt-[5px]">
         Bảo hiểm sẽ áp dụng cho từng đơn hàng. Khách hàng có nhu cầu mua bảo
         hiểm đơn hàng vui lòng liên hệ nhân viên Chăm sóc Khách hàng của THE.
       </p>
     </section>
     <!-- 5. Hàng hóa hạn chế hoặc không nhận vận chuyển -->
-    <section id="target-section-5" class="mt-[40px]">
+    <section id="section-5" class="mt-[40px]">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">5.</span>Hàng hóa hạn chế hoặc
         không nhận vận chuyển
