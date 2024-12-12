@@ -150,9 +150,20 @@
             </div>
           </UFormGroup>
         </div>
+        <!-- error message -->
+        <div class="alert-error flex flex-col mt-4">
+          <div
+            v-for="(error, i) in errorMessage"
+            :key="i"
+            class="flex gap-3 my-2 items-center"
+          >
+          <UIcon class="text-[#E8173C] text-[20px]" name="i-line-md-close-circle-filled"/>
+            <p class="flex items-center text-[#E8173C]">{{ error }}</p>
+          </div>
+        </div>
         <!-- ----- -->
         <div
-          class="w-[360px] overflow-hidden h-[20px] flex items-center mt-[32px] max-size-lg:w-full"
+          class="w-[360px] overflow-hidden h-[20px] flex items-center mt-[10px] max-size-lg:w-full"
         >
           <p class="text-[#686E78] w-full tracking-[4.5px]">
             -----------------------------------------------------------------------------------------
@@ -166,6 +177,7 @@
           </div>
           <div class="w-[50%] flex items-center justify-end">
             <UButton
+              color= '#0066FF'
               :disabled="isLoading"
               :loading="isLoading"
               type="submit"
@@ -269,54 +281,49 @@ const productInfo = reactive({
 
 const schemaPriceEstimate = Yup.object().shape({
   weight: Yup.number()
-    .typeError("Trọng lượng là bắt buộc")
-    .required("Trọng lượng là bắt buộc")
-    .min(1, "Phai lon hon 1")
-    .max(19949.99, "Trọng lượng không được vượt quá 19949.99 gram")
-    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
+    .typeError('Trọng lượng là bắt buộc')
+    .min(1, 'Trọng lượng là bắt buộc')
+    .max(19949.99, 'Trọng lượng không được vượt quá 19949.99 gram')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   width: Yup.number()
-    .typeError("Chiều rộng là bắt buộc")
-    .required("Chiều rộng là bắt buộc")
-    .min(1, "Phai lon hon 1")
-    .max(243, "Chiều rộng không được vượt quá 243 cm")
-    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
+    .typeError('Chiều rộng là bắt buộc')
+    .min(1, 'Chiều rộng là bắt buộc')
+    .max(243, 'Chiều rộng không được vượt quá 243 cm')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   height: Yup.number()
-    .typeError("Chiều cao là bắt buộc")
-    .required("Chiều cao là bắt buộc")
-    .max(243, "Chiều cao không được vượt quá 243 cm")
-    .min(1, "Phai lon hon 1")
-    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
+    .typeError('Chiều cao là bắt buộc')
+    .max(243, 'Chiều cao không được vượt quá 243 cm')
+    .min(1, 'Chiều cao là bắt buộc')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   length: Yup.number()
-    .typeError("Chiều cao là bắt buộc")
-    .required("Chiều dài là bắt buộc")
-    .max(243, "Chiều dài không được vượt quá 243 cm")
-    .min(1, "Phai lon hon 1")
-    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
+    .typeError('Chiều cao là bắt buộc')
+    .max(243, 'Chiều dài không được vượt quá 243 cm')
+    .min(1, 'Chiều dài là bắt buộc')
+    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
 });
 
 async function onSubmitPrice() {
   try {
-    isLoading.value = true;
-    // await schemaPriceEstimate.validate(productInfo, { abortEarly: false })
+    errorMessage.value = [] 
+    isLoading.value = true
 
     const response = await axios.post(
       url + "/customer/services/price",
       productInfo
-    );
-    // console.log('responseData:', response.data);
-    price.value = response.data.price;
+    )
+    price.value = response.data.price
+    errorMessage=[]
   } catch (err) {
-    errorMessage.value = err.response.data.messages;
-    //reset data product info
-    price.value = 0.0;
+    errorMessage.value = err.response.data.messages
+    price.value = 0.0
   } finally {
     isLoading.value = false;
   }

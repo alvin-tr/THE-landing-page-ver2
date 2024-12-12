@@ -82,9 +82,7 @@
                         </p>
                       </div>
                     </div>
-                    <button @click="(() => {
-                      $router.push(item.to)
-                    })" class="w-[60%] mt-[30px]">
+                    <button @click="$router.push({ path: item.to, query: { target: `service-${index}` } })" class="w-[60%] mt-[30px]">
                       <div class="bg-[#0066FF] px-[30px] py-[14px] flex flex-row rounded-[6px] items-center justify-center">
                         <p class="text-[16px] text-white">Xem chi tiết</p>
                         <UIcon name="mingcute:arrow-right-line" class="text-white text-[20px] ml-[5px]"/>

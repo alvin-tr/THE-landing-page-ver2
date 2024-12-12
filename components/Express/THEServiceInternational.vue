@@ -105,7 +105,10 @@
 </template>
 
 <script setup>
-const router = useRouter()
+import { onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute()
 
 const currentElementRef = ref();
 const openModalGetAQuote = ref(false)
@@ -216,6 +219,21 @@ const handleScroll = () => {
     selectedService.value = closestIndex;
   }
 };
+
+onMounted(() => {
+      // Lấy ID của mục tiêu từ query params
+      const targetId = route.query.target
+
+      if (targetId) {
+        // Đợi DOM render xong rồi scroll đến mục tiêu
+        nextTick(() => {
+          const targetElement = document.getElementById(targetId)
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        })
+      }
+    })
 
 </script>
 

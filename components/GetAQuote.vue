@@ -54,8 +54,6 @@
                   :config="{
                     maxLength: 30,
                     textTransform: 'lowercase',
-                    noSpecialChar: true,
-                    noNumber: true,
                   }"
                 />
               </div>
@@ -121,6 +119,7 @@
             <UButton
               :loading="isLoading"
               :disabled="isLoading"
+              color="#0066FF"
               type="submit"
               class="p-[14px] w-[128px] bg-[#0066FF] rounded-[6px] flex items-center justify-center cursor-pointer"
             >
@@ -150,8 +149,8 @@ const schema = $yup.object({
   full_name: $yup
     .string()
     .required('Full name is required')
-    .max(30, 'No more than 30 characters')
-    .matches(/^[A-Za-z\s]+$/, 'Full name must only contain letters'),
+    .max(30, 'No more than 30 characters'),
+    // .matches(/^[A-Za-z\s]+$/, 'Full name must only contain letters'),
   email: $yup
     .string()
     .required('Email is required')
