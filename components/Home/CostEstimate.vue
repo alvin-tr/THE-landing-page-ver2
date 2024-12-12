@@ -13,7 +13,7 @@
             tabChangeCostEstimate === 0 ? 'text-white' : 'text-[#FFFFFF80]'
           "
         >
-          {{ $t('home.estimatingPrice') }}
+          {{ $t("home.estimatingPrice") }}
         </p>
         <div
           :class="
@@ -170,7 +170,7 @@
               :loading="isLoading"
               type="submit"
               class="bg-[#0066FF] hover:bg-[#0066FF] font-medium px-[30px] py-[12px] :disabled: w-[150px] flex justify-center"
-              >{{ isLoading ? '' : 'Tính giá' }}</UButton
+              >{{ isLoading ? "" : "Tính giá" }}</UButton
             >
           </div>
         </div>
@@ -202,7 +202,7 @@
             $router.push({
               path: '/trackings',
               query: { trackings },
-            })
+            });
           }
         "
       >
@@ -248,77 +248,77 @@
 </template>
 
 <script setup>
-import axios from 'axios'
-import * as Yup from 'yup'
-const isLoading = ref(false)
+import axios from "axios";
+import * as Yup from "yup";
+const isLoading = ref(false);
 
-const config = useRuntimeConfig()
-const url = config.app.api.baseURL
+const config = useRuntimeConfig();
+const url = config.app.api.baseURL;
 
-const tabChangeCostEstimate = ref(0)
-const trackings = ref([])
-const errorMessage = ref([])
-const price = ref(0.0)
+const tabChangeCostEstimate = ref(0);
+const trackings = ref([]);
+const errorMessage = ref([]);
+const price = ref(0.0);
 
 const productInfo = reactive({
   weight: 0,
   width: 0,
   length: 0,
   height: 0,
-})
+});
 
 const schemaPriceEstimate = Yup.object().shape({
   weight: Yup.number()
-    .typeError('Trọng lượng là bắt buộc')
-    .required('Trọng lượng là bắt buộc')
-    .min(1, 'Phai lon hon 1')
-    .max(19949.99, 'Trọng lượng không được vượt quá 19949.99 gram')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Trọng lượng là bắt buộc")
+    .required("Trọng lượng là bắt buộc")
+    .min(1, "Phai lon hon 1")
+    .max(19949.99, "Trọng lượng không được vượt quá 19949.99 gram")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   width: Yup.number()
-    .typeError('Chiều rộng là bắt buộc')
-    .required('Chiều rộng là bắt buộc')
-    .min(1, 'Phai lon hon 1')
-    .max(243, 'Chiều rộng không được vượt quá 243 cm')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Chiều rộng là bắt buộc")
+    .required("Chiều rộng là bắt buộc")
+    .min(1, "Phai lon hon 1")
+    .max(243, "Chiều rộng không được vượt quá 243 cm")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   height: Yup.number()
-    .typeError('Chiều cao là bắt buộc')
-    .required('Chiều cao là bắt buộc')
-    .max(243, 'Chiều cao không được vượt quá 243 cm')
-    .min(1, 'Phai lon hon 1')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Chiều cao là bắt buộc")
+    .required("Chiều cao là bắt buộc")
+    .max(243, "Chiều cao không được vượt quá 243 cm")
+    .min(1, "Phai lon hon 1")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   length: Yup.number()
-    .typeError('Chiều cao là bắt buộc')
-    .required('Chiều dài là bắt buộc')
-    .max(243, 'Chiều dài không được vượt quá 243 cm')
-    .min(1, 'Phai lon hon 1')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Chiều cao là bắt buộc")
+    .required("Chiều dài là bắt buộc")
+    .max(243, "Chiều dài không được vượt quá 243 cm")
+    .min(1, "Phai lon hon 1")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
-})
+});
 
 async function onSubmitPrice() {
   try {
-    isLoading.value = true
+    isLoading.value = true;
     // await schemaPriceEstimate.validate(productInfo, { abortEarly: false })
 
     const response = await axios.post(
-      url + '/v1/customer/services/price',
+      url + "/customer/services/price",
       productInfo
-    )
+    );
     // console.log('responseData:', response.data);
-    price.value = response.data.price
+    price.value = response.data.price;
   } catch (err) {
-    errorMessage.value = err.response.data.messages
+    errorMessage.value = err.response.data.messages;
     //reset data product info
-    price.value = 0.0
+    price.value = 0.0;
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
 }
 </script>

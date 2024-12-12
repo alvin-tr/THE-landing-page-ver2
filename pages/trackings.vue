@@ -3,7 +3,7 @@
     <div class="grid grid-cols-4 gap-4 w-11/12 mx-auto mt-8">
       <TrackingsMultipleInput />
       <div
-        class="track-content min-h-[85vh] lg:col-span-3 col-span-4 py-2 px-3 bg-[#FFFFFF]"
+        class="track-content min-h-[85vh] size-lg:col-span-3 col-span-4 py-2 px-3 bg-[#FFFFFF]"
       >
         <div class="w-full h-full">
           <ul class="flex mb-0 list-none flex-wrap pt-1 pb-4 flex-row">
@@ -79,7 +79,7 @@
                       </div>
                     </div>
                     <div
-                      class="2xl:col-span-6 my-3 col-span-8 grid grid-cols-6 gap-8 lg:mt-2 mt-5"
+                      class="2xl:col-span-6 my-3 col-span-8 grid grid-cols-6 gap-8 size-lg:mt-2 mt-5"
                     >
                       <div
                         class="flex items-center justify-between md:col-span-2 col-span-4"
@@ -190,7 +190,7 @@
                     <div class="py-4">
                       <div class="grid grid-cols-6">
                         <div
-                          class="grid 2xl:grid-cols-6 sm:grid-cols-3 lg:gap-3 gap-2 xl:col-span-3 lg:col-span-4 col-span-6"
+                          class="grid size-2xl:grid-cols-6 size-sm:grid-cols-3 size-lg:gap-3 gap-2 size-xl:col-span-3 size-lg:col-span-4 col-span-6"
                         >
                           <button
                             @click="copyLink"
@@ -201,20 +201,20 @@
                           </button>
                           <button
                             @click="copyDetail(shipment)"
-                            class="sm:col-span-1 2xl:col-span-2 bg-[#E9F3FF] mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center items-center px-[14px] py-[10px] gap-[8px] box-border"
+                            class="sm:col-span-1 size-2xl:col-span-2 text-black bg-[#E9F3FF] mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center items-center px-[14px] py-[10px] gap-[8px] box-border"
                           >
                             Copy Detail
                             <img src="/old/copy-detail.svg" />
                           </button>
                           <button
                             @click="convertTime"
-                            class="sm:col-span-1 2xl:col-span-2 bg-white mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center items-center px-[14px] py-[10px] gap-[8px] box-border"
+                            class="text-black size-sm:col-span-1 size-2xl:col-span-2 bg-white mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center items-center px-[14px] py-[10px] gap-[8px] box-border"
                           >
                             More Info
                           </button>
                         </div>
                         <div
-                          class="xl:col-span-3 lg:col-span-2 col-span-6 flex items-center justify-end px-14 my-4"
+                          class="xl:col-span-3 size-lg:col-span-2 col-span-6 flex items-center justify-end px-14 my-4"
                         >
                           <p
                             class="flex items-center font-mulish font-normal text-[14px] leading-[20px] text-[#17171E]"
@@ -238,13 +238,23 @@
 </template>
 
 <script setup>
+import axios from "axios";
+import { onMounted, watch } from "vue";
+const config = useRuntimeConfig();
+function sortEventsByCreatedAtDescending(events) {
+  return events.sort((a, b) => new Date(b.ship_time) - new Date(a.ship_time));
+}
 const route = useRoute();
 const router = useRouter();
-const currentTrackings = Array.isArray(route.query.trackings)
-  ? [...route.query.trackings]
-  : [route.query.trackings];
+const getCurrentTrackingsFromQuery = () => {
+  return Array.isArray(route.query.trackings)
+    ? [...route.query.trackings]
+    : [route.query.trackings];
+};
 const inputRefs = ref([]);
-const inputs = ref(currentTrackings);
+const url = config.app.api.baseURL;
+
+const inputs = ref(getCurrentTrackingsFromQuery());
 useHead({ title: "Packet Tracking" });
 const tabsStatus = ref([
   // { key: "pending", label: "Pending", shipments: [] },
@@ -275,6 +285,99 @@ const tabs = computed(() => {
   };
   return [allTab, ...tabsStatus.value, alertTab];
 });
+const openTab = ref(tabs.value[0].key);
+const toggleTabs = (tabNumber) => {
+  // console.log(tabNumber);
+  openTab.value = tabNumber;
+};
+const isLoading = ref(false);
+watch(
+  () => {
+    return route.query.trackings;
+  },
+  async () => {
+    try {
+      isLoading.value = true;
+      const ids = getCurrentTrackingsFromQuery();
+      if (!ids || !ids.length) return;
+      const response = await axios.post(url + "/shipment/packages/logs", {
+        codes: ids,
+      });
+
+      for (let tab of tabsStatus.value) {
+        tab.shipments = [];
+        for (let pack of response.data.packages) {
+          if (tab.key === pack.status_string) {
+            let shipment = {
+              number: "",
+              status: "",
+              destCountry: "",
+              alert: "",
+              events: [],
+            };
+
+            shipment.number = pack.package_code.code;
+            shipment.status = tab.label;
+            shipment.destCountry = pack.country_code;
+            shipment.alert = pack.alert;
+
+            for (let log of response.data.logs) {
+              if (pack.id === log.package_id) {
+                shipment.events.push(log);
+              }
+            }
+            shipment.events = sortEventsByCreatedAtDescending(shipment.events);
+            tab.shipments.push(shipment);
+          }
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    } finally {
+      isLoading.value = false;
+    }
+  },
+  { immediate: true }
+);
+const copyDetail = async (shipment) => {
+  console.log(shipment);
+  try {
+    let contentCopied = "";
+    contentCopied +=
+      "The tracking: " +
+      shipment.number +
+      "\n" +
+      "Status: " +
+      shipment.status +
+      "\n" +
+      "Country: VN -> " +
+      shipment.destCountry +
+      "\n" +
+      "Origin: " +
+      "\n";
+    shipment.events.forEach((event, k) => {
+      const time = formatDateTime(event.ship_time);
+      const locationContent = `${event.location} ${event.description}`;
+      contentCopied += `${time} ${locationContent}\n`;
+    });
+    await navigator.clipboard.writeText(contentCopied.trim());
+    alert("All events copied to clipboard!");
+  } catch (error) {
+    alert("error");
+  }
+};
+
+const copyLink = async () => {
+  try {
+    const fullPath =
+      window.location.origin + router.currentRoute.value.fullPath;
+    await navigator.clipboard.writeText(fullPath);
+    alert("Link copied to clipboard: " + fullPath);
+  } catch (err) {
+    console.error("Failed to copy: ", err);
+  }
+};
+
 // const {
 //   isLoading,
 //   inputs,
@@ -374,8 +477,6 @@ const data = {
 // initInputs();
 // fetchData(route.query)
 
-onMounted(() => {});
-
 // watch(
 //   () => route.query.numbers,
 //   () => {
@@ -412,7 +513,7 @@ onMounted(() => {});
 
 /* Tracking code */
 .box-tracking-title {
-  /* font-family: "Mulish"; */
+  font-family: "Mulish";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;

@@ -1,50 +1,57 @@
 <template>
   <div
-    class="relative box-tracking flex-col justify-between lg:col-span-1 col-span-4 max-h-[350px] py-5 lg:relative bg-[#FFFFFF]"
+    class="relative box-tracking flex-col justify-between size-lg:col-span-1 col-span-4 max-h-[350px] py-5 lg:relative bg-[#FFFFFF]"
   >
     <div class="box-tracking-title p-4 w-full">
       <span class="text-[20px] leading-[32px] font-bold">Tracking code</span>
-      <span class="font-medium text-[14px] leading-5 text-[#747592]"
-        >{{ inputs?.length }}/40</span
-      >
+      <span class="font-medium text-[14px] leading-5 text-[#747592]">
+        {{ inputs?.length }}/40
+      </span>
     </div>
     <div class="h-48 overflow-y-auto custom-scrollbar">
       <div
         v-for="(input, index) in inputs"
+        :key="index"
         :class="{
           'flex items-center px-3 py-2': true,
           'bg-[#F5F5FA]': index % 2 == 0,
         }"
       >
-        <span :style="{ color: isShowPlaceholder ? '#b3b8c2' : '#747592' }"
-          >{{ index + 1 }}.
+        <span :style="{ color: isShowPlaceholder ? '#b3b8c2' : '#747592' }">
+          {{ index + 1 }}.
         </span>
+
         <BaseInput
           :placeholder="
             isShowPlaceholder ? 'Enter up to 40 numbers, one per line ' : ''
           "
+          ref="inputRefs"
           class="flex-1"
           variant="none"
           inputClass="w-full text-[14px] leading-5 text-[#747592] p-1 border-none focus:border-none focus:outline-none bg-transparent"
-          :ref="(el) => (inputRefs[index] = el)"
           v-model="inputs[index]"
           :config="{
             textTransform: 'uppercase',
-            maxLength: 16,
+            maxLength: 30,
             noSpecialChar: true,
             noSpace: true,
           }"
-          @keydown.enter.prevent="() => console.log('222222')"
+          :id="`input-${index}`"
+          @keydown.enter.prevent="addNewInput(index)"
+          @keydown.up.prevent="() => focusInput(index - 1)"
+          @keydown.down.prevent="() => focusInput(index + 1)"
+          @keydown.delete="(e) => handleDelete(e, index)"
         />
         <img
+          v-if="inputs.length > 1"
           class="w-[15px] h-[15px]"
           src="/old/close.svg"
-          @click="removeInput(index, inputs, inputRefs)"
+          @click="removeInput(index)"
         />
       </div>
     </div>
     <div class="flex w-full justify-center">
-      <button @click="() => trackNumbers()" class="button w-[60%] text-white">
+      <button @click="trackNumbers" class="button w-[60%] text-white">
         Track
         <img src="/old/track.svg" />
       </button>
@@ -58,15 +65,56 @@
 <script setup>
 const route = useRoute();
 const router = useRouter();
-const currentTrackings = Array.isArray(route.query.trackings)
-  ? [...route.query.trackings]
-  : [route.query.trackings];
+const getCurrentTrackingsFromQuery = () => {
+  const trackings = Array.isArray(route.query.trackings)
+    ? [...route.query.trackings]
+    : [route.query.trackings || ""];
 
-const inputRefs = ref([]);
-const inputs = ref(currentTrackings);
-function removeInput(index) {
+  return Array.from(new Set(trackings));
+};
+
+const inputs = ref(getCurrentTrackingsFromQuery());
+const removeInput = (index) => {
   inputs.value.splice(index, 1);
-}
+};
+const handleDelete = (e, index) => {
+  const target = e.target;
+  if (inputs.value.length === 1) return;
+  if (target.value !== "") return;
+  e.preventDefault();
+  removeInput(index);
+  nextTick(() => {
+    focusInput(index - 1);
+  });
+};
+
+const focusInput = (index) => {
+  const newInput = document.getElementById(`input-${index}`);
+  if (newInput) {
+    newInput.focus();
+    newInput.setSelectionRange(newInput.value.length, newInput.value.length);
+  }
+};
+
+const addNewInput = (index) => {
+  if (inputs.value.length >= 40) return;
+  if (inputs.value[index + 1] !== "") inputs.value.splice(index + 1, 0, "");
+  nextTick(() => {
+    focusInput(index + 1);
+  });
+};
+
+const trackNumbers = () => {
+  router.push({
+    query: {
+      trackings: [...inputs.value],
+    },
+  });
+};
+
+const removeAll = () => {
+  inputs.value = [];
+};
 </script>
 
 <style scoped>
@@ -77,9 +125,7 @@ function removeInput(index) {
   border-radius: 32px;
 }
 
-/* Tracking code */
 .box-tracking-title {
-  /* font-family: "Mulish"; */
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -118,54 +164,19 @@ function removeInput(index) {
   border-radius: 29px;
 }
 
-.progress {
-  position: relative;
-  width: 87px;
-  height: 0px;
-  left: 32px;
-  top: 447px;
-
-  /* neu/7 */
-  border: 1px solid #abb4cd;
-  transform: rotate(-90deg);
-}
-
-.progress-container {
-  position: relative;
-  border-bottom: 1px dashed #d3d8e5;
-}
-
-.progress-container::before {
-  --space-on-top: 40px;
-  content: "";
-  position: absolute;
-  display: block;
-  width: 1px;
-  height: calc(100% - var(--space-on-top) * 2);
-  top: var(--space-on-top);
-  left: 12px;
-  background-color: #abb4cd;
-}
-
-.progress-container .items-center {
-  position: relative;
-  z-index: 1;
-}
-
-/* CSS để tùy chỉnh thanh cuộn */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 3px; /* Độ rộng của thanh cuộn */
+  width: 3px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-  background: #f1f1f1; /* Màu nền của track */
+  background: #f1f1f1;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(158, 158, 158, 0.6); /* Màu của thumb */
+  background: rgba(158, 158, 158, 0.6);
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Màu của thumb khi hover */
+  background: #555;
 }
 </style>

@@ -14,7 +14,7 @@
     <BaseInput
       :config="{
         textTransform: 'uppercase',
-        maxLength: 16,
+        maxLength: 30,
         noSpecialChar: true,
       }"
       inputClass="!bg-transparent border-none outline-none pl-[0]"
