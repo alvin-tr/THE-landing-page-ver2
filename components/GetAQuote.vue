@@ -31,7 +31,7 @@
           Vui lòng nhập các thông tin sau đây để được hỗ trợ về bảng giá của THE
         </p>
 
-        <UForm :schema="schema" :state="state" class="">
+        <UForm :schema="schema" :state="state" @submit="onSubmit" class="">
           <!-- tên -->
           <UFormGroup name="full_name">
             <div class="flex flex-col mt-[32px]">
@@ -118,13 +118,14 @@
           </UFormGroup>
           <!-- onSubmit -->
           <div class="mt-[40px] w-[full] flex justify-end">
-            <button
+            <UButton
+              :loading="isLoading"
+              :disabled="isLoading"
               type="submit"
-              @click="onSubmit"
               class="p-[14px] w-[128px] bg-[#0066FF] rounded-[6px] flex items-center justify-center cursor-pointer"
             >
               <p class="text-white leading-[20px] font-medium">Nhận báo giá</p>
-            </button>
+            </UButton>
           </div>
         </UForm>
       </div>
@@ -133,6 +134,8 @@
 </template>
 
 <script setup>
+import axios from 'axios'
+
 const { $yup } = useNuxtApp()
 
 const isOpen = defineModel()
@@ -162,19 +165,26 @@ const schema = $yup.object({
     .required('Phone number is required')
     .min(10, 'Phone number must be at least 10 digits'),
 })
+const isLoading = ref(false)
 
 async function onSubmit() {
   try {
-    await schema.validate(state, { abortEarly: false })
-    isOpen.value = false
+    isLoading.value = true
+    // await schema.validate(state, { abortEarly: false })
+    const response = await axios.post(
+      'https://casso-services-49d8a051217a.herokuapp.com/humanexpress/customer',
+      { name: state.full_name, phone: state.phone_number, email: state.email }
+    )
     state.email = ''
     state.phone_number = ''
     state.full_name = ''
   } catch (err) {
     console.log('Validation failed')
+  } finally {
+    isLoading.value = false
+    isOpen.value = false
   }
 }
-
 
 const closeModal = () => {
   isOpen.value = false

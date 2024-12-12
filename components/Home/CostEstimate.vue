@@ -52,7 +52,11 @@
         Vui lòng nhập các thông tin sau đây để ước tính chi phí vận chuyển đơn
         hàng của bạn
       </p>
-      <UForm :schema="schemaPriceEstimate" :state="productInfo">
+      <UForm
+        :schema="schemaPriceEstimate"
+        @submit="onSubmitPrice"
+        :state="productInfo"
+      >
         <UFormGroup name="weight">
           <!-- Trọng lượng -->
           <div class="flex flex-col mt-[32px]">
@@ -68,17 +72,13 @@
                 class="max-size-lg:w-[30px] max-size-md:w-[25px]"
                 src="/public/icon/iconInputWeight.svg"
               />
-              <BaseInput
+              <BaseInputNumber
                 v-model="productInfo.weight"
-                @input="handleInput"
                 variant="none"
                 placeholder="Nhập trọng lượng"
                 input-class="text-white max-size-lg:text-[20px] max-size-md:text-[15px]"
                 class="w-[266px] ml-[8px] text-[#ffffff] rounded-[6px] max-size-lg:w-full"
-                :config="{
-                  type: 'numeric',
-                  maxLength: 11,
-                }"
+                :maxDecimalLength="2"
               />
               <p class="text-[#FFFFFF] font-normal ml-[8px]">gram</p>
             </div>
@@ -97,15 +97,11 @@
               <div
                 class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
               >
-                <BaseInput
+                <BaseInputNumber
                   v-model="productInfo.length"
-                  @input="handleInput"
                   variant="none"
                   class="text-[#ffffff] bg-[#394154] rounded-[6px]"
-                  :config="{
-                    type: 'numeric',
-                    maxLength: 11,
-                  }"
+                  :maxDecimalLength="2"
                 />
                 <p class="text-white ml-[5px]">cm</p>
               </div>
@@ -122,15 +118,11 @@
               <div
                 class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
               >
-                <BaseInput
+                <BaseInputNumber
                   v-model="productInfo.width"
-                  @input="handleInput"
                   variant="none"
                   class="text-[#ffffff] bg-[#394154] rounded-[6px]"
-                  :config="{
-                    type: 'numeric',
-                    maxLength: 11,
-                  }"
+                  :maxDecimalLength="2"
                 />
                 <p class="text-white ml-[5px]">cm</p>
               </div>
@@ -147,14 +139,11 @@
               <div
                 class="mt-[6px] px-[14px] py-[12px] flex flex-row bg-[#394154] rounded-[6px] items-center"
               >
-                <BaseInput
+                <BaseInputNumber
                   v-model="productInfo.height"
                   variant="none"
                   class="text-[#ffffff] bg-[#394154] rounded-[6px]"
-                  :config="{
-                    type: 'numeric',
-                    maxLength: 11,
-                  }"
+                  :maxDecimalLength="2"
                 />
                 <p class="text-white ml-[5px]">cm</p>
               </div>
@@ -177,10 +166,11 @@
           </div>
           <div class="w-[50%] flex items-center justify-end">
             <UButton
-              @click="onSubmitPrice"
+              :disabled="isLoading"
+              :loading="isLoading"
               type="submit"
-              class="bg-[#0066FF] hover:bg-[#0066FF] font-medium px-[30px] py-[12px]"
-              >Tính giá</UButton
+              class="bg-[#0066FF] hover:bg-[#0066FF] font-medium px-[30px] py-[12px] :disabled: w-[150px] flex justify-center"
+              >{{ isLoading ? '' : 'Tính giá' }}</UButton
             >
           </div>
         </div>
@@ -240,7 +230,7 @@
             variant="none"
             type="button"
           >
-            <UIcon name="solar:trash-bin-trash-outline" />
+            <UIcon class="text-[20px]" name="solar:trash-bin-trash-outline" />
           </UButton>
           <UButton
             :disabled="!trackings?.length"
@@ -260,12 +250,10 @@
 <script setup>
 import axios from 'axios'
 import * as Yup from 'yup'
-
-const { startLoading, isLoading } = useLoading()
+const isLoading = ref(false)
 
 const config = useRuntimeConfig()
 const url = config.app.api.baseURL
-console.log('url:', url)
 
 const tabChangeCostEstimate = ref(0)
 const trackings = ref([])
@@ -278,19 +266,12 @@ const productInfo = reactive({
   length: 0,
   height: 0,
 })
-console.log(productInfo.height)
-
-const payload = {
-  height: productInfo.height,
-  length: productInfo.length,
-  weight: productInfo.weight,
-  width: productInfo.width,
-}
 
 const schemaPriceEstimate = Yup.object().shape({
   weight: Yup.number()
     .typeError('Trọng lượng là bắt buộc')
     .required('Trọng lượng là bắt buộc')
+    .min(1, 'Phai lon hon 1')
     .max(19949.99, 'Trọng lượng không được vượt quá 19949.99 gram')
     .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
@@ -298,6 +279,7 @@ const schemaPriceEstimate = Yup.object().shape({
   width: Yup.number()
     .typeError('Chiều rộng là bắt buộc')
     .required('Chiều rộng là bắt buộc')
+    .min(1, 'Phai lon hon 1')
     .max(243, 'Chiều rộng không được vượt quá 243 cm')
     .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
@@ -306,6 +288,7 @@ const schemaPriceEstimate = Yup.object().shape({
     .typeError('Chiều cao là bắt buộc')
     .required('Chiều cao là bắt buộc')
     .max(243, 'Chiều cao không được vượt quá 243 cm')
+    .min(1, 'Phai lon hon 1')
     .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
@@ -313,47 +296,29 @@ const schemaPriceEstimate = Yup.object().shape({
     .typeError('Chiều cao là bắt buộc')
     .required('Chiều dài là bắt buộc')
     .max(243, 'Chiều dài không được vượt quá 243 cm')
+    .min(1, 'Phai lon hon 1')
     .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
 })
 
-const handleInput = (event) => {
-  let value = event.target.value
-
-  value = value.replace(/[^0-9.]/g, '')
-
-  event.target.value = value
-
-  if (!/^\d*\.?\d*$/.test(value)) {
-    value = ''
-  }
-  // Chuyển đổi giá trị thành số nếu không rỗng
-  const numericValue = value ? Number(value) : ''
-
-  // Cập nhật giá trị trong productInfo
-  productInfo[event.target.getAttribute('name')] = numericValue
-}
-
 async function onSubmitPrice() {
   try {
-    await schemaPriceEstimate.validate(productInfo, { abortEarly: false })
+    isLoading.value = true
+    // await schemaPriceEstimate.validate(productInfo, { abortEarly: false })
 
     const response = await axios.post(
       url + '/v1/customer/services/price',
-      payload
+      productInfo
     )
-    console.log('payload:', response.payload)
     // console.log('responseData:', response.data);
     price.value = response.data.price
-
-    productInfo.weight = ''
-    productInfo.width = ''
-    productInfo.length = ''
-    productInfo.height = ''
   } catch (err) {
     errorMessage.value = err.response.data.messages
+    //reset data product info
     price.value = 0.0
+  } finally {
+    isLoading.value = false
   }
 }
 </script>

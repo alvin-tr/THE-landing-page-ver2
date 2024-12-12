@@ -80,10 +80,6 @@ const originValue = defineModel<InputValue>();
 //   return config.value.format?.format(originValue.value, config.value.maxDecimalLength) as InputValue
 // })
 
-function handleTypeNumber(value: string) {
-  if (config?.value.type !== "number") return value;
-  if (value === "") return 0;
-}
 function handleNoNumber(value: string): string {
   if (!config?.value?.noNumber) return value;
 

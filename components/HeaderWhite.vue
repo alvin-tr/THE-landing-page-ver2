@@ -16,7 +16,7 @@
             }
           "
         >
-          <img class="w-[104px]" src="/public/img/logoHeaderBlue.svg" />
+          <img class="w-[104px] transition-all duration-500" src="/public/img/logoHeaderBlue.svg" />
         </div>
         <!-- option -->
         <div
@@ -50,7 +50,6 @@
               </div>
             </div>
           </span>
-
           <!-- Dịch vụ -->
           <div
             class="text-[14px] leading-[20px] p-[10px] font-medium text-[#1E1F24] ml-[80px] cursor-pointer relative group/service transition duration-200 hover:text-[#0066FF] max-size-lg:ml-[50px]"
