@@ -13,7 +13,7 @@
             tabChangeCostEstimate === 0 ? 'text-white' : 'text-[#FFFFFF80]'
           "
         >
-          {{ $t("home.estimatingPrice") }}
+          {{ $t('home.estimatingPrice') }}
         </p>
         <div
           :class="
@@ -157,7 +157,10 @@
             :key="i"
             class="flex gap-3 my-2 items-center"
           >
-          <UIcon class="text-[#E8173C] text-[20px]" name="i-line-md-close-circle-filled"/>
+            <UIcon
+              class="text-[#E8173C] text-[20px]"
+              name="i-line-md-close-circle-filled"
+            />
             <p class="flex items-center text-[#E8173C]">{{ error }}</p>
           </div>
         </div>
@@ -177,12 +180,12 @@
           </div>
           <div class="w-[50%] flex items-center justify-end">
             <UButton
-              color= '#0066FF'
+              color="#0066FF"
               :disabled="isLoading"
               :loading="isLoading"
               type="submit"
               class="bg-[#0066FF] hover:bg-[#0066FF] font-medium px-[30px] py-[12px] :disabled: w-[150px] flex justify-center"
-              >{{ isLoading ? "" : "Tính giá" }}</UButton
+              >{{ isLoading ? '' : 'Tính giá' }}</UButton
             >
           </div>
         </div>
@@ -213,8 +216,8 @@
           () => {
             $router.push({
               path: '/trackings',
-              query: { trackings },
-            });
+              query: { trackings: allTrackings },
+            })
           }
         "
       >
@@ -229,6 +232,7 @@
         >
           <UFormGroup name="tracking">
             <BaseInputTracking
+              v-model:inputValue="inputValue"
               v-model="trackings"
               placeholder="Vui lòng nhập mã tracking, các mã được phân tách với nhau bởi dấu Enter"
             />
@@ -245,7 +249,7 @@
             <UIcon class="text-[20px]" name="solar:trash-bin-trash-outline" />
           </UButton>
           <UButton
-            :disabled="!trackings?.length"
+            :disabled="!allTrackings?.length"
             type="submit"
             class="bg-[#0066FF] hover:bg-[#0066FF] disabled:bg-[#0066FF] disabled:opacity-30 w-[128px] h-[44px] rounded-[6px] flex items-center justify-center"
           >
@@ -260,24 +264,28 @@
 </template>
 
 <script setup>
-import axios from "axios";
-import * as Yup from "yup";
-const isLoading = ref(false);
+import axios from 'axios'
+import * as Yup from 'yup'
+const isLoading = ref(false)
 
-const config = useRuntimeConfig();
-const url = config.app.api.baseURL;
-
-const tabChangeCostEstimate = ref(0);
-const trackings = ref([]);
-const errorMessage = ref([]);
-const price = ref(0.0);
-
+const config = useRuntimeConfig()
+const url = config.app.api.baseURL
+const inputValue = ref('')
+const tabChangeCostEstimate = ref(0)
+const trackings = ref([])
+const errorMessage = ref([])
+const price = ref(0.0)
+const allTrackings = computed(() => {
+  const current = [...trackings.value]
+  if (inputValue.value) current.push(inputValue.value)
+  return current
+})
 const productInfo = reactive({
   weight: 0,
   width: 0,
   length: 0,
   height: 0,
-});
+})
 
 const schemaPriceEstimate = Yup.object().shape({
   weight: Yup.number()
@@ -308,24 +316,24 @@ const schemaPriceEstimate = Yup.object().shape({
     .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
-});
+})
 
 async function onSubmitPrice() {
   try {
-    errorMessage.value = [] 
+    errorMessage.value = []
     isLoading.value = true
 
     const response = await axios.post(
-      url + "/customer/services/price",
+      url + '/customer/services/price',
       productInfo
     )
     price.value = response.data.price
-    errorMessage=[]
+    errorMessage = []
   } catch (err) {
     errorMessage.value = err.response.data.messages
     price.value = 0.0
   } finally {
-    isLoading.value = false;
+    isLoading.value = false
   }
 }
 </script>

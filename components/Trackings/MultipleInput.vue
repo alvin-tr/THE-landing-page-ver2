@@ -1,13 +1,14 @@
 <template>
-  <div
-    class="relative box-tracking flex-col justify-between size-lg:col-span-1 col-span-4 max-h-[350px] py-5 lg:relative bg-[#FFFFFF]"
-  >
+  <div class="">
+    <div
+    class="relative box-tracking flex-col justify-between col-span-4 max-h-[350px] py-[10px] bg-[#FFFFFF]
+    lg:relative size-lg:col-span-1">
+  <!-- Nhập mã tracking -->
     <div class="box-tracking-title p-4 w-full">
-      <span class="text-[20px] leading-[32px] font-bold">Tracking code</span>
-      <span class="font-medium text-[14px] leading-5 text-[#747592]">
-        {{ inputs?.length }}/40
-      </span>
+      <span class="text-[20px] leading-[32px] font-bold">Nhập mã Tracking</span>
+      
     </div>
+    <!-- input tracking code -->
     <div class="h-48 overflow-y-auto custom-scrollbar">
       <div
         v-for="(input, index) in inputs"
@@ -36,7 +37,7 @@
             noSpecialChar: true,
             noSpace: true,
           }"
-          :id="`input-${index}`"
+          :id="`input-${id}-${index}`"
           @keydown.enter.prevent="addNewInput(index)"
           @keydown.up.prevent="() => focusInput(index - 1)"
           @keydown.down.prevent="() => focusInput(index + 1)"
@@ -50,19 +51,29 @@
         />
       </div>
     </div>
-    <div class="flex w-full justify-center">
-      <button @click="trackNumbers" class="button w-[60%] text-white">
-        Track
-        <img src="/old/track.svg" />
-      </button>
-      <div @click="removeAll" class="flex lg:justify-center ml-2">
-        <img src="/old/bin.svg" />
+    <!-- trash -->
+    <div class="flex w-full justify-between items-center">
+      <div @click="removeAll" class="flex lg:justify-center ml-2 p-[10px] bg-[#F2F3F5] rounded-[6px]">
+        <UIcon name="i-solar-trash-bin-minimalistic-linear" class="text-[20px]  text-[#131314]"/>
       </div>
+
+      <span class="font-medium text-[14px] mr-[10px] leading-5 text-[#747592]">
+        {{ inputs?.length }}/40
+      </span>
     </div>
+  </div>
+  <div class="mt-[20px] ">
+    <button @click="trackNumbers" class="button w-full text-[15px] text-white">
+        Track
+        <UIcon name="mdi:map-search-outline" class="text-white text-[20px]"/>
+      </button>
+  </div>
   </div>
 </template>
 
 <script setup>
+import { nextTick, useId } from 'vue';
+const id=useId()
 const route = useRoute();
 const router = useRouter();
 const getCurrentTrackingsFromQuery = () => {
@@ -89,7 +100,7 @@ const handleDelete = (e, index) => {
 };
 
 const focusInput = (index) => {
-  const newInput = document.getElementById(`input-${index}`);
+  const newInput = document.getElementById(`input-${id}-${index}`);
   if (newInput) {
     newInput.focus();
     newInput.setSelectionRange(newInput.value.length, newInput.value.length);
@@ -113,7 +124,8 @@ const trackNumbers = () => {
 };
 
 const removeAll = () => {
-  inputs.value = [];
+  inputs.value = [''];
+  nextTick(()=>{focusInput(0)})
 };
 </script>
 
@@ -122,7 +134,7 @@ const removeAll = () => {
   border: 0.2px solid #e5e5e5;
   box-sizing: border-box;
   background: #ffffff;
-  border-radius: 32px;
+  border-radius: 4px;
 }
 
 .box-tracking-title {
@@ -149,21 +161,15 @@ const removeAll = () => {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px 14px;
+  padding: 12px ;
   gap: 14px;
   height: 48px;
   left: 28px;
   right: 88px;
   bottom: 28px;
-  background: #ff7614;
+  background: #0066FF;
   border-radius: 12px;
 }
-
-.track-content {
-  border: 0.2px solid #e5e5e5;
-  border-radius: 29px;
-}
-
 .custom-scrollbar::-webkit-scrollbar {
   width: 3px;
 }

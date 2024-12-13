@@ -23,7 +23,7 @@
         </div>
         <!-- option -->
         <div
-          class="flex flex-row justify-between ml-[109px] max-size-lg:ml-[30px] max-size-md:hidden max-size-xs:hidden"
+          class="flex flex-row justify-between ml-[109px] max-size-lg:hidden max-size-md:hidden max-size-xs:hidden"
         >
           <!-- Về THE -->
           <span
@@ -126,7 +126,7 @@
         class="flex flex-row px-[100px] items-center max-size-lg:px-[30px] max-size-pro:px-[10px] max-size-xs:px-[10px]"
       >
         <!-- EN | VN -->
-        <div class="mr-[24px] max-size-xs:hidden">
+        <div class="mr-[24px] max-size-lg:hidden max-size-xs:hidden">
           <span class="text-white">
             <span @click="setLocale('en')" class="cursor-pointer text-[#1E1F24]"
               >EN</span
@@ -139,7 +139,7 @@
         </div>
         <!-- phone -->
         <a
-          class="flex flex-row px-[14px] py-[10px] bg-[#0066FF] rounded-[6px] items-center justify-center mr-[24px] max-size-pro:hidden max-size-xs:hidden"
+          class="flex flex-row px-[14px] py-[10px] bg-[#0066FF] rounded-[6px] items-center justify-center mr-[24px] max-size-lg:hidden max-size-pro:hidden max-size-xs:hidden"
           href="tel:0974877007"
         >
           <UIcon
@@ -152,6 +152,33 @@
             0974877007
           </p>
         </a>
+        <div>
+            <div
+              class="hidden bg-[#0066FF] items-center justify-center px-[14px] py-[10px] mr-[32px] rounded-[6px] 
+              max-size-lg:flex relative
+              max-size-pro:px-[10px] max-size-pro:mr-[10px]
+              "
+              @click="
+                () => {
+                  toggleIsVisible()
+                }
+              "
+            >
+              <UIcon
+                name="i-tabler-search"
+                class="flex items-center justify-center text-[20px] mr-[7px] max-size-pro:mr-0"
+              />
+              <p class="text-[14px] font-medium max-size-pro:hidden">Nhập mã Tracking</p>
+            </div>
+            <div
+            class="bg-white rounded-[6px] shadow-xl shadow-[#37373777] absolute top-[55px] right-[230px] w-[314px] p-[10px] z-50
+            max-size-pro:right-[50px] 
+            "
+             v-show="isVisibleSearchTracking"
+          >
+            <TrackingsMultipleInput />
+          </div>
+        </div>
         <!-- sign in / sign up -->
         <div class="flex flex-row items-center justify-center">
           <UIcon
@@ -179,8 +206,13 @@
 
 <script setup lang="ts">
 const { locale, locales, setLocale } = useI18n()
-
 const router = useRouter()
+
+const isVisibleSearchTracking = ref(false)
+
+const toggleIsVisible = () => {
+  isVisibleSearchTracking.value = !isVisibleSearchTracking.value
+}
 
 const hoverAboutTHE = [
   {
