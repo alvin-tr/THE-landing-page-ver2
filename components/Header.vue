@@ -132,12 +132,12 @@
         class="flex flex-row px-[100px] items-center max-size-lg:px-[30px] max-size-pro:px-[10px] max-size-xs:px-[10px]"
       >
         <!-- EN | VN -->
-        <div class="mr-[24px] max-size-xs:hidden">
+        <!-- <div class="mr-[24px] max-size-xs:hidden">
           <span class="text-white">
             <span @click="setLocale('en')" class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">EN</span> 
             <span class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500"> | </span>
             <span @click="setLocale('vi')" class="cursor-pointer group-hover:text-[#1E1F24] transition duration-500">VN</span></span>
-        </div>
+        </div> -->
         <!-- phone -->
         <span
           class="flex flex-row px-[14px] py-[10px] bg-white rounded-[6px] items-center justify-center mr-[24px]

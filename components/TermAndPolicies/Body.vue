@@ -3,11 +3,16 @@
         max-size-lg:px-[20px]
     ">
         <TermAndPoliciesDropdown 
-        class="w-[376px] mr-[60px] "
+        class="w-[376px] mr-[60px] max-size-lg:hidden"
         @scroll-to-section="handleScrollToSection"
         />
         <TermAndPoliciesDescription 
-        class="w-[844px] max-w-[844px]"
+        class="w-[844px] max-w-[844px]
+        max-size-md:w-[768px]
+        max-size-sm:w-[640px]
+        max-size-pro:w-[400px] max-size-pro:px-[10px]
+        max-size-xs:w-[350px]
+        "
         ref="descriptionSection"
         />
     </div>

@@ -1,6 +1,6 @@
 <template>
     <HeaderWhite/>
-    <TermAndPoliciesTitle/>
+    <TermAndPoliciesTitle />
     <TermAndPoliciesBody class="bg-[#F2F3F5] flex "/>
 </template>
 

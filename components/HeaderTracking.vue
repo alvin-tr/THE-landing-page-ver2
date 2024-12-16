@@ -152,35 +152,35 @@
             0974877007
           </p>
         </a>
+        <!-- search tracking in 425px screen -->
         <div>
-            <div
-              class="hidden bg-[#0066FF] items-center justify-center px-[14px] py-[10px] mr-[32px] rounded-[6px] 
-              max-size-lg:flex relative
-              max-size-pro:px-[10px] max-size-pro:mr-[10px]
-              "
-              @click="
-                () => {
-                  toggleIsVisible()
-                }
-              "
-            >
-              <UIcon
-                name="i-tabler-search"
-                class="flex items-center justify-center text-[20px] mr-[7px] max-size-pro:mr-0"
-              />
-              <p class="text-[14px] font-medium max-size-pro:hidden">Nhập mã Tracking</p>
-            </div>
-            <div
-            class="bg-white rounded-[6px] shadow-xl shadow-[#37373777] absolute top-[55px] right-[230px] w-[314px] p-[10px] z-50
-            max-size-pro:right-[50px] 
+          <div
+            class="hidden bg-[#0066FF] items-center justify-center px-[14px] py-[10px] mr-[32px] rounded-[6px] max-size-lg:flex relative max-size-pro:px-[10px] max-size-pro:mr-[10px]"
+            @click="
+              () => {
+                toggleIsVisible()
+              }
             "
-             v-show="isVisibleSearchTracking"
+          >
+            <UIcon
+              name="i-tabler-search"
+              class="flex items-center justify-center text-[20px] mr-[7px] max-size-pro:mr-0"
+            />
+            <p class="text-[14px] font-medium max-size-pro:hidden">
+              Nhập mã Tracking
+            </p>
+          </div>
+          <div
+            class="bg-white rounded-[6px] shadow-xl shadow-[#37373777] absolute top-[55px] right-[230px] w-[314px] p-[10px] z-50 max-size-pro:right-[50px]"
+            v-show="isVisibleSearchTracking"
           >
             <TrackingsMultipleInput />
           </div>
         </div>
         <!-- sign in / sign up -->
-        <div class="flex flex-row items-center justify-center">
+        <div
+          class="flex flex-row items-center justify-center max-size-pro:hidden"
+        >
           <UIcon
             name="mingcute:user-4-line"
             class="mr-[4px] text-[20px] text-[#0066FF] transition duration-500"
@@ -199,6 +199,53 @@
             >
           </div>
         </div>
+        <div
+          @click="
+            () => {
+              toggleIsVisibleSignin()
+            }
+          "
+          class="hidden rounded-[6px] max-size-pro:flex max-size-pro:items-center max-size-pro:justify-center bg-[#F2F3F5] px-[12px] py-[10px]"
+        >
+          <UIcon
+            name="i-mingcute-user-4-line"
+            class="text-[#0066FF] text-[20px]"
+          />
+          <USlideover
+            v-model="isVisibleSignIn"
+            :overlay="false"
+            :ui="{
+              width: 'w-screen max-w-[300px]',
+              overlay: {
+                background: 'bg-[#82828299]'
+              }
+            }"
+          >
+            <div class=" flex-1  ">
+              <div class="flex flex-row items-center justify-between p-[5px] bg-[#0510632a]">
+                <p class="text-[#051063] ml-[10px]">THEHUMAN express</p>
+              <UButton
+                color="gray"
+                variant="ghost"
+                icon="i-heroicons-x-mark-20-solid"
+                square
+                padded
+                @click="isVisibleSignIn = false"
+              />
+              </div>
+              <div>
+                <ul class="px-[20px] list-disc">
+                  <li class="text-black text-[15px] mt-[10px]">
+                    <a href="https://app.thehuman.express/sign-up">Đăng ký</a>
+                  </li>
+                  <li class="text-black text-[15px] mt-[10px]">
+                    <a href="https://app.thehuman.express/sign-in">Đăng nhập</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </USlideover>
+        </div>
       </div>
     </div>
   </header>
@@ -209,9 +256,14 @@ const { locale, locales, setLocale } = useI18n()
 const router = useRouter()
 
 const isVisibleSearchTracking = ref(false)
+const isVisibleSignIn = ref(false)
 
 const toggleIsVisible = () => {
   isVisibleSearchTracking.value = !isVisibleSearchTracking.value
+}
+
+const toggleIsVisibleSignin = () => {
+  isVisibleSignIn.value = !isVisibleSignIn.value
 }
 
 const hoverAboutTHE = [

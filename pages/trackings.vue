@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-[#F7F8FA] ">
-    <HeaderTracking class="z-200"/>
+  <div class="bg-[#F7F8FA]">
+    <HeaderTracking class="z-200" />
     <div class="pt-16 max-w-[1900px] mx-auto">
       <div class="grid grid-cols-4 gap-4 w-11/12 mx-auto mt-8 max-size-lg:mt-0">
-        <TrackingsMultipleInput class="max-size-lg:hidden"/>
+        <TrackingsMultipleInput class="max-size-lg:hidden" />
         <div
           class="track-content min-h-[85vh] size-lg:col-span-3 col-span-4 py-2 px-3 bg-[#FFFFFF]"
         >
@@ -47,15 +47,13 @@
                   <!-- appear when empty data -->
                   <div
                     v-if="!tab.shipments?.length"
-                    class="flex flex-col "
+                    class="flex flex-col items-center justify-center "
                   >
-                    <img
-                      class="max-w-[351px] max-h-[209px]"
-                      src="/old/noresult.svg"
+                      <img
+                      class="mt-[300px] max-size-lg:mt-[200px] max-size-pro:mt-[100px]"
+                      src="/img/nodataIMG.svg"
                     />
-                    <p class="text-center text-[#757575]">
-                      Không có dữ liệu
-                    </p>
+                    <p class="text-center text-[#757575]">Không có dữ liệu</p> 
                   </div>
                   <!-- appear when exist data  -->
                   <div
@@ -64,9 +62,9 @@
                     :key="j"
                     class="min-w-[700px] overflow-x-auto max-size-pro:min-w-[425px]"
                   >
-                    <div class="flex flex-row py-3 justify-between
-                    max-size-pro:flex-col 
-                    ">
+                    <div
+                      class="flex flex-row py-3 justify-between max-size-pro:flex-col"
+                    >
                       <!-- label of order -->
                       <div class="flex w-[25%]">
                         <div class="min-w-[25px] min-h-[25px]">
@@ -88,20 +86,26 @@
                         </div>
                       </div>
                       <!-- hành trình may bay -->
-                      <div class="flex flex-row w-[30%] items-center justify-center 
-                      max-size-pro:w-full
-                      ">
+                      <div
+                        class="flex flex-row w-[30%] items-center justify-center max-size-pro:w-full"
+                      >
                         <!-- symbol of VietNam -->
-                        <div class="flex flex-row items-center justify-center w-[30%]">
+                        <div
+                          class="flex flex-row items-center justify-center w-[30%]"
+                        >
                           <img src="/old/vietnam.svg" />
                           <p class="text-[#868689] ml-[14px]">Vietnam</p>
                         </div>
                         <!-- symbol plane -->
-                        <div class="mx-[44px] w-[30%] flex items-center justify-center">
+                        <div
+                          class="mx-[44px] w-[30%] flex items-center justify-center"
+                        >
                           <img src="/old/icon-plane.svg" />
                         </div>
                         <!-- symbol US -->
-                        <div class="flex flex-row w-[30%] items-center justify-center">
+                        <div
+                          class="flex flex-row w-[30%] items-center justify-center"
+                        >
                           <img src="/old/US.svg" />
                           <span
                             class="ml-4 font-medium md:text-xs xl:text-sm leading-20 flex text-[#868689]"
@@ -110,7 +114,9 @@
                         </div>
                       </div>
                       <!-- information of order -->
-                      <div class="flex w-[40%] items-center justify-center max-size-lg:w-[30%]">
+                      <div
+                        class="flex w-[40%] items-center justify-center max-size-lg:w-[30%]"
+                      >
                         <p
                           v-if="shipment.events?.length"
                           class="font-normal md:text-xs xl:text-sm flex text-[#868689]"
@@ -128,7 +134,7 @@
                     <!-- status and timeline shipping -->
                     <div class="flex-col my-4 w-full">
                       <p
-                        class="font-mulish font-bold text-[14px] leading-32 flex  text-gray-900"
+                        class="font-mulish font-bold text-[14px] leading-32 flex text-gray-900"
                       >
                         {{ shipment.status }}
                       </p>
@@ -143,22 +149,22 @@
                         </div>
                       </div>
                       <p
-                        class="font-mulish font-medium text-[14px] leading-20 flex  text-blue-500 my-4"
+                        class="font-mulish font-medium text-[14px] leading-20 flex text-blue-500 my-4"
                       >
                         {{ formatDescriptionshipments(shipment.status) }}
                       </p>
                       <!-- timeline  -->
                       <div class="flex mt-4">
                         <span
-                          class="flex  text-[14px] leading-5 font-semibold text-[#375DE2] font-mulish ml-2"
+                          class="flex text-[14px] leading-5 font-semibold text-[#375DE2] font-mulish ml-2"
                           >THE</span
                         >
                         <span
-                          class="flex  text-[14px] leading-5 font-semibold font-mulish ml-1"
+                          class="flex text-[14px] leading-5 font-semibold font-mulish ml-1"
                           >- {{ shipment.destCountry }} - No phone
                         </span>
                         <span
-                          class="flex  text-xs leading-5 font-medium text-[#747592] font-mulish ml-1"
+                          class="flex text-xs leading-5 font-medium text-[#747592] font-mulish ml-1"
                         >
                           - Sync Time:
                           {{ getCurrentFormattedTime() }} (GMT+07:00)</span
@@ -209,28 +215,31 @@
                               class="sm:col-span-1 2xl:col-span-2 bg-[#0066FF] mt-3 rounded-[12px] flex text-white flex-row justify-center items-center px-[14px] py-[10px] gap-[8px]"
                             >
                               Copy Link
-                              <UIcon name="mdi:link-variant" class="text-[15px] text-white"/>
+                              <UIcon
+                                name="mdi:link-variant"
+                                class="text-[15px] text-white"
+                              />
                             </button>
                             <button
                               @click="copyDetail(shipment)"
-                              class="sm:col-span-1 size-2xl:col-span-2 text-black bg-[#F2F3F5] mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center  px-[14px] py-[10px] gap-[8px] box-border"
+                              class="sm:col-span-1 size-2xl:col-span-2 text-black bg-[#F2F3F5] mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center px-[14px] py-[10px] gap-[8px] box-border"
                             >
                               Copy Detail
                               <img src="/old/copy-detail.svg" />
                             </button>
                             <button
                               @click="convertTime"
-                              class="text-black size-sm:col-span-1 size-2xl:col-span-2 bg-white mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center  px-[14px] py-[10px] gap-[8px] box-border"
+                              class="text-black size-sm:col-span-1 size-2xl:col-span-2 bg-white mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center px-[14px] py-[10px] gap-[8px] box-border"
                             >
                               More Info
                             </button>
                           </div>
                           <!-- Translate: English -->
                           <div
-                            class="xl:col-span-3 size-lg:col-span-2 col-span-6 flex  justify-end px-14 my-4"
+                            class="xl:col-span-3 size-lg:col-span-2 col-span-6 flex justify-end px-14 my-4"
                           >
                             <p
-                              class="flex  font-mulish font-normal text-[14px] leading-[20px] text-[#17171E]"
+                              class="flex font-mulish font-normal text-[14px] leading-[20px] text-[#17171E]"
                             >
                               Translate: English
                             </p>
@@ -253,7 +262,7 @@
 <script setup>
 import axios from 'axios'
 import { onMounted, watch } from 'vue'
-import HeaderTracking from '../components/HeaderTracking.vue';
+import HeaderTracking from '../components/HeaderTracking.vue'
 const config = useRuntimeConfig()
 function sortEventsByCreatedAtDescending(events) {
   return events.sort((a, b) => new Date(b.ship_time) - new Date(a.ship_time))
@@ -514,7 +523,6 @@ const data = {
   left: 12px;
   background-color: #abb4cd;
 }
-
 
 /* CSS để tùy chỉnh thanh cuộn */
 .custom-scrollbar::-webkit-scrollbar {

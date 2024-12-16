@@ -126,7 +126,7 @@
         class="flex flex-row px-[100px] items-center max-size-lg:px-[30px] max-size-pro:px-[10px] max-size-xs:px-[10px]"
       >
         <!-- EN | VN -->
-        <div class="mr-[24px] max-size-xs:hidden">
+        <!-- <div class="mr-[24px] max-size-xs:hidden">
           <span class="text-white">
             <span @click="setLocale('en')" class="cursor-pointer text-[#1E1F24]"
               >EN</span
@@ -136,7 +136,7 @@
               >VN</span
             ></span
           >
-        </div>
+        </div> -->
         <!-- phone -->
         <a
           class="flex flex-row px-[14px] py-[10px] bg-[#0066FF] rounded-[6px] items-center justify-center mr-[24px] max-size-pro:hidden max-size-xs:hidden"
