@@ -83,7 +83,7 @@ const toggleExpaned = () => {
 
 const updateImageHeight = () => {
   if (contentRef.value) {
-    imageHeight.value = contentRef.value.offsetHeight + 200; // Thêm khoảng padding
+    imageHeight.value = contentRef.value.offsetHeight + 200;
   } else {
     imageHeight.value = 0;
   }

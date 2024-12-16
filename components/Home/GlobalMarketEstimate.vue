@@ -11,10 +11,10 @@
           <div class="w-[53%] mt-[300px] flex flex-col 
           max-size-lg:mt-[50px] max-size-lg:w-full max-size-lg:flex max-size-lg:items-center max-size-lg:flex-col
           ">
-            <span class="text-white text-[60px] font-semibold leading-[82px] mb-[30px]
+            <span class="text-white text-[60px] font-semibold leading-[82px] mb-[30px] mt-[100px]
             max-size-lg:text-[50px] max-size-lg:text-center max-size-lg:mb-[20px]
             max-size-md:text-[45px] max-size-md:leading-[65px]
-            max-size-pro:text-[30px] max-size-pro:text-center max-size-pro:leading-[45px]
+            max-size-pro:text-[30px] max-size-pro:text-center max-size-pro:leading-[45px] max-size-pro:mt-[50px]
             ">
               Cầu nối Doanh nghiệp Việt đến thị trường 
               <br>

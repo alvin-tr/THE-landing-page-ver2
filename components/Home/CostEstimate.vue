@@ -228,7 +228,7 @@
         >
 
         <div
-          class="w-[360px] h-[302px] bg-[#394154] mt-[6px] rounded-[6px] max-size-md:w-full"
+          class="w-[360px] h-[302px] bg-[#394154] mt-[6px] rounded-[6px] max-size-lg:w-full max-size-md:w-full"
         >
           <UFormGroup name="tracking">
             <BaseInputTracking
