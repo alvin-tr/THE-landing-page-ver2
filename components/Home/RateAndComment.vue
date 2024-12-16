@@ -52,6 +52,18 @@ const handlePrev = () => {
     return caroselRef.value.select(caroselRef.value.pages)
   caroselRef.value.prev()
 }
+
+onMounted(() => {
+  setInterval(() => {
+    if (!caroselRef.value) return
+
+    if (caroselRef.value.page === caroselRef.value.pages) {
+      return caroselRef.value.select(0)
+    }
+
+    caroselRef.value.next()
+  }, 3000)
+})
 </script>
 
 <template>

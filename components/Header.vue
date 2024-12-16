@@ -8,7 +8,7 @@
       <div class="flex flex-row items-center">
         <!-- img -->
         <div
-          class="my-[14px] ml-[80px] max-size-xs:ml-[10px] max-size-lg:ml-[30px] "
+          class="my-[14px] ml-[80px] max-size-xs:ml-[10px] max-size-lg:ml-[30px] cursor-pointer"
           @click="(() => {
             $router.push('/')
           })"
@@ -163,7 +163,7 @@
             >
             <span class="group-hover:text-[#0066FF] transition duration-500"> | </span>
             <a href="https://app.thehuman.express/sign-in" class="text-white group-hover:text-[#0066FF] transition duration-500"
-              ><p class="hover:text-black">Đăng nh</p></a
+              ><p class="hover:text-black">Đăng nhập</p></a
             >
           </div>
         </div>
