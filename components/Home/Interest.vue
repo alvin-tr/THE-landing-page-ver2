@@ -47,7 +47,7 @@ const interestItem = [
         class=" w-full flex flex-col items-center justify-center max-size-pro:mt-[50px]"
       >
         <img
-          src="/public/img/backgroundOfChooseSolution.jpg"
+          src="/img/backgroundOfChooseSolution.svg"
           class="mt-[48px] w-full bg-cover bg-center max-size-md:mt-[20px]"
         />
       </div>

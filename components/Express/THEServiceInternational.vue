@@ -4,7 +4,7 @@
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
       <div
-        class="px-[60px] w-full max-h-[914px] overflow-hidden bg-white rounded-[12px] mt-[100px] max-size-lg:px-[15px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
+        class="px-[60px] w-full max-h-[914px] overflow-hidden rounded-[12px] mt-[100px] max-size-lg:px-[15px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
       >
         <div class="w-full flex flex-col max-size-lg:items-center">
           <slot></slot>

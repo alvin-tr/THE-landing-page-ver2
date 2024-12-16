@@ -234,7 +234,7 @@
             <BaseInputTracking
               v-model:inputValue="inputValue"
               v-model="trackings"
-              placeholder="Vui lòng nhập mã tracking, các mã được phân tách với nhau bởi dấu Enter"
+              placeholder="Vui lòng nhập mã tracking, các mã được phân tách với nhau bởi dấu cách"
             />
           </UFormGroup>
         </div>

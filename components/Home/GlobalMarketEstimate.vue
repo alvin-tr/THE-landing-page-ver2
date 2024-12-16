@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full bg-cover pb-[69px] bg-center bg-no-repeat bg-[url('/img/costEstimateBg.svg')]">
     <slot></slot>
-    <div class="px-[100px] max-size-pro:px-[10px]">
+    <div class="px-[100px] max-size-sm:px-[10px]">
       <!-- body 1 -->
       <div class="w-full flex items-center justify-center">
         <div class="flex justify-between w-full max-w-[1440px]

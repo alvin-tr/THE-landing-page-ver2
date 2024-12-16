@@ -29,12 +29,12 @@
           tích hợp.
         </p>
         </div>
-        <span
+        <a
+        href="https://app.thehuman.express/sign-up"
           class="px-[14px] py-[12px] w-[172px] bg-white text-[#0066FF] text-[14px] leading-[20px] font-medium rounded-[6px] mt-[46px] flex items-center justify-center cursor-pointer
           max-size-lg:h-[45px]
           max-size-pro:mt-[26px]
-          ">Đăng ký ngay</span
-        >
+          ">Đăng ký ngay</a>
       </div>
     </div>
   </BaseLayout>

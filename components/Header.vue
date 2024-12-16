@@ -22,7 +22,7 @@
           class="flex flex-row justify-between ml-[109px] max-size-lg:ml-[30px] max-size-md:hidden max-size-xs:hidden"
         >
           <!-- Về THE -->
-          <span
+          <div
             class="text-[14px] p-[10px] leading-[20px] font-medium text-[#FFFFFF99] cursor-pointer relative group/aboutTHE
             transition duration-500
             group-hover:text-[#1E1F24]
@@ -43,7 +43,7 @@
                     $router.push(itemHover.to)
                   })"
                 >
-                  <img :src="itemHover.icon" class="mr-[10px]" />
+                  <img :src="itemHover.icon" class="mr-[10px] w-[25px]" />
                   <p
                     class="text-[16px] text-[#1E1F24] leading-[24px] font-medium"
                   >
@@ -52,9 +52,9 @@
                 </div>
               </div>
             </div>
-          </span>
+          </div>
           <!-- Dịch vụ -->
-          <span
+          <div
             class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative 
             group/service transition duration-500
             group-hover:text-[#1E1F24]
@@ -87,9 +87,9 @@
                 </a>
               </div>
             </div>
-          </span>
+          </div>
           <!-- Hỗ trợ -->
-          <span
+          <div
             class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative 
             group/support transition duration-500
             group-hover:text-[#1E1F24]
@@ -106,7 +106,7 @@
               <div
                 v-for="itemHover in hoverSupport"
                 :key="itemHover.title"
-                class="px-[20px] py-[14px] flex flex-row w-full min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px]"
+                class="px-[20px] py-[14px]  flex flex-row w-[260px] min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px]"
                 :to="itemHover.to"
               >
                 <a
@@ -124,7 +124,7 @@
                 </a>
               </div>
             </div>
-          </span>
+          </div>
         </div>
       </div>
       <!-- right -->
@@ -157,13 +157,13 @@
             name="mingcute:user-4-line"
             class="mr-[4px] text-[20px] text-white group-hover:text-[#0066FF] transition duration-500"
           />
-          <div>
+          <div class="flex flex-row">
             <a href="https://app.thehuman.express/sign-up" class="text-white group-hover:text-[#0066FF] transition duration-500"
-              >Đăng ký</a
+              ><p class="hover:text-black">Đăng ký</p></a
             >
             <span class="group-hover:text-[#0066FF] transition duration-500"> | </span>
             <a href="https://app.thehuman.express/sign-in" class="text-white group-hover:text-[#0066FF] transition duration-500"
-              >Đăng nhập</a
+              ><p class="hover:text-black">Đăng nh</p></a
             >
           </div>
         </div>
