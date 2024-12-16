@@ -245,6 +245,12 @@
             class="p-[12px] flex items-center justify-center border-[1px] border-[#52627D] rounded-[4px] w-[44px] h-[44px]"
             variant="none"
             type="button"
+            @click="
+              () => {
+                trackings = []
+                inputValue = ''
+              }
+            "
           >
             <UIcon class="text-[20px]" name="solar:trash-bin-trash-outline" />
           </UButton>
