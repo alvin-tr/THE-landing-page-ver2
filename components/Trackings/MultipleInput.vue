@@ -52,7 +52,7 @@
       </div>
     </div>
     <!-- trash -->
-    <div class="flex w-full justify-between items-center">
+    <div class="flex w-full justify-between items-center cursor-pointer">
       <div @click="removeAll" class="flex lg:justify-center ml-2 p-[10px] bg-[#F2F3F5] rounded-[6px]">
         <UIcon name="i-solar-trash-bin-minimalistic-linear" class="text-[20px]  text-[#131314]"/>
       </div>

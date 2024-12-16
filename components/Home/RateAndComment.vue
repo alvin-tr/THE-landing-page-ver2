@@ -89,7 +89,7 @@ onMounted(() => {
         >
           <template #prev="{ onClick, disabled }">
             <div
-              class="absolute right-full sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px w-[50px] h-[50px]"
+              class="absolute right-full sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px w-[50px] h-[50px] cursor-pointer"
               :disabled="disabled"
               @click="handlePrev"
             >
@@ -99,7 +99,7 @@ onMounted(() => {
   
           <template #next="{ onClick, disabled }">
             <div
-              class="absolute left-full sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px w-[50px] h-[50px]"
+              class="absolute left-full sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px w-[50px] h-[50px] cursor-pointer"
               :disabled="disabled"
               @click="handleNext"
             >
