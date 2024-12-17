@@ -105,7 +105,7 @@
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer
             "
-            >Chuyển phát hàng FBA amazon</a
+            >Chuyển phát hàng FBA</a
           >
         </div>
         <!-- hỗ trợ -->

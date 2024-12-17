@@ -89,21 +89,20 @@ onMounted(() => {
         >
           <template #prev="{ onClick, disabled }">
             <div
-              class="absolute right-full sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px w-[50px] h-[50px] cursor-pointer"
+              class="absolute right-full w-[60px] h-[60px] p-[5px] mx-[30px] bg-white flex items-center justify-center rounded-[50px] sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px cursor-pointer"
               :disabled="disabled"
               @click="handlePrev"
             >
-              <img src="/icon/arrow-left.svg" />
+              <UIcon name="mingcute:arrow-left-line" class="text-[#333333cf] text-[25px]"/>
             </div>
           </template>
-  
           <template #next="{ onClick, disabled }">
             <div
-              class="absolute left-full sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px w-[50px] h-[50px] cursor-pointer"
+              class="absolute left-full w-[60px] h-[60px] p-[5px] mx-[30px] bg-white flex items-center justify-center rounded-[50px] sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px cursor-pointer"
               :disabled="disabled"
               @click="handleNext"
             >
-              <img src="/icon/arrow-right.svg" />
+              <UIcon name="mingcute:arrow-right-line" class="text-[#333333cf] text-[25px]"/>
             </div>
           </template>
           <template #default="{ item }">
