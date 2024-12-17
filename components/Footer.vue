@@ -146,18 +146,7 @@
         max-size-md:w-[40%]
         max-size-pro:w-full max-size-pro:mt-0
         ">
-          <div class="flex items-center justify-end">
-            <UButton
-            @click="scrollToTop"
-              class="p-[20px] w-[54px] h-[54px] rounded-[50px] bg-white items-center justify-center group"
-              color="blue"
-            >
-              <UIcon
-                name="tabler:arrow-narrow-up"
-                class="text-[#1E1F24] text-[30px] font-[100] group-hover:text-white"
-              />
-            </UButton>
-          </div>
+          
           <div class="flex flex-row mt-[104px] w-full justify-end
           max-size-md:mt-[50px]
           max-size-pro:mt-[30px]
@@ -190,13 +179,6 @@
 
 <script setup>
 const router = useRouter()
-
-const scrollToTop = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  })
-}
 </script>
 
 <style lang="scss" scoped></style>
