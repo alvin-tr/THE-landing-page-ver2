@@ -4,7 +4,7 @@
       <Header />
     </HomeGlobalMarketEstimate>
     <ExpressTHEServiceInternational/>
-    <ExpressCustomerExperience :CustomerExperienceItem="CustomerExperienceItem"/>
+    <ExpressCustomerExperience :CustomerExperienceItem="CustomerExperienceItem" title="Lựa chọn hàng đầu của doanh nghiệp Việt"/>
     <ExpressOperatingProcedure />
     <HomeRateAndComment class="mt-[-100px]"/>
     <HomeExperienceTheDifference/>

@@ -10,7 +10,7 @@
         imgSrc="/img/express/tiktokExpress.svg"
         :items="itemOfExpress"
         />
-        <ExpressCustomerExperience :CustomerExperienceItem="CustomerExperienceItem"/>
+        <ExpressCustomerExperience :CustomerExperienceItem="CustomerExperienceItem" title="Giúp nhà bán hàng Việt Nam vươn tầm quốc tế!"/>
         <ExpressOperatingProcedure/>
         <HomeRateAndComment class="max-size-sm:mt-[-100px] "/>
         <HomeExperienceTheDifference/>

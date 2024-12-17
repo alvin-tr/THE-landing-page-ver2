@@ -134,7 +134,7 @@ const services = [
       {
         icon: "/icon/dollarIcon.svg",
         title: "Chi phí",
-        description: "Từ $5.1",
+        description: "Từ $4.9",
       },
       {
         icon: "/icon/mapIcon.svg",
@@ -158,7 +158,7 @@ const services = [
       {
         icon: "/icon/dollarIcon.svg",
         title: "Chi phí",
-        description: "Từ $6.1",
+        description: "Từ $5.6",
       },
       {
         icon: "/icon/mapIcon.svg",

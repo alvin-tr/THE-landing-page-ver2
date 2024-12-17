@@ -149,17 +149,17 @@ const schema = $yup.object({
   full_name: $yup
     .string()
     .required('Họ tên là bắt buộc')
-    .max(30, 'Tối đa 30 ký tự'),
-    // .matches(/^[A-Za-z\s]+$/, 'Full name must only contain letters'),
+    .max(30, 'Tối đa 30 ký tự')
+    .matches(/^[A-Za-z0-9]+$/, 'Chỉ cho phép nhập chữ và số không chứa khoảng trắng'),
   email: $yup
     .string()
     .required('Email là bắt buộc')
-    .email('Trường này phải là email'),
+    .email('Email không hợp lệ'),
   phone_number: $yup
     .string()
     .matches(
       /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/,
-      'Trường này phải alf số điện thoại'
+      'Trường này phải là số điện thoại'
     )
     .required('Số điện thoại là bắt buộc')
     .min(10, 'Số điện thoại phải là 10 số'),

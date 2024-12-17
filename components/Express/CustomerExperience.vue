@@ -11,7 +11,7 @@
                 max-size-md:w-[70%]
                 max-size-pro:w-full max-size-pro:text-[30px] max-size-pro:leading-[40px]
               ">
-                Lựa chọn hàng đầu của doanh nghiệp Việt
+                {{ title }}
               </p>
               <div class="flex flex-row mt-[70px] ml-[70px]
               max-size-pro:ml-0  max-size-pro:w-full max-size-pro:mt-[30px] 
@@ -46,7 +46,8 @@
 const props = defineProps({
     CustomerExperienceItem:{
         type: Array
-    }
+    },
+    title: String
 })
 </script>
 

@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: "THEHUMAN Express",
+      title: "The Human Express",
       meta: [
         {
           name: "viewport",

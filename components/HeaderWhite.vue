@@ -1,11 +1,9 @@
 <template>
-  <header
-    class="flex items-center justify-center hover:bg-white transition duration-500 group bg-white"
-  >
+  <header class="flex items-center justify-center group bg-[#ffffff] z-50">
     <div
       class="w-full max-w-[1440px] h-[64px] flex flex-row items-center justify-between"
     >
-      <!-- 1 -->
+      <!-- left -->
       <div class="flex flex-row items-center">
         <!-- img -->
         <div
@@ -14,7 +12,8 @@
             () => {
               $router.push('/')
             }
-          ">
+          "
+        >
           <img
             class="w-[104px] transition-all duration-500 cursor-pointer"
             src="/public/img/logoHeaderBlue.svg"
@@ -171,6 +170,16 @@
             >
           </div>
         </div>
+        <!-- menu  -->
+        <div
+          class="ml-[20px] items-center hidden max-size-lg:flex"
+          @click="isOpenListTitle = true"
+        >
+          <UIcon
+            name="material-symbols:menu-rounded"
+            class="text-black text-[25px]"
+          />
+        </div>
       </div>
     </div>
   </header>
@@ -237,6 +246,8 @@ const hoverSupport = [
     to: 'https://docs.thehuman.express/',
   },
 ]
+
+const isOpenListTitle = defineModel<boolean>()
 </script>
 
 <style lang="scss" scoped></style>
