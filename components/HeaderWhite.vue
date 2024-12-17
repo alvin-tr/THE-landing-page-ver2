@@ -14,10 +14,9 @@
             () => {
               $router.push('/')
             }
-          "
-        >
+          ">
           <img
-            class="w-[104px] transition-all duration-500"
+            class="w-[104px] transition-all duration-500 cursor-pointer"
             src="/public/img/logoHeaderBlue.svg"
           />
         </div>
@@ -43,7 +42,7 @@
                   class="px-[20px] py-[14px] flex flex-row w-full min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px] cursor-pointer"
                   @click="() => $router.push(itemHover.to)"
                 >
-                  <img :src="itemHover.icon" class="mr-[10px]" />
+                  <img :src="itemHover.icon" class="mr-[10px] w-[25px]" />
                   <p
                     class="text-[16px] text-[#1E1F24] leading-[24px] font-medium"
                   >
@@ -100,7 +99,7 @@
               <div
                 v-for="itemHover in hoverSupport"
                 :key="itemHover.title"
-                class="px-[20px] py-[14px] flex flex-row w-full min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px]"
+                class="px-[20px] py-[14px] flex flex-row w-[260px] min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px]"
                 :to="itemHover.to"
               >
                 <a

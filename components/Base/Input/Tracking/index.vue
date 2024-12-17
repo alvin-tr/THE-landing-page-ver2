@@ -21,7 +21,7 @@
       }"
       inputClass="!bg-transparent border-none outline-none pl-[0]"
       variant="none"
-      class="h-fit flex-1 min-w-[100px]"
+      class="h-fit w-full"
       v-model="inputValue"
       @keydown="
         (e) => {

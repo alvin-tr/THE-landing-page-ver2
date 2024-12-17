@@ -1,5 +1,5 @@
 <template>
-  <BaseLayout ref="currentElementRef">
+  <BaseLayout ref="currentElementRef" class="home-service">
     <div
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
@@ -121,6 +121,8 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue'
+
 const router = useRouter()
 
 const currentElementRef = ref()
@@ -264,7 +266,9 @@ const services = [
     ],
   },
 ]
+onMounted(() => {
 
+})
 const selectedService = ref(0)
 const scrollToService = (index) => {
   const target = document.getElementById(`service-${index}`)

@@ -106,7 +106,7 @@
               <div
                 v-for="itemHover in hoverSupport"
                 :key="itemHover.title"
-                class="px-[20px] py-[14px]  flex flex-row w-[260px] min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px]"
+                class="px-[20px] py-[14px] flex flex-row w-[260px] min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px]"
                 :to="itemHover.to"
               >
                 <a
