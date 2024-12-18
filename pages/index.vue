@@ -11,17 +11,6 @@
         </p>
         <HomeInterest />
         <HomeTHEService >
-          <p
-            class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px]"
-          >
-            Dịch vụ của THE
-          </p>
-          <p
-            class="text-[16px] w-[42%] text-[#868689] font-medium leading-[24px] mt-[14px] max-size-lg:w-full max-size-lg:text-center"
-          >
-            Dịch vụ ổn định và tiết kiệm chi phí,được nhiều khách hàng tin tưởng
-            và đánh giá cao
-          </p>
         </HomeTHEService>
         <HomeCreateOrderToday />
         <HomeOurPartners />
