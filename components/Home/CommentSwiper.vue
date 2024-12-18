@@ -1,6 +1,6 @@
 <script setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Autoplay } from "swiper/modules";
+import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/swiper-bundle.css";
 const items = [
   {
@@ -62,10 +62,24 @@ const onSlideChange = (swiper) => {
   // console.log('slide change', )
   indexActive.value = swiper.realIndex;
 };
+const pagination = {
+  //   clickable: true,
+  //   renderBullet: function (index, className) {
+  //     return ` <div
+  //           class="bg-black min-w-[40px] h-[6px] cursor-pointer ${className}}"
+  //         ></div>`;
+  //   },
+};
 </script>
-
+<style>
+.comment .swiper-pagination {
+  display: flex;
+  top: 100%;
+  height: fit-content;
+}
+</style>
 <template>
-  <BaseLayout class="">
+  <BaseLayout class="comment">
     <div
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
@@ -80,13 +94,19 @@ const onSlideChange = (swiper) => {
           />
         </div>
         <Swiper
-          class="mySwiper !overflow-x-hidden"
+          class="mySwiper relative"
           :loop="true"
           slides-per-view="1"
           :space-between="24"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
-          :modules="[Autoplay]"
+          :modules="[Autoplay, Pagination, Navigation]"
+          :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false,
+          }"
+          :pagination="pagination"
+          @click="() => swiperInstance.slideTo(index)"
         >
           <SwiperSlide v-for="item in items">
             <div class="flex flex-col gap-4 xl:px-10">
@@ -131,7 +151,11 @@ const onSlideChange = (swiper) => {
             'bg-slate-300 min-w-[40px] h-[6px] cursor-pointer': true,
             '!bg-[#0066FF]': indexActive === index,
           }"
-          @click="() => swiperInstance.slideTo(index + 1)"
+          @click="
+            () => {
+              swiperInstance.slideToLoop(index);
+            }
+          "
         ></div>
       </div>
     </div>
