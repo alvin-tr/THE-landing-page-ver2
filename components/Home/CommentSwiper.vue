@@ -131,9 +131,8 @@ const onSlideChange = (swiper) => {
             'bg-slate-300 min-w-[40px] h-[6px] cursor-pointer': true,
             '!bg-[#0066FF]': indexActive === index,
           }"
-          @click="() => swiperInstance.slideTo(index)"
-        >
-        </div>
+          @click="() => swiperInstance.slideTo(index + 1)"
+        ></div>
       </div>
     </div>
   </BaseLayout>
