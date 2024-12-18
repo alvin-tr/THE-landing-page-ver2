@@ -1,6 +1,7 @@
 <template>
   <div class="w-full relative">
     <!-- <Header /> -->
+     <UNotifications />
     <NuxtPage />
     <Footer />
     <!-- button -->
@@ -14,7 +15,9 @@
             >
               <UIcon
                 name="tabler:arrow-narrow-up"
-                class="text-[#1E1F24] text-[30px] font-[100] group-hover:text-white"
+                class="text-[#1E1F24] text-[30px] font-[100] group-hover:text-white
+                max-size-lg:text-[20px]
+                "
               />
             </UButton>
           </div>

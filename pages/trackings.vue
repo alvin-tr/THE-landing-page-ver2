@@ -208,11 +208,16 @@
                       <div class="py-4">
                         <div class="grid grid-cols-6">
                           <div
-                            class="grid size-2xl:grid-cols-6 size-sm:grid-cols-3 size-lg:gap-3 gap-2 size-xl:col-span-3 size-lg:col-span-4 col-span-6"
-                          >
+                            class="grid col-span-6 
+                            size-2xl:grid-cols-6 
+                            size-xl:col-span-3
+                            size-lg:gap-3 gap-2 size-lg:col-span-4
+                            size-sm:grid-cols-3
+                            ">
+                          <!-- Copy Link -->
                             <button
                               @click="copyLink"
-                              class="sm:col-span-1 2xl:col-span-2 bg-[#0066FF] mt-3 rounded-[12px] flex text-white flex-row justify-center items-center px-[14px] py-[10px] gap-[8px]"
+                              class="bg-[#0066FF] size-2xl:col-span-2 mt-3 rounded-[12px] flex text-white flex-row justify-center items-center px-[12px] py-[6px] gap-[8px]"
                             >
                               Copy Link
                               <UIcon
@@ -220,16 +225,18 @@
                                 class="text-[15px] text-white"
                               />
                             </button>
+                            <!-- Copy Detail -->
                             <button
                               @click="copyDetail(shipment)"
-                              class="sm:col-span-1 size-2xl:col-span-2 text-black bg-[#F2F3F5] mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center px-[14px] py-[10px] gap-[8px] box-border"
+                              class="size-2xl:col-span-2 text-black bg-[#F2F3F5] mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center px-[12px] py-[6px] gap-[8px] box-border"
                             >
                               Copy Detail
                               <img src="/old/copy-detail.svg" />
                             </button>
+                            <!-- More Info -->
                             <button
                               @click="convertTime"
-                              class="text-black size-sm:col-span-1 size-2xl:col-span-2 bg-white mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center px-[14px] py-[10px] gap-[8px] box-border"
+                              class="text-black size-sm:col-span-1 size-2xl:col-span-2 bg-white mt-3 border border-[#D3D8E5] rounded-[12px] flex flex-row justify-center px-[12px] py-[6px] gap-[8px] box-border"
                             >
                               More Info
                             </button>
@@ -263,7 +270,12 @@
 import axios from 'axios'
 import { onMounted, watch } from 'vue'
 import HeaderTracking from '../components/HeaderTracking.vue'
+
+
 const config = useRuntimeConfig()
+const toast = useToast()
+
+
 function sortEventsByCreatedAtDescending(events) {
   return events.sort((a, b) => new Date(b.ship_time) - new Date(a.ship_time))
 }
@@ -362,6 +374,30 @@ watch(
   },
   { immediate: true }
 )
+
+const copyLink = async () => {
+  console.log('12122');
+  try {
+    const fullPath = window.location.origin + router.currentRoute.value.fullPath
+
+    await navigator.clipboard.writeText(fullPath);
+
+    toast.add({
+      title: 'Success',
+      description: 'Link copied to clipboard!',
+      color: 'blue',
+    });
+  } catch (err) {
+    console.error('Failed to copy: ', err);
+
+    toast.add({
+      title: 'Error',
+      description: 'Failed to copy link. Please try again.',
+      color: 'red',
+    });
+  }
+};
+
 const copyDetail = async (shipment) => {
   console.log(shipment)
   try {
@@ -384,19 +420,20 @@ const copyDetail = async (shipment) => {
       contentCopied += `${time} ${locationContent}\n`
     })
     await navigator.clipboard.writeText(contentCopied.trim())
+
+    toast.add({
+      title: 'Success',
+      description: 'All events copied to clipboard!',
+      color: 'blue',
+    });
     // alert('All events copied to clipboard!')
   } catch (error) {
-    alert('error')
-  }
-}
-
-const copyLink = async () => {
-  try {
-    const fullPath = window.location.origin + router.currentRoute.value.fullPath
-    await navigator.clipboard.writeText(fullPath)
-    // alert('Link copied to clipboard: ' + fullPath)
-  } catch (err) {
-    console.error('Failed to copy: ', err)
+    // alert('error')
+    toast.add({
+      title: 'Error',
+      description: 'Failed to copy link. Please try again.',
+      color: 'red',
+    });
   }
 }
 
