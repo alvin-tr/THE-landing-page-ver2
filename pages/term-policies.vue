@@ -1,7 +1,7 @@
 <template>
-    <div class="relative">
+    <div >
         <HeaderWhite class="fixed top-0 w-full" v-model="isOpenListTitle"/>
-    <TermAndPoliciesTitle />
+    <TermAndPoliciesTitle class="mt-[64px]"/>
     <TermAndPoliciesBody class="bg-[#F2F3F5] flex "/>
     <USlideover v-model="isOpenListTitle">
       <UCard

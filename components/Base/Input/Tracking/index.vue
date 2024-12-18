@@ -3,7 +3,7 @@
     class="relative w-full resize-none bg-[#394154] border-0 p-[12px] rounded-[6px] flex flex-wrap gap-x-2 gap-y-2 items-center"
   >
      
-  <p class="absolute text-[#FFFFFF80] top-[10px] pt-2 pl-1" v-if="!model.length && !inputValue ">{{ placeholder }}</p>
+  <p class="absolute text-[#FFFFFF80] top-[10px] pt-2 pl-0" v-if="!model.length && !inputValue ">{{ placeholder }}</p>
     <template v-if="model?.length">
       <div
         v-for="(item, index) in model"

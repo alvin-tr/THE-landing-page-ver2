@@ -24,7 +24,7 @@
           <div class="mt-[56px] flex flex-row w-full justify-between h-fit">
             <!-- list of contents -->
             <div
-              class="flex flex-col w-[20%] max-size-lg:w-[30%] max-size-md:hidden sticky top-[220px] h-fit"
+              class="flex flex-col w-[20%] sticky top-[220px] h-fit max-size-lg:w-[30%] max-size-md:hidden"
             >
               <p
                 v-for="(content, index) in listOfContents"
@@ -43,7 +43,9 @@
             </div>
             <!-- content -->
             <div
-              class="flex flex-col w-[75%] overflow-y-auto max-size-lg:w-[60%] max-size-md:w-full max-size-md:items-center"
+              class="flex flex-col w-[75%] overflow-y-auto 
+              max-size-lg:w-[60%] 
+              max-size-md:w-full max-size-md:items-center"
               @scroll="handleScroll"
             >
               <div
@@ -133,178 +135,186 @@
 </template>
 
 <script setup>
-import { onMounted } from "vue";
+import { onMounted } from 'vue'
 
-const router = useRouter();
+const router = useRouter()
 
-const currentElementRef = ref();
+const currentElementRef = ref()
 
 const listOfContents = [
-  "Chuyển phát tiết kiệm",
-  "Chuyển phát Tốc độ",
-  "Chuyển phát Đặc biệt",
-  "Chuyển phát Tikok US",
-  "Chuyển phát hàng FBA",
-];
+  'Chuyển phát tiết kiệm',
+  'Chuyển phát Tốc độ',
+  'Chuyển phát Đặc biệt',
+  'Chuyển phát Tikok US',
+  'Chuyển phát hàng FBA',
+]
 const services = [
   {
-    image: "/img/economyDelivery.svg",
-    title: "Chuyển phát tiết kiệm",
+    image: '/img/economyDelivery.svg',
+    title: 'Chuyển phát tiết kiệm',
     description:
-      "Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp",
-    to: "/international-express",
+      'Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp',
+    to: '/international-express',
     criteria: [
       {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian",
-        description: "7-10 ngày",
+        icon: '/icon/watchIcon.svg',
+        title: 'Thời gian',
+        description: '7-10 ngày',
       },
       {
-        icon: "/icon/dollarIcon.svg",
-        title: "Chi phí",
-        description: "Từ $5.1",
+        icon: '/icon/dollarIcon.svg',
+        title: 'Chi phí',
+        description: 'Từ $5.1',
       },
       {
-        icon: "/icon/mapIcon.svg",
-        title: "Theo dõi hành trình",
-        description: "Minh bạch từng địa điểm",
+        icon: '/icon/mapIcon.svg',
+        title: 'Theo dõi hành trình',
+        description: 'Minh bạch từng địa điểm',
       },
     ],
   },
   {
-    image: "/img/speedDelivery.svg",
-    title: "Chuyển phát Tốc độ",
+    image: '/img/speedDelivery.svg',
+    title: 'Chuyển phát Tốc độ',
     description:
-      "Dịch vụ ưu tiên giao hàng thần tốc, đúng hẹn trên từng chặng đường",
-    to: "/international-express",
+      'Dịch vụ ưu tiên giao hàng thần tốc, đúng hẹn trên từng chặng đường',
+    to: '/international-express',
     criteria: [
       {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian",
-        description: "5-8 ngày",
+        icon: '/icon/watchIcon.svg',
+        title: 'Thời gian',
+        description: '5-8 ngày',
       },
       {
-        icon: "/icon/dollarIcon.svg",
-        title: "Chi phí",
-        description: "Từ $6.1",
+        icon: '/icon/dollarIcon.svg',
+        title: 'Chi phí',
+        description: 'Từ $6.1',
       },
       {
-        icon: "/icon/mapIcon.svg",
-        title: "Theo dõi hành trình",
-        description: "Minh bạch từng địa điểm",
+        icon: '/icon/mapIcon.svg',
+        title: 'Theo dõi hành trình',
+        description: 'Minh bạch từng địa điểm',
       },
     ],
   },
   {
-    image: "/img/specialDelivery.svg",
-    title: "Chuyển phát Đặc biệt",
+    image: '/img/specialDelivery.svg',
+    title: 'Chuyển phát Đặc biệt',
     description:
-      "Giải pháp vận chuyển cho hàng hóa kích thước lớn (chiều dài trên 55cm), sản phẩm khó (mỹ phẩm, sản phẩm chứa pin, nam châm..)",
-    to: "/international-express",
+      'Giải pháp vận chuyển cho hàng hóa kích thước lớn (chiều dài trên 55cm), sản phẩm khó (mỹ phẩm, sản phẩm chứa pin, nam châm..)',
+    to: '/international-express',
     criteria: [
       {
-        icon: "/icon/boxIcon.svg",
-        title: "Chất lượng",
-        description: "An toàn & Đảm bảo",
+        icon: '/icon/boxIcon.svg',
+        title: 'Chất lượng',
+        description: 'An toàn & Đảm bảo',
       },
       {
-        icon: "/icon/dollarIcon.svg",
-        title: "Chi phí",
-        description: "Tiết kiệm & nhanh chóng",
+        icon: '/icon/dollarIcon.svg',
+        title: 'Chi phí',
+        description: 'Tiết kiệm & nhanh chóng',
       },
       {
-        icon: "/icon/mapIcon.svg",
-        title: "Theo dõi hành trình",
-        description: "Minh bạch từng địa điểm",
+        icon: '/icon/mapIcon.svg',
+        title: 'Theo dõi hành trình',
+        description: 'Minh bạch từng địa điểm',
       },
     ],
   },
   {
-    image: "/img/tiktokUSDelivery.svg",
-    title: "Chuyển phát Tikok US",
+    image: '/img/tiktokUSDelivery.svg',
+    title: 'Chuyển phát Tikok US',
     description:
-      "Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp",
-    to: "/tiktok-express",
+      'Dịch vụ vận chuyển tiết kiệm, tối ưu chi phí, phù hợp với những đơn hàng không yêu cầu giao gấp',
+    to: '/tiktok-express',
     criteria: [
       {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian",
-        description: "6-9 ngày",
+        icon: '/icon/watchIcon.svg',
+        title: 'Thời gian',
+        description: '6-9 ngày',
       },
       {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian kích hoạt in-transit",
-        description: "Đảm bảo theo SLA TiktokUS: 24-48h",
+        icon: '/icon/watchIcon.svg',
+        title: 'Thời gian kích hoạt in-transit',
+        description: 'Đảm bảo theo SLA TiktokUS: 24-48h',
       },
       {
-        icon: "/icon/dollarIcon.svg",
-        title: "Chi phí",
-        description: "Từ $5.7",
+        icon: '/icon/dollarIcon.svg',
+        title: 'Chi phí',
+        description: 'Từ $5.7',
       },
       {
-        icon: "/icon/boxIcon.svg",
-        title: "Đơn hàng",
-        description: "Mọi kích cỡ và khối lượng",
+        icon: '/icon/boxIcon.svg',
+        title: 'Đơn hàng',
+        description: 'Mọi kích cỡ và khối lượng',
       },
     ],
   },
   {
-    image: "/img/FBADelivery.svg",
-    title: "Chuyển phát Tikok US",
+    image: '/img/FBADelivery.svg',
+    title: 'Chuyển phát Tikok US',
     description:
-      "Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.",
-    to: "/fba-express",
+      'Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.',
+    to: '/fba-express',
     criteria: [
       {
-        icon: "/icon/watchIcon.svg",
-        title: "Thời gian",
-        description: "3-7 ngày",
+        icon: '/icon/watchIcon.svg',
+        title: 'Thời gian',
+        description: '3-7 ngày',
       },
       {
-        icon: "/icon/mapIcon.svg",
-        title: "Theo dõi hành trình",
-        description: "Minh bạch từng địa điểm",
+        icon: '/icon/mapIcon.svg',
+        title: 'Theo dõi hành trình',
+        description: 'Minh bạch từng địa điểm',
       },
       {
-        icon: "/icon/dollarIcon.svg",
-        title: "Chi phí",
-        description: "Từ $39/kg",
+        icon: '/icon/dollarIcon.svg',
+        title: 'Chi phí',
+        description: 'Từ $39/kg',
       },
       {
-        icon: "/icon/documentIcon.svg",
-        title: "Bảng chỉ báo kho FBA",
-        description: "Giúp nhà bán hàng theo dõi kế hoạch ghép đơn đi FBA",
+        icon: '/icon/documentIcon.svg',
+        title: 'Bảng chỉ báo kho FBA',
+        description: 'Giúp nhà bán hàng theo dõi kế hoạch ghép đơn đi FBA',
       },
     ],
   },
-];
-onMounted(() => {});
-const selectedService = ref(0);
+]
+onMounted(() => {
+  handleScroll();
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
+const selectedService = ref(0)
+
 const scrollToService = (index) => {
-  const target = document.getElementById(`service-${index}`);
+  const target = document.getElementById(`service-${index}`)
   if (target) {
-    target.scrollIntoView({ behavior: "smooth", block: "center" });
-    selectedService.value = index;
+    target.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    selectedService.value = index
   }
-};
+}
 
 const handleScroll = () => {
-  const offsets = services.map((_, index) => {
-    const element = document.getElementById(`service-${index}`);
-    if (element) {
-      return element.getBoundingClientRect().top;
-    }
-    return Number.MAX_VALUE;
-  });
+  const serviceElements = services.map((_, index) =>
+    document.getElementById(`service-${index}`)
+  )
 
-  // Tìm phần tử gần nhất
-  const closestIndex = offsets.findIndex(
-    (offset) => offset >= 0 && offset < window.innerHeight / 2
-  );
-  if (closestIndex !== -1) {
-    selectedService.value = closestIndex;
+  for (let i = 0; i < serviceElements.length; i++) {
+    const element = serviceElements[i]
+    if (element) {
+      const rect = element.getBoundingClientRect()
+      // Kiểm tra nếu phần tử này đang trong viewport (top và bottom)
+      if (rect.top >= 0 && rect.top <= window.innerHeight / 2) {
+        selectedService.value = i
+        break
+      }
+    }
   }
-};
+}
 </script>
 
 <style scoped>

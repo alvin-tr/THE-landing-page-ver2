@@ -23,7 +23,7 @@
         <span :class="{ 'mr-3': true, [ui.key]: ui.key }"
           >{{ question.key }}.</span
         >
-        <span :class="{ [ui.title]: ui.title }">{{ question.title }}</span>
+        <span :class="{ [ui.title]: ui.title ,'!text-[#0066FF]':currentQuestion===question.key}">{{ question.title }}</span>
      
         <div
           v-if="question.children?.length"
