@@ -13,7 +13,7 @@
             tabChangeCostEstimate === 0 ? 'text-white' : 'text-[#FFFFFF80]'
           "
         >
-          {{ $t('home.estimatingPrice') }}
+          {{ $t("home.estimatingPrice") }}
         </p>
         <div
           :class="
@@ -185,7 +185,7 @@
               :loading="isLoading"
               type="submit"
               class="bg-[#0066FF] hover:bg-[#0066FF] font-medium px-[30px] py-[12px] :disabled: w-[150px] flex justify-center"
-              >{{ isLoading ? '' : 'Tính giá' }}</UButton
+              >{{ isLoading ? "" : "Tính giá" }}</UButton
             >
           </div>
         </div>
@@ -217,7 +217,7 @@
             $router.push({
               path: '/trackings',
               query: { trackings: allTrackings },
-            })
+            });
           }
         "
       >
@@ -247,8 +247,8 @@
             type="button"
             @click="
               () => {
-                trackings = []
-                inputValue = ''
+                trackings = [];
+                inputValue = '';
               }
             "
           >
@@ -270,76 +270,76 @@
 </template>
 
 <script setup>
-import axios from 'axios'
-import * as Yup from 'yup'
-const isLoading = ref(false)
+import axios from "axios";
+import * as Yup from "yup";
+const isLoading = ref(false);
 
-const config = useRuntimeConfig()
-const url = config.app.api.baseURL
-const inputValue = ref('')
-const tabChangeCostEstimate = ref(0)
-const trackings = ref([])
-const errorMessage = ref([])
-const price = ref(0.0)
+const config = useRuntimeConfig();
+const url = config.app.api.baseURL;
+const inputValue = ref("");
+const tabChangeCostEstimate = ref(0);
+const trackings = ref([]);
+const errorMessage = ref([]);
+const price = ref(0.0);
 const allTrackings = computed(() => {
-  const current = [...trackings.value]
-  if (inputValue.value) current.push(inputValue.value)
-  return current
-})
+  const current = [...trackings.value];
+  if (inputValue.value) current.push(inputValue.value);
+  return Array.from(new Set(current));
+});
 const productInfo = reactive({
   weight: 0,
   width: 0,
   length: 0,
   height: 0,
-})
+});
 
 const schemaPriceEstimate = Yup.object().shape({
   weight: Yup.number()
-    .typeError('Trọng lượng là bắt buộc')
-    .min(1, 'Trọng lượng là bắt buộc')
-    .max(19949.99, 'Trọng lượng không được vượt quá 19949.99 gram')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Trọng lượng là bắt buộc")
+    .min(1, "Trọng lượng là bắt buộc")
+    .max(19949.99, "Trọng lượng không được vượt quá 19949.99 gram")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   width: Yup.number()
-    .typeError('Chiều rộng là bắt buộc')
-    .min(1, 'Chiều rộng là bắt buộc')
-    .max(243, 'Chiều rộng không được vượt quá 243 cm')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Chiều rộng là bắt buộc")
+    .min(1, "Chiều rộng là bắt buộc")
+    .max(243, "Chiều rộng không được vượt quá 243 cm")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   height: Yup.number()
-    .typeError('Chiều cao là bắt buộc')
-    .max(243, 'Chiều cao không được vượt quá 243 cm')
-    .min(1, 'Chiều cao là bắt buộc')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Chiều cao là bắt buộc")
+    .max(243, "Chiều cao không được vượt quá 243 cm")
+    .min(1, "Chiều cao là bắt buộc")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
   length: Yup.number()
-    .typeError('Chiều cao là bắt buộc')
-    .max(243, 'Chiều dài không được vượt quá 243 cm')
-    .min(1, 'Chiều dài là bắt buộc')
-    .test('is-decimal', 'Chỉ cho phép tối đa 2 số sau dấu thập phân', (value) =>
+    .typeError("Chiều cao là bắt buộc")
+    .max(243, "Chiều dài không được vượt quá 243 cm")
+    .min(1, "Chiều dài là bắt buộc")
+    .test("is-decimal", "Chỉ cho phép tối đa 2 số sau dấu thập phân", (value) =>
       /^\d+(\.\d{1,2})?$/.test(value.toString())
     ),
-})
+});
 
 async function onSubmitPrice() {
   try {
-    errorMessage.value = []
-    isLoading.value = true
+    errorMessage.value = [];
+    isLoading.value = true;
 
     const response = await axios.post(
-      url + '/customer/services/price',
+      url + "/customer/services/price",
       productInfo
-    )
-    price.value = response.data.price
-    errorMessage = []
+    );
+    price.value = response.data.price;
+    errorMessage = [];
   } catch (err) {
-    errorMessage.value = err.response.data.messages
-    price.value = 0.0
+    errorMessage.value = err.response.data.messages;
+    price.value = 0.0;
   } finally {
-    isLoading.value = false
+    isLoading.value = false;
   }
 }
 </script>

@@ -7,7 +7,7 @@
       <div class="flex flex-row items-center">
         <!-- img -->
         <div
-          class="my-[14px] ml-[80px] max-size-xs:ml-[10px] max-size-lg:ml-[30px]"
+          class="my-[14px] ml-[80px] max-size-xs:ml-[10px] max-size-lg:ml-[30px] cursor-pointer"
           @click="
             () => {
               $router.push('/')

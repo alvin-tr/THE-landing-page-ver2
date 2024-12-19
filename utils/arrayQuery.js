@@ -132,3 +132,5 @@ class ArrayQuery {
       .reduce((current, key) => (current ? current[key] : undefined), obj);
   }
 }
+
+export default new ArrayQuery();

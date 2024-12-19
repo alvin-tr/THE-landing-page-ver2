@@ -2,8 +2,12 @@
   <div
     class="relative w-full resize-none bg-[#394154] border-0 p-[12px] rounded-[6px] flex flex-wrap gap-x-2 gap-y-2 items-center"
   >
-     
-  <p class="absolute text-[#FFFFFF80] top-[10px] pt-2 pl-0" v-if="!model.length && !inputValue ">{{ placeholder }}</p>
+    <p
+      class="absolute text-[#FFFFFF80] top-[10px] pt-2 pl-0"
+      v-if="!model.length && !inputValue"
+    >
+      {{ placeholder }}
+    </p>
     <template v-if="model?.length">
       <div
         v-for="(item, index) in model"
@@ -26,17 +30,26 @@
       @keydown="
         (e) => {
           if (e.code === BACKSPACE_CODE && !e.target.value && model?.length) {
-            removeItem(model.length - 1)
-            e.preventDefault()
-            return
+            removeItem(model.length - 1);
+            e.preventDefault();
+            return;
           }
 
-          if (e.code !== SPACE_CODE) return
-          e.preventDefault()
-          if (!e.target.value) return
-          inputValue = ''
-          if (Array.isArray(model)) return model.push(e.target.value)
-          model = [e.target.value]
+          if (e.code !== SPACE_CODE) return;
+
+          e.preventDefault();
+          if (model.includes(e.target.value)) {
+            toast.add({
+              title: 'Thất bại',
+              description: 'Mã tracking trùng nhau',
+              color: 'red',
+            });
+            return;
+          }
+          if (!e.target.value) return;
+          inputValue = '';
+          if (Array.isArray(model)) return model.push(e.target.value);
+          model = [e.target.value];
         }
       "
     />
@@ -44,30 +57,30 @@
 </template>
 
 <script setup lang="ts">
-const SPACE_CODE = 'Space'
-const BACKSPACE_CODE = 'Backspace'
-const ENTER_CODE = 'Enter'
-
+const SPACE_CODE = "Space";
+const BACKSPACE_CODE = "Backspace";
+const ENTER_CODE = "Enter";
+const toast = useToast();
 interface IProps {
-  placeholder: string
+  placeholder: string;
 }
 interface IEmit {
-  submit: string
+  submit: string;
 }
-defineEmits()
-defineProps<IProps>()
-const model = defineModel<any[]>()
+defineEmits();
+defineProps<IProps>();
+const model = defineModel<any[]>();
 
-const inputValue = defineModel<string>('inputValue')
+const inputValue = defineModel<string>("inputValue");
 const removeItem = (index: number) => {
   // Mutate the array
-  model.value.splice(index, 1)
+  model.value.splice(index, 1);
 
   // Reassign to ensure reactivity
-  model.value = [...model.value]
-}
+  model.value = [...model.value];
+};
 </script>
 
 <style scoped>
-@import '@/assets/css/oldStyle.css';
+@import "@/assets/css/oldStyle.css";
 </style>

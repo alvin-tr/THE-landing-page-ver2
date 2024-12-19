@@ -41,7 +41,7 @@ const interestItem = [
 
 <template>
   <BaseLayout>
-    <div class="px-[100px] 
+    <div class="px-[100px]
     max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]">
       <div
         class=" w-full flex flex-col items-center justify-center max-size-pro:mt-[50px]"

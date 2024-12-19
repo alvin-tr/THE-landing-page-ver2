@@ -15,7 +15,7 @@
       <div class="w-full flex justify-end">
         <div
           @click="closeModal"
-          class="bg-[#EDEEF0] rounded-[4px] w-[28px] h-[28px] flex items-center justify-center"
+          class="bg-[#EDEEF0] rounded-[4px] w-[28px] h-[28px] flex items-center justify-center cursor-pointer"
         >
           <UIcon name="ri:close-line" class="text-black" />
         </div>
