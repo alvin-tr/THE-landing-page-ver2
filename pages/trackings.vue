@@ -338,7 +338,19 @@ watch(
     invalidTrackings.value = [];
     try {
       isLoading.value = true;
-      if (!ids || !ids.length) return;
+      if (!ids || !ids.length) {
+        tabsStatus.value = [
+          // { key: "pending", label: "Pending", shipments: [] },
+          { key: "pre-transit", label: "Pre-transit", shipments: [] },
+          { key: "in-transit", label: "In-Transit", shipments: [] },
+          { key: "delivered", label: "Delivered", shipments: [] },
+          { key: "canceled", label: "Canceled", shipments: [] },
+          { key: "expired", label: "Expired", shipments: [] },
+          { key: "archived", label: "Archived", shipments: [] },
+          { key: "undelivered", label: "Undelivered", shipments: [] },
+        ];
+        return;
+      }
       const response = await axios.post(url + "/shipment/packages/logs", {
         codes: ids,
       });
@@ -403,7 +415,6 @@ const copyLink = async () => {
       color: "blue",
     });
   } catch (err) {
-    console.error("Failed to copy: ", err);
     toast.add({
       title: "Error",
       description: "Failed to copy link. Please try again.",
