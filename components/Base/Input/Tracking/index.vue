@@ -40,8 +40,8 @@
           e.preventDefault();
           if (model.includes(e.target.value)) {
             toast.add({
-              title: 'Thất bại',
-              description: 'Mã tracking trùng nhau',
+              title: 'Lỗi',
+              description: 'Mã tracking đã tồn tại',
               color: 'red',
             });
             return;

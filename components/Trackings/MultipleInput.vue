@@ -19,7 +19,8 @@
           :class="{
             'flex items-center px-3 py-2': true,
             'bg-[#F5F5FA]': index % 2 == 0,
-            invalid: invalidTrackings.includes(input),
+            invalid:
+              invalidTrackings.includes(input) || isDuplicate(input, inputs),
           }"
         >
           <span
@@ -45,7 +46,12 @@
               noSpace: true,
             }"
             :id="`input-${id}-${index}`"
-            @keydown.enter.prevent="addNewInput(index)"
+            @keydown.enter.prevent="
+              () => {
+                if (hasDuplicateTrackings()) return;
+                addNewInput(index);
+              }
+            "
             @keydown.up.prevent="() => focusInput(index - 1)"
             @keydown.down.prevent="() => focusInput(index + 1)"
             @keydown.delete="(e) => handleDelete(e, index)"
@@ -124,6 +130,8 @@ const invalidTrackings = defineModel("invalid-trackings", {
   default: [],
 });
 
+const toast = useToast();
+
 const inputs = ref(getCurrentTrackingsFromQuery());
 const removeInput = (index) => {
   if (inputs.value.length === 1) {
@@ -163,6 +171,7 @@ const addNewInput = (index) => {
 };
 
 const trackNumbers = () => {
+  if (hasDuplicateTrackings()) return;
   router.push({
     query: {
       trackings: Array.from(new Set([...inputs.value])),
@@ -175,6 +184,17 @@ const removeAll = () => {
   nextTick(() => {
     focusInput(0);
   });
+};
+const hasDuplicateTrackings = () => {
+  if (!hasDuplicates(inputs.value)) return false;
+
+  toast.add({
+    title: "Lỗi",
+    description: "Mã tracking đã tồn tại",
+    color: "red",
+  });
+
+  return true;
 };
 watch(
   () => [...inputs.value],

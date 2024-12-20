@@ -12,7 +12,7 @@
           class="my-[14px] ml-[80px] max-size-xs:ml-[10px] max-size-lg:ml-[30px] cursor-pointer"
           @click="
             () => {
-              $router.push('/')
+              $router.push('/');
             }
           "
         >
@@ -158,7 +158,7 @@
             class="hidden bg-[#0066FF] items-center justify-center px-[14px] py-[10px] mr-[32px] rounded-[6px] max-size-lg:flex relative max-size-pro:px-[10px] max-size-pro:mr-[10px]"
             @click="
               () => {
-                toggleIsVisible()
+                toggleIsVisible();
               }
             "
           >
@@ -174,7 +174,9 @@
             class="bg-white rounded-[6px] shadow-xl shadow-[#37373777] absolute top-[55px] right-[230px] w-[314px] p-[10px] z-50 max-size-pro:right-[50px]"
             v-show="isVisibleSearchTracking"
           >
-            <TrackingsMultipleInput />
+            <TrackingsMultipleInput
+              v-model:invalid-trackings="invalidTrackings"
+            />
           </div>
         </div>
         <!-- sign in / sign up -->
@@ -202,7 +204,7 @@
         <div
           @click="
             () => {
-              toggleIsVisibleSignin()
+              toggleIsVisibleSignin();
             }
           "
           class="hidden rounded-[6px] max-size-pro:flex max-size-pro:items-center max-size-pro:justify-center bg-[#F2F3F5] px-[12px] py-[10px]"
@@ -217,21 +219,23 @@
             :ui="{
               width: 'w-screen max-w-[300px]',
               overlay: {
-                background: 'bg-[#82828299]'
-              }
+                background: 'bg-[#82828299]',
+              },
             }"
           >
-            <div class=" flex-1  ">
-              <div class="flex flex-row items-center justify-between p-[5px] bg-[#0510632a]">
+            <div class="flex-1">
+              <div
+                class="flex flex-row items-center justify-between p-[5px] bg-[#0510632a]"
+              >
                 <p class="text-[#051063] ml-[10px]">THEHUMAN express</p>
-              <UButton
-                color="gray"
-                variant="ghost"
-                icon="i-heroicons-x-mark-20-solid"
-                square
-                padded
-                @click="isVisibleSignIn = false"
-              />
+                <UButton
+                  color="gray"
+                  variant="ghost"
+                  icon="i-heroicons-x-mark-20-solid"
+                  square
+                  padded
+                  @click="isVisibleSignIn = false"
+                />
               </div>
               <div>
                 <ul class="px-[20px] list-disc">
@@ -252,76 +256,79 @@
 </template>
 
 <script setup lang="ts">
-const { locale, locales, setLocale } = useI18n()
-const router = useRouter()
+import { inject } from "vue";
 
-const isVisibleSearchTracking = ref(false)
-const isVisibleSignIn = ref(false)
+const { locale, locales, setLocale } = useI18n();
+const router = useRouter();
+
+const isVisibleSearchTracking = ref(false);
+const isVisibleSignIn = ref(false);
 
 const toggleIsVisible = () => {
-  isVisibleSearchTracking.value = !isVisibleSearchTracking.value
-}
+  isVisibleSearchTracking.value = !isVisibleSearchTracking.value;
+};
 
 const toggleIsVisibleSignin = () => {
-  isVisibleSignIn.value = !isVisibleSignIn.value
-}
+  isVisibleSignIn.value = !isVisibleSignIn.value;
+};
 
+const invalidTrackings = inject("invalidTrackings");
 const hoverAboutTHE = [
   {
-    icon: '/icon/hoverAboutTHE/warning-hoverAboutTHE.svg',
-    title: 'Giới thiệu về THE',
-    to: '/about',
+    icon: "/icon/hoverAboutTHE/warning-hoverAboutTHE.svg",
+    title: "Giới thiệu về THE",
+    to: "/about",
   },
   {
-    icon: '/icon/hoverAboutTHE/headphone-hoverAboutTHE.svg',
-    title: 'Liên hệ',
-    to: '',
+    icon: "/icon/hoverAboutTHE/headphone-hoverAboutTHE.svg",
+    title: "Liên hệ",
+    to: "",
   },
   {
-    icon: '/icon/hoverAboutTHE/user-hoverAboutTHE.svg',
-    title: 'Tuyển dụng',
-    to: '',
+    icon: "/icon/hoverAboutTHE/user-hoverAboutTHE.svg",
+    title: "Tuyển dụng",
+    to: "",
   },
-]
+];
 const hoverService = [
   {
-    img: '/icon/hoverServiceHeader/internationalExpress.svg',
-    title: 'Chuyển phát quốc tế',
-    description: 'Dịch vụ chuyển phát nhanh quốc tế đáp ứng mọi nhu cầu.',
-    to: '/international-express',
+    img: "/icon/hoverServiceHeader/internationalExpress.svg",
+    title: "Chuyển phát quốc tế",
+    description: "Dịch vụ chuyển phát nhanh quốc tế đáp ứng mọi nhu cầu.",
+    to: "/international-express",
   },
   {
-    img: '/icon/hoverServiceHeader/tiktokExpress.svg',
-    title: 'Chuyển phát Tiktok US',
+    img: "/icon/hoverServiceHeader/tiktokExpress.svg",
+    title: "Chuyển phát Tiktok US",
     description:
-      'Dịch vụ vận chuyển chuyên biệt dành cho các seller Tiktok US.',
-    to: '/tiktok-express',
+      "Dịch vụ vận chuyển chuyên biệt dành cho các seller Tiktok US.",
+    to: "/tiktok-express",
   },
   {
-    img: '/icon/hoverServiceHeader/fbaExpress.svg',
-    title: 'Chuyển phát hàng FBA',
+    img: "/icon/hoverServiceHeader/fbaExpress.svg",
+    title: "Chuyển phát hàng FBA",
     description:
-      'Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.',
-    to: '/fba-express',
+      "Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.",
+    to: "/fba-express",
   },
-]
+];
 const hoverSupport = [
   {
-    icon: '/icon/hoverSupportHeader/document-hoverSupport.svg',
-    title: 'Điều khoản & chính sách',
-    to: '/term-policies',
+    icon: "/icon/hoverSupportHeader/document-hoverSupport.svg",
+    title: "Điều khoản & chính sách",
+    to: "/term-policies",
   },
   {
-    icon: '/icon/hoverSupportHeader/pencil-hoverSupport.svg',
-    title: 'Hướng dẫn sử dụng',
-    to: 'https://thehuman.larksuite.com/wiki/Q6dFwt5e3iAJ7tkuZznuIX2qsOf?fromScene=spaceOverview',
+    icon: "/icon/hoverSupportHeader/pencil-hoverSupport.svg",
+    title: "Hướng dẫn sử dụng",
+    to: "https://thehuman.larksuite.com/wiki/Q6dFwt5e3iAJ7tkuZznuIX2qsOf?fromScene=spaceOverview",
   },
   {
-    icon: '/icon/hoverSupportHeader/swap-hoverSupport.svg',
-    title: 'Kết nối API',
-    to: 'https://docs.thehuman.express/',
+    icon: "/icon/hoverSupportHeader/swap-hoverSupport.svg",
+    title: "Kết nối API",
+    to: "https://docs.thehuman.express/",
   },
-]
+];
 </script>
 
 <style lang="scss" scoped></style>

@@ -268,13 +268,14 @@
 
 <script setup>
 import axios from "axios";
-import { onMounted, watch } from "vue";
+import { onMounted, provide, watch } from "vue";
 import HeaderTracking from "../components/HeaderTracking.vue";
 
 const config = useRuntimeConfig();
 const toast = useToast();
 
 const invalidTrackings = ref([]);
+provide("invalidTrackings", invalidTrackings);
 function sortEventsByCreatedAtDescending(events) {
   return events.sort((a, b) => new Date(b.ship_time) - new Date(a.ship_time));
 }
