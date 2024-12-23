@@ -1,9 +1,20 @@
 <template>
   <div
-    class="max-w-[844px] py-10 px-5 max-size-lg:py-0 max-size-pro:px-0"
-  >
+    class=" w-full py-10 px-5 
+    max-size-lg:py-0
+    max-size-md:px-[35px] 
+    max-size-sm:px-[10px]
+    max-size-sm1:max-w-[580px]
+    max-size-pro:px-0
+    ">
     <!--1. Các thuật ngữ -->
-    <section id="section-1">
+    <section id="section-1" 
+    class="
+    max-size-md:px-[20px] 
+    max-size-sm:px-[30px] 
+    max-size-sm1:px-[10px] 
+    max-size-pro:px-0
+    ">
       <h1 class="text-[30px] font-medium leading-[40px] mb-6 text-black">
         <span class="text-[#0066FF] mr-[12px]">1.</span> Các thuật ngữ
       </h1>
@@ -14,7 +25,12 @@
       </ul>
     </section>
     <!--2. Chính sách hoàn tiền của THE -->
-    <section id="section-2" class="mt-[40px]">
+    <section 
+    id="section-2" 
+    class="mt-[40px] 
+     max-size-sm:px-[30px] max-size-sm1:px-[10px]
+    max-size-md:px-[20px] 
+    ">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">2.</span> Chính sách hoàn tiền
         của THE
@@ -504,7 +520,11 @@
       </ul>
     </section>
     <!--3. Quy định về khiếu nại -->
-    <section id="section-3" class="mt-[40px]">
+    <section id="section-3" 
+    class="mt-[40px] 
+ max-size-sm:px-[30px] max-size-sm1:px-[10px]
+max-size-md:px-[20px]
+    ">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">3.</span> Quy định về khiếu nại
       </h1>
@@ -535,7 +555,11 @@
       </p>
     </section>
     <!-- 4. Các Quy định khác -->
-    <section id="section-4" class="mt-[40px]">
+    <section id="section-4" 
+    class="mt-[40px] 
+     max-size-sm:px-[30px] max-size-sm1:px-[10px]
+    max-size-md:px-[20px]
+    ">
       <h1  class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">4.</span>Các Quy định khác
       </h1>
@@ -557,7 +581,11 @@
       </p>
     </section>
     <!-- 5. Hàng hóa hạn chế hoặc không nhận vận chuyển -->
-    <section id="section-5" class="mt-[40px]">
+    <section id="section-5" 
+    class="mt-[40px] 
+     max-size-sm:px-[30px] max-size-sm1:px-[10px]
+    max-size-md:px-[20px]
+    ">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">5.</span>Hàng hóa hạn chế hoặc
         không nhận vận chuyển
@@ -683,12 +711,10 @@ const nonShippingGoods = [
         "C.O.D. (Trả tiền khi giao hàng).",
         "Các lô hàng có xuất xứ từ bất kỳ quốc gia nào theo giấy phép kiểm soát xuất khẩu quân sự."
       ]
-
-
-      
 </script>
 
 <style scoped>
+
 .custom-bullet li {
   position: relative;
   padding-left: 23px;

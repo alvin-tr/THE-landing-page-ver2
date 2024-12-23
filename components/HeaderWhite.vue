@@ -1,8 +1,8 @@
 <template>
-  <header class="flex items-center justify-center group bg-[#ffffff] z-50">
-    <div
-      class="w-full max-w-[1440px] h-[64px] flex flex-row items-center justify-between"
-    >
+  <header class="flex w-full items-center justify-center group bg-[#ffffff] z-50">
+    <div 
+      class="w-full max-w-[1440px] h-[64px] flex flex-row items-center justify-between
+      ">
       <!-- left -->
       <div class="flex flex-row items-center">
         <!-- img -->
@@ -25,8 +25,9 @@
         >
           <!-- Về THE -->
           <span
-            class="text-[14px] p-[10px] leading-[20px] font-medium text-[#1E1F24] cursor-pointer relative group/aboutTHE transition duration-500 hover:text-[#0066FF]"
-          >
+            class="text-[14px] p-[10px] leading-[20px] font-medium text-[#1E1F24] cursor-pointer relative group/aboutTHE transition duration-500 hover:text-[#0066FF]
+            max-size-lg1:hidden
+            ">
             Về THE
             <!-- hover -->
             <div
@@ -53,8 +54,9 @@
           </span>
           <!-- Dịch vụ -->
           <div
-            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#1E1F24] ml-[80px] cursor-pointer relative group/service transition duration-200 hover:text-[#0066FF] max-size-lg:ml-[50px]"
-          >
+            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#1E1F24] ml-[80px] cursor-pointer relative group/service transition duration-200 hover:text-[#0066FF] max-size-lg:ml-[50px]
+            max-size-lg1:hidden
+            ">
             Dịch vụ
             <!-- hover -->
             <div
@@ -85,8 +87,9 @@
           </div>
           <!-- Hỗ trợ -->
           <span
-            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#1E1F24] ml-[80px] cursor-pointer relative group/support transition duration-200 hover:text-[#0066FF] max-size-lg:ml-[50px]"
-          >
+            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#1E1F24] ml-[80px] cursor-pointer relative group/support transition duration-200 hover:text-[#0066FF] max-size-lg:ml-[50px]
+            max-size-lg1:hidden
+            ">
             Hỗ trợ
             <!-- hover -->
             <div
@@ -121,8 +124,11 @@
       </div>
       <!-- right -->
       <div
-        class="flex flex-row px-[100px] items-center max-size-lg:px-[30px] max-size-pro:px-[10px] max-size-xs:px-[10px]"
-      >
+        class="flex flex-row px-[100px] items-center 
+        max-size-lg:px-[30px]
+        max-size-pro:px-[10px] 
+        max-size-xs:px-[10px]
+        ">
         <!-- EN | VN -->
         <!-- <div class="mr-[24px] max-size-xs:hidden">
           <span class="text-white">
@@ -137,7 +143,11 @@
         </div> -->
         <!-- phone -->
         <a
-          class="flex flex-row px-[14px] py-[10px] bg-[#0066FF] rounded-[6px] items-center justify-center mr-[24px] max-size-pro:hidden max-size-xs:hidden"
+          class="flex flex-row px-[14px] py-[10px] bg-[#0066FF] rounded-[6px] items-center justify-center mr-[24px] 
+          max-size-sm1:hidden
+          max-size-pro:hidden 
+          max-size-xs:hidden
+          "
           href="tel:0974877007"
         >
           <UIcon

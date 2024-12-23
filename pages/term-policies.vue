@@ -1,6 +1,6 @@
 <template>
     <div >
-        <HeaderWhite class="fixed top-0 w-full" v-model="isOpenListTitle"/>
+        <HeaderWhite class="fixed top-0 left-0 right-0"  v-model="isOpenListTitle"/>
     <TermAndPoliciesTitle class="mt-[64px]"/>
     <TermAndPoliciesBody class="bg-[#F2F3F5] flex "/>
     <USlideover v-model="isOpenListTitle">

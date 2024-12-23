@@ -2,16 +2,18 @@
   <div class="flex items-center justify-center bg-[#F7F8FA]">
     <div class="px-[100px] max-w-[1440px] w-full flex flex-col bg-[#F7F8FA] pt-[40px] pb-[22px] 
     max-size-lg:px-[50px]
-    max-size-md:px-[10px]
+    max-size-md:px-[20px]
     ">
     <img src="/img/footer/logoFooter.svg" class="w-[212px]" />
       <!-- body -->
       <div class="flex flex-row justify-between
-      max-size-md:gap-1 max-size-md:flex-wrap max-size-md:justify-evenly
+      max-size-lg:flex-col
+      max-size-md:gap-1 max-size-md:flex-wrap max-size-md:justify-evenly 
       max-size-pro:flex-col
       ">
-        <!-- 1 -->
+        <!-- information -->
         <div class="flex flex-col w-[25%] mt-[30px]
+        max-size-lg:w-full max-size-lg:mt-0
         max-size-md:w-[40%]
         max-size-pro:w-full
         ">
@@ -28,6 +30,7 @@
           </div>
           <!-- email -->
           <div class="flex flex-row items-center mt-[30px] cursor-pointer
+          max-size-lg:mt-[15px]
           max-size-pro:mt-[10px] 
           ">
             <img src="/img/footer/mailFooter.svg" class="w-[24px]" />
@@ -39,6 +42,7 @@
           </div>
           <!-- phone -->
           <div class="flex flex-row items-center mt-[30px] cursor-pointer
+          max-size-lg:mt-[15px]
           max-size-pro:mt-[10px]
           ">
             <img src="/img/footer/phoneFooter.svg" class="w-[24px]" />
@@ -50,6 +54,7 @@
           </div>
           <!-- social -->
           <div class="flex flex-row items-center mt-[36px]
+          max-size-lg:mt-[15px]
           max-size-pro:mt-[10px]
           ">
           <a href="https://zalo.me/0974877007">
@@ -73,7 +78,11 @@
           </div>
         </div>
         <!-- dịch vụ -->
-        <div class="flex flex-col ml-[112px] mt-[70px] w-[25%]
+        <div 
+        class="flex"
+        >
+          <div class="flex flex-col ml-[112px] mt-[70px] w-[25%]
+        max-size-lg:mt-[50px] max-size-lg:ml-0
         max-size-md:w-[40%] max-size-md:ml-0
         max-size-pro:w-full max-size-pro:mt-[30px]
         ">
@@ -110,6 +119,7 @@
         </div>
         <!-- hỗ trợ -->
         <div class="flex flex-col ml-[112px] mt-[70px] w-[25%]
+        max-size-lg:mt-[50px] max-size-lg:ml-0
         max-size-md:w-[40%] max-size-md:ml-0
         max-size-pro:mt-[30px]
         ">
@@ -140,25 +150,29 @@
             >Kết nối API</a
           >
         </div>
+        </div>
         <!-- button -->
         <div class="flex flex-col mt-[70px] w-[25%]
-        max-size-lg:justify-end
-        max-size-md:w-[40%]
+        max-size-lg:justify-end max-size-lg:mt-0 max-size-lg:ml-0  max-size-lg:w-full
+        max-size-md:w-full
         max-size-pro:w-full max-size-pro:mt-0
         ">
           
           <div class="flex flex-row mt-[104px] w-full justify-end
-          max-size-md:mt-[50px]
+          max-size-lg:mt-0
+          max-size-md:mt-0
           max-size-pro:mt-[30px]
           ">
             <a
-              class="px-[14px] py-[12px] w-[128px] rounded-[4px] bg-white text-[#1E1F24] flex items-center justify-center"
+              class="px-[14px] py-[12px] w-[128px] rounded-[4px] bg-white text-[#1E1F24] flex items-center justify-center
+              "
               href="https://app.thehuman.express/sign-up"
             >
               Đăng ký
             </a>
             <a
-              class="px-[14px] py-[12px] w-[128px] rounded-[4px] bg-[#0066FF] text-white ml-[12px] flex items-center justify-center"
+              class="px-[14px] py-[12px] w-[128px] rounded-[4px] bg-[#0066FF] text-white ml-[12px] flex items-center justify-center
+              "
               href="https://app.thehuman.express/sign-in"
             >
               Đăng nhập
