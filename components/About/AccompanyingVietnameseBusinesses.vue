@@ -1,9 +1,10 @@
 <template>
-  <BaseLayout>
+  <BaseLayout class="overflow-visible">
     <div class="flex flex-row justify-center py-[64px] relative">
       <!-- 1: Phần văn bản -->
       <div class="w-[45%] mt-[200px]
         max-size-lg:mt-[100px]
+        max-size-pro:mt-[50px]
       ">
         <p class="text-[60px] leading-[82px] font-semibold text-[#1E1F24]">
           Đồng hành cùng doanh nghiệp Việt

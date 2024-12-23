@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full max-w-[1440px] mx-auto bg-[#F7F8FA]">
+    <div class="w-full max-w-[1440px] mx-auto bg-[#F7F8FA] overflow-hidden">
       <slot></slot>
     </div>
 </template>

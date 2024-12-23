@@ -5,12 +5,12 @@
     <NuxtPage />
     <Footer />
     <!-- button -->
-        <div class="flex flex-col mt-[70px] w-[25%] fixed bottom-[30px] right-[30px]
+        <div class="flex flex-col mt-[70px] w-[25%] fixed bottom-[30px] right-[30px] z-50
         ">
           <div class="flex items-center justify-end">
             <UButton
             @click="scrollToTop"
-              class="p-[20px]  rounded-[50px] bg-white items-center justify-center group"
+              class="p-[20px]  rounded-[50px] bg-white items-center justify-center group shadow"
               color="blue"
             >
               <UIcon

@@ -23,7 +23,7 @@
                       <div 
                       v-for="itemExpress in CustomerExperienceItem"
                       class="flex flex-col mb-[66px] max-size-pro:justify-center max-size-pro:items-center max-size-pro:px-[10px]">
-                          <div class="flex flex-row">
+                          <div class="flex flex-row w-full">
                               <img :src="itemExpress.icon" class="w-[26px]">
                               <p class="text-[20px] text-[#1E1F24] leading-[32px] font-semibold ml-[12px]">{{ itemExpress.title }}</p>
                           </div>

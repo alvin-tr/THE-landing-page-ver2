@@ -167,6 +167,15 @@
             >
           </div>
         </div>
+        <div
+          class="ml-[20px] items-center hidden max-size-lg:flex"
+          @click="isOpenMenu = true"
+        >
+          <UIcon
+            name="material-symbols:menu-rounded"
+            class="text-white text-[25px]"
+          />
+        </div>
       </div>
     </div>
   </header>
@@ -234,7 +243,7 @@ const hoverSupport = [
   },
 ]
 
-
+const isOpenMenu = defineModel<boolean>()
 </script>
 
 <style lang="scss" scoped></style>

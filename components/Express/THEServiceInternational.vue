@@ -4,14 +4,18 @@
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
       <div
-        class="px-[60px] w-full max-h-[914px] overflow-hidden rounded-[12px] mt-[100px] max-size-lg:px-[15px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
-      >
+        class="px-[60px] w-full max-h-[914px] overflow-hidden rounded-[12px] mt-[100px] 
+        max-size-lg:px-[15px] 
+        max-size-md:px-[50px] 
+        max-size-sm:px-[20px] 
+        max-size-pro:px-[10px] max-size-pro:mt-0
+        " >
         <div class="w-full flex flex-col max-size-lg:items-center">
           <slot></slot>
           <!--  -->
           <div class="mt-[56px] flex flex-row w-full justify-between">
             <!-- list of contents -->
-            <div class="flex flex-col w-[20%] max-size-lg:w-[30%]">
+            <div class="flex flex-col w-[20%] max-size-lg:w-[30%] max-size-pro:hidden">
               <p
                 v-for="(content, index) in listOfContents"
                 :key="index"
@@ -29,7 +33,12 @@
             </div>
             <!-- content -->
             <div
-              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto max-size-lg:w-[60%] max-size-md:w-[70%] max-size-sm:w-[65%]"
+              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto 
+              max-size-lg:w-[60%]
+              max-size-md:w-[70%]
+              max-size-sm:w-[65%]
+              max-size-pro:w-full
+              "
                @scroll="handleScroll"
               >
               <div
@@ -37,18 +46,21 @@
                 class="flex flex-row mb-[65px] max-size-lg:flex-col max-size-md:ml-[30px] max-size-pro:ml-0"
                 :id="`service-${index}`"
                 :key="index"
-               
               >
                 <!-- img -->
                 <img
                   :src="item.image"
                   alt="economyDelivery"
-                  class="min-w-[476px] bg-cover bg-center max-size-md:min-w-[350px] max-size-md:max-w-[200px] max-size-pro:min-w-[150px] max-size-pro:max-w-[230px] max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"
+                  class=" bg-cover bg-center 
+                  max-size-md:w-full 
+                  max-size-pro:w-full
+                  max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"
                 />
                 <!-- content -->
                 <div
-                  class="flex flex-col ml-[48px] max-size-lg:ml-0 max-size-md:mt-[20px]"
-                >
+                  class="flex flex-col ml-[48px] 
+                  max-size-lg:ml-0 max-size-md:mt-[20px]
+                  ">
                   <p
                     class="text-[32px] text-[#1E1F24] leading-[44px] font-medium"
                   >
