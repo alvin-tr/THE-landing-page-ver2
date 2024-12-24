@@ -29,12 +29,14 @@
             [ui.key]: ui.key,
             '!text-[#0066FF]': currentQuestion === question.key,
           }"
+          @click=""
           >{{ question.key }}.</span
         >
         <span
           :class="{
             [ui.title]: ui.title,
             '!text-[#0066FF]': currentQuestion === question.key,
+            
           }"
           >{{ question.title }}</span
         >
@@ -61,6 +63,7 @@
         :questions="question.children"
         :ui="question.ui"
         v-model="currentQuestion"
+        :to="question.to"
         :parent="question"
       />
     </li>
@@ -78,6 +81,7 @@ interface IQuestion {
   title: string;
   key: string;
   children: IQuestion[];
+  to:string;
   ui?: IUi;
   handleClick?: Function;
 }

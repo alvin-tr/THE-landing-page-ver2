@@ -1,11 +1,10 @@
 <template>
   <header class="w-full flex items-center justify-center hover:bg-white transition duration-500 group">
     <div
-      class="w-full max-w-[1440px] h-[64px] bg-[#1310] flex flex-row items-center justify-between 
-      
+      class="w-full max-w-[1440px] h-[64px] bg-[#1310] flex flex-row items-center justify-between
       ">
       <!-- 1 -->
-      <div class="flex flex-row items-center">
+      <div class="flex flex-row items-center ">
         <!-- img -->
         <div
           class="my-[14px] ml-[80px] max-size-xs:ml-[10px] max-size-lg:ml-[30px] cursor-pointer"
@@ -19,7 +18,7 @@
         </div>
         <!-- option -->
         <div
-          class="flex flex-row justify-between ml-[109px] max-size-lg:ml-[30px] max-size-md:hidden max-size-xs:hidden"
+          class="flex flex-row justify-between ml-[109px] max-size-lg:ml-[30px] max-size-lg1:hidden "
         >
           <!-- Về THE -->
           <div
@@ -141,9 +140,7 @@
         <!-- phone -->
         <span
           class="flex flex-row px-[14px] py-[10px] bg-white rounded-[6px] items-center justify-center mr-[24px]
-          group-hover:bg-[#0066FF] transition duration-500
-          max-size-pro:hidden 
-          max-size-xs:hidden"
+          group-hover:bg-[#0066FF] transition duration-500"
         >
           <UIcon
             name="mingcute:phone-line"
@@ -152,7 +149,7 @@
           <p class="text-[#1E1F24] leading-[20px] font-medium group-hover:text-white transition duration-500">0974877007</p>
         </span>
         <!-- sign in / sign up -->
-        <div class="flex flex-row items-center justify-center">
+        <div class="flex flex-row items-center justify-center max-size-lg1:hidden">
           <UIcon
             name="mingcute:user-4-line"
             class="mr-[4px] text-[20px] text-white group-hover:text-[#0066FF] transition duration-500"
@@ -168,12 +165,12 @@
           </div>
         </div>
         <div
-          class="ml-[20px] items-center hidden max-size-lg:flex"
+          class="ml-[20px] items-center hidden max-size-lg1:flex"
           @click="isOpenMenu = true"
         >
           <UIcon
             name="material-symbols:menu-rounded"
-            class="text-white text-[25px]"
+            class="text-white text-[25px] group-hover:text-[#000000]"
           />
         </div>
       </div>

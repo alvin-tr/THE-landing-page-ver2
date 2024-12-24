@@ -51,7 +51,7 @@
                 <img
                   :src="item.image"
                   alt="economyDelivery"
-                  class=" bg-cover bg-center 
+                  class="bg-cover bg-center 
                   max-size-md:w-full 
                   max-size-pro:w-full
                   max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"

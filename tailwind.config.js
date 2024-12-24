@@ -4,7 +4,7 @@ module.exports = {
             'size-2xl': '2560px',
             'size-xl': '1441px',
             'size-lg': '1025px',
-            'size-lg1': '897px',
+            'size-lg1': '890px',
             'size-md': '769px',
             'size-md1': '700px',
             'size-sm': '641px',

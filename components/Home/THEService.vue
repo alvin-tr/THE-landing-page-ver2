@@ -9,7 +9,7 @@
         <div class="w-full flex flex-col max-size-lg:items-center">
           <div class="sticky top-0 bg-white z-30">
             <p
-              class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px]"
+              class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px] max-size-pro:text-center"
             >
               Dịch vụ của THE
             </p>
@@ -58,7 +58,10 @@
                 <img
                   :src="item.image"
                   alt="economyDelivery"
-                  class="min-w-[476px] bg-cover bg-center max-size-md:min-w-[350px] max-size-md:max-w-[200px] max-size-pro:min-w-[150px] max-size-pro:max-w-[230px] max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"
+                  class="mbg-cover bg-center 
+                  max-size-md:w-full 
+                  max-size-pro:w-full
+                  max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"
                 />
                 <!-- content -->
                 <div
