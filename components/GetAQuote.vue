@@ -148,13 +148,13 @@ const state = reactive({
 const schema = $yup.object({
   full_name: $yup
     .string()
-    .required('Họ tên là bắt buộc')
+    .required('Tên là bắt buộc')
     .max(30, 'Tối đa 30 ký tự')
-    .matches(/^[A-Za-z0-9]+$/, 'Chỉ cho phép nhập chữ và số không chứa khoảng trắng'),
+    .matches(/^[A-Za-z0-9]+$/, 'Chỉ chấp nhận chữ và số'),
   email: $yup
     .string()
     .required('Email là bắt buộc')
-    .email('Email không hợp lệ'),
+    .email('Email không đúng định dạng'),
   phone_number: $yup
     .string()
     .matches(
@@ -162,7 +162,7 @@ const schema = $yup.object({
       'Trường này phải là số điện thoại'
     )
     .required('Số điện thoại là bắt buộc')
-    .min(10, 'Số điện thoại phải là 10 số'),
+    .min(10, 'Số điện thoại không hợp lệ'),
 })
 const isLoading = ref(false)
 

@@ -30,6 +30,7 @@
     class="mt-[40px] 
      max-size-sm:px-[30px] max-size-sm1:px-[10px]
     max-size-md:px-[20px] 
+    max-size-pro:px-0
     ">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">2.</span> Chính sách hoàn tiền
@@ -524,6 +525,7 @@
     class="mt-[40px] 
  max-size-sm:px-[30px] max-size-sm1:px-[10px]
 max-size-md:px-[20px]
+max-size-pro:px-0
     ">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">3.</span> Quy định về khiếu nại
@@ -559,6 +561,7 @@ max-size-md:px-[20px]
     class="mt-[40px] 
      max-size-sm:px-[30px] max-size-sm1:px-[10px]
     max-size-md:px-[20px]
+    max-size-pro:px-0
     ">
       <h1  class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">4.</span>Các Quy định khác
@@ -585,6 +588,7 @@ max-size-md:px-[20px]
     class="mt-[40px] 
      max-size-sm:px-[30px] max-size-sm1:px-[10px]
     max-size-md:px-[20px]
+    max-size-pro:px-0
     ">
       <h1 class="text-[30px] font-medium leading-[40px] text-black">
         <span class="text-[#0066FF] mr-[12px]">5.</span>Hàng hóa hạn chế hoặc
