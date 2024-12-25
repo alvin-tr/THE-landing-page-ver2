@@ -4,10 +4,12 @@
   >
     <!-- 1button title -->
     <div
-      class="flex flex-row border-b-[2px] border-[#FFFFFF80] px-[52px] max-size-sm:px-[20px] max-size-xs:px-0"
-    >
+      class="flex flex-row border-b-[2px] border-[#FFFFFF80] px-[52px] 
+      max-size-sm:px-[20px]
+      max-size-pro:px-0
+      ">
       <!-- 1 -->
-      <div @click="tabChangeCostEstimate = 0" class="px-[14px] cursor-pointer">
+      <div @click="tabChangeCostEstimate = 0" class="px-[14px] cursor-pointer ">
         <p
           :class="
             tabChangeCostEstimate === 0 ? 'text-white' : 'text-[#FFFFFF80]'

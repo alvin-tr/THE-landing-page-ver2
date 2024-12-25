@@ -1,17 +1,24 @@
 <template>
   <HomeGlobalMarketEstimate class="relative">
-    <Header class="absolute top-0" v-model="isOpenMenu" />
+    <Header
+        class="fixed top-0 z-50 transition-colors duration-300 hover:bg-white"
+        :class="{ 'bg-black': isScrolled, 'bg-transparent': !isScrolled }"
+        v-model="isOpenMenu"
+      />
   </HomeGlobalMarketEstimate>
   <div class="w-full flex flex-col items-center bg-[#F7F8FA]">
     <p
-      class="text-[40px] w-[60%] text-center mt-[100px] text-[#1E1F24] font-medium leading-[60px] tracking-[-0.8px] max-md 
+      class="text-[40px] w-[60%] text-center mt-[100px] text-[#1E1F24] font-medium leading-[60px] tracking-[-0.8px] max-md
+      max-size-md1:mt-[50px] max-size-md1:w-[90%]
+      max-size-md:text-center
       max-size-pro:text-[30px] max-size-pro:w-full max-size-pro:leading-[40px] max-size-pro:mt-[30px]
-      max-size-md:text-center"
-    >
+      max-size-sm1:text-[30px] max-size-sm1:leading-[35px]
+      max-size-s:text-[25px] max-size-s:leading-[30px] max-size-s:w-[90%]
+      ">
       Dịch vụ vận chuyển quốc tế hàng đầu cho doanh nghiệp Việt
     </p>
     <HomeInterest />
-    <HomeTHEService> </HomeTHEService>
+    <HomeTHEService/>
     <HomeCreateOrderToday />
     <HomeOurPartners />
     <HomeCommentSwiper />
@@ -84,6 +91,27 @@
 
 <script setup>
 const isOpenMenu = ref(false)
+const isScrolled = ref(false);
+
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50;
+};
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 </script>
 
-<style lang="scss" scoped></style>
+<style scoped>
+.bg-black {
+  background-color: rgba(59, 59, 59, 0.629);
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+</style>

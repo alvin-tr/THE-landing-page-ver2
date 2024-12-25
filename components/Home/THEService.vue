@@ -4,12 +4,17 @@
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
       <div
-        class="px-[60px] w-full bg-white rounded-[12px] mt-[100px] max-size-lg:px-[15px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px] max-size-pro:mt-0"
-      >
+        class="px-[60px] w-full bg-white rounded-[12px] mt-[100px]
+        
+        max-size-lg:px-[15px] 
+        max-size-md:px-[50px] 
+        max-size-sm:px-[20px] 
+        max-size-pro:px-[10px] max-size-pro:mt-0
+        ">
         <div class="w-full flex flex-col max-size-lg:items-center">
           <div class="sticky top-0 bg-white z-30">
             <p
-              class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px] max-size-pro:text-center"
+              class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px] max-size-lg:text-center max-size-pro:text-center"
             >
               Dịch vụ của THE
             </p>
@@ -50,7 +55,11 @@
             >
               <div
                 v-for="(item, index) in services"
-                class="flex flex-row mb-[65px] max-size-lg:flex-col max-size-md:ml-[30px] max-size-md:justify-center max-size-md:items-center max-size-pro:ml-0"
+                class="flex flex-row mb-[65px]
+                max-size-xl05:flex-col
+                max-size-md:ml-[30px] max-size-md:justify-center max-size-md:items-center 
+                max-size-pro:ml-0
+                "
                 :id="`service-${index}`"
                 :key="index"
               >
@@ -59,14 +68,19 @@
                   :src="item.image"
                   alt="economyDelivery"
                   class="mbg-cover bg-center 
+                  max-size-xl05:w-[50%]
                   max-size-md:w-full 
                   max-size-pro:w-full
-                  max-size-xs:min-w-[100px] max-size-xs:max-w-[210px]"
+                  max-size-xs:w-full"
                 />
                 <!-- content -->
                 <div
-                  class="flex flex-col ml-[48px] max-size-lg:ml-0 max-size-lg:mt-[20px] max-size-md:mt-[20px]"
-                >
+                  class="flex flex-col ml-[48px]
+                  max-size-xl05:ml-0 max-size-xl05:mt-[20px]
+                  max-size-lg:ml-0 
+                  max-size-lg:mt-[20px] 
+                  max-size-md:mt-[20px]
+                  ">
                   <p
                     class="text-[32px] text-[#1E1F24] leading-[44px] font-medium max-size-md:text-center"
                   >

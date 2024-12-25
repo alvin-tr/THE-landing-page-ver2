@@ -60,8 +60,11 @@ const interestItem = [
         <div
           v-for="(item, index) in interestItem"
           :key="index"
-          class="flex flex-col items-center text-center rounded-lg p-6 w-[31%] max-size-md:w-[40%] max-size-pro:w-full"
-        >
+          class="flex flex-col items-center text-center rounded-lg p-6 w-[31%] 
+          max-size-lg:w-[45%] max-size-lg:p-0
+          max-size-md:w-[40%] 
+          max-size-pro:w-full
+          "  >
           <video
             :src="item.icon"
             autoplay

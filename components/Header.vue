@@ -7,7 +7,11 @@
       <div class="flex flex-row items-center ">
         <!-- img -->
         <div
-          class="my-[14px] ml-[80px] max-size-xs:ml-[10px] max-size-lg:ml-[30px] cursor-pointer"
+          class="my-[14px] ml-[80px] cursor-pointer
+          max-size-xl1:ml-[30px]
+          max-size-lg:ml-[30px]
+          max-size-xs:ml-[10px] 
+          "
           @click="(() => {
             $router.push('/')
           })"
@@ -18,8 +22,12 @@
         </div>
         <!-- option -->
         <div
-          class="flex flex-row justify-between ml-[109px] max-size-lg:ml-[30px] max-size-lg1:hidden "
-        >
+          class="flex flex-row justify-between ml-[109px]
+          max-size-xl1:ml-[50px]
+          max-size-lg:ml-[30px] 
+          max-size-lg1:hidden 
+          
+          ">
           <!-- Về THE -->
           <div
             class="text-[14px] p-[10px] leading-[20px] font-medium text-[#FFFFFF99] cursor-pointer relative group/aboutTHE
@@ -57,15 +65,18 @@
             class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative 
             group/service transition duration-500
             group-hover:text-[#1E1F24]
-            max-size-lg:ml-[50px]"
-          >
+            max-size-xl1:ml-[30px]
+            max-size-lg:ml-[50px]
+            ">
             Dịch vụ
             <!-- hover -->
             <div
               class="group-hover/service:flex hidden absolute top-[10px] w-full h-[50px]"
             >
               <div
-                class="hidden absolute top-[40px] right-[-700px] group-hover/service:flex flex-row bg-white rounded-[8px] max-size-lg:right-[-615px]"
+                class="hidden absolute top-[40px] right-[-700px] group-hover/service:flex flex-row bg-white rounded-[8px] 
+                max-size-xl1:right-[-600px]
+                max-size-lg:right-[-615px]"
               >
                 <a
                   :href="itemService.to"
@@ -92,6 +103,7 @@
             class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative 
             group/support transition duration-500
             group-hover:text-[#1E1F24]
+            max-size-xl1:ml-[30px]
             max-size-lg:ml-[50px]"
           >
             Hỗ trợ
@@ -128,8 +140,12 @@
       </div>
       <!-- right -->
       <div
-        class="flex flex-row px-[100px] items-center max-size-lg:px-[30px] max-size-pro:px-[10px] max-size-xs:px-[10px]"
-      >
+        class="flex flex-row px-[100px] items-center 
+        max-size-xl1:px-[30px]
+        max-size-lg:px-[30px] 
+        max-size-pro:px-[10px] 
+        max-size-xs:px-[10px]
+        ">
         <!-- EN | VN -->
         <!-- <div class="mr-[24px] max-size-xs:hidden">
           <span class="text-white">

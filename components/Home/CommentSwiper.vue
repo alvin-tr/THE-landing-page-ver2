@@ -84,8 +84,12 @@ const pagination = {
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
       <div class="mt-[72px] flex items-center max-w-[1024px] mx-auto">
+        <!-- prev -->
         <div
-          class="size-[60px] gap-2 min-w-[60px] rounded-full bg-white flex items-center justify-center sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px cursor-pointer"
+          class="w-[60px] h-[60px] min-w-[60px] rounded-full bg-[#3737] flex items-center justify-center cursor-pointer
+          max-size-2xl:size-[60px]
+          max-size-pro:min-w-[40px] max-size-pro:h-[40px]
+          "
           @click="handlePrev"
         >
           <UIcon
@@ -134,8 +138,11 @@ const pagination = {
             </div>
           </SwiperSlide>
         </Swiper>
+        <!-- next -->
         <div
-          class="size-[60px] min-w-[60px] rounded-full bg-white flex items-center justify-center sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px cursor-pointer"
+          class="size-[60px] min-w-[60px] rounded-full bg-white flex items-center justify-center cursor-pointer
+          max-size-pro:min-w-[40px] max-size-pro:h-[40px]
+          "
           @click="handleNext"
         >
           <UIcon

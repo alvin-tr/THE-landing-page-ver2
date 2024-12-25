@@ -89,20 +89,26 @@ onMounted(() => {
         >
           <template #prev="{ onClick, disabled }">
             <div
-              class="absolute right-full w-[60px] h-[60px] p-[5px] mx-[30px] bg-white flex items-center justify-center rounded-[50px] sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px cursor-pointer"
+              class="absolute right-full w-[60px] h-[60px] p-[5px] mx-[30px] bg-white flex items-center justify-center rounded-[50px] cursor-pointer
+              max-size-pro:w-[40px] max-size-pro:h-[40px] max-size-pro:mx-[10px]
+              
+              "
               :disabled="disabled"
               @click="handlePrev"
             >
-              <UIcon name="mingcute:arrow-left-line" class="text-[#333333cf] text-[25px]"/>
+              <UIcon name="mingcute:arrow-left-line" class="text-[#333333cf] text-[25px] max-size-pro:text-[15px]"/>
             </div>
           </template>
           <template #next="{ onClick, disabled }">
             <div
-              class="absolute left-full w-[60px] h-[60px] p-[5px] mx-[30px] bg-white flex items-center justify-center rounded-[50px] sm:w-[120px] sm:h-[120px] screen490:w-[80px] screen490:h-80px cursor-pointer"
+              class="absolute left-full w-[60px] h-[60px] p-[5px] mx-[30px] bg-white flex items-center justify-center rounded-[50px] cursor-pointer
+              max-size-pro:w-[40px] max-size-pro:h-[40px] max-size-pro:mx-[10px]
+              
+              "
               :disabled="disabled"
               @click="handleNext"
             >
-              <UIcon name="mingcute:arrow-right-line" class="text-[#333333cf] text-[25px]"/>
+              <UIcon name="mingcute:arrow-right-line" class="text-[#333333cf] text-[25px] max-size-pro:text-[15px]"/>
             </div>
           </template>
           <template #default="{ item }">

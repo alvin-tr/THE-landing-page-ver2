@@ -1,13 +1,17 @@
 <template>
   <BaseLayout ref="currentElementRef">
     <div
-      class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
-    >
+      class="px-[100px] 
+      max-size-md:px-[50px]
+      max-size-md1:px-[30px]
+      max-size-sm:px-[20px] 
+      max-size-pro:px-[10px]
+      ">
       <div
         class="px-[60px] w-full max-h-[914px] overflow-hidden rounded-[12px] mt-[100px] 
         max-size-lg:px-[15px] 
-        max-size-md:px-[50px] 
-        max-size-sm:px-[20px] 
+        max-size-md:px-0
+        max-size-sm:px-0 max-size-sm:mt-[30px]
         max-size-pro:px-[10px] max-size-pro:mt-0
         " >
         <div class="w-full flex flex-col max-size-lg:items-center">
@@ -97,8 +101,8 @@
                     </div>
                     <button @click="(() => {
                      openModalGetAQuote = true
-                    })" class="w-[60%] mt-[30px]">
-                      <div class="bg-[#0066FF] px-[30px] py-[14px] flex flex-row rounded-[6px] items-center justify-center">
+                    })" class="w-[60%] mt-[30px] max-size-pro:w-full max-size-sm1:w-full">
+                      <div class="bg-[#0066FF] px-[30px] py-[14px] flex flex-row rounded-[6px] items-center justify-center ">
                         <p class="text-[16px] text-white">Nhận báo giá</p>
                         <UIcon name="mingcute:arrow-right-line" class="text-white text-[20px] ml-[5px]"/>
                       </div>
