@@ -13,4 +13,4 @@ ARG MODE
 EXPOSE 3000
 
 RUN npm run build-${MODE}
-CMD [ "npm", "run", "start" ]
+CMD [ "node", ".output/server/index.mjs"]
