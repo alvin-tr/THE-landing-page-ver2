@@ -1,0 +1,31 @@
+replicaCount: 1
+
+app:
+  namespace: humanbay-ui
+  name: shipment-landingpage-ui-v2
+  port: 80
+  target_port: 3000
+  env: prod
+  image_pull_policy: IfNotPresent
+  type: web-ui
+  mem_limit: 0
+  mem_required: 0
+  cpu_limit: 0
+  cpu_required: 0
+  storage_limit: 0
+  storage_required: 0
+  tolerations:
+    effect: NoSchedule
+    operator: Equal
+    key: type
+    value: lionbay
+
+image:
+  name: 975050053941.dkr.ecr.ap-southeast-1.amazonaws.com/shipment-landingpage-ui-v2
+  tag: latest
+
+# only set for internet exposed api like api-gateway or tracking.
+# for other app, leave it as is
+service:
+  type:
+  nodePort: 0
