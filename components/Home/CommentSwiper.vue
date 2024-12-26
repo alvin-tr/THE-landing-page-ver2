@@ -86,7 +86,7 @@ const pagination = {
       <div class="mt-[72px] flex items-center max-w-[1024px] mx-auto">
         <!-- prev -->
         <div
-          class="w-[60px] h-[60px] min-w-[60px] rounded-full bg-[#3737] flex items-center justify-center cursor-pointer
+          class="w-[60px] h-[60px] min-w-[60px] rounded-full bg-white flex items-center justify-center cursor-pointer
           max-size-2xl:size-[60px]
           max-size-pro:min-w-[40px] max-size-pro:h-[40px]
           "

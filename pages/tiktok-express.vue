@@ -1,7 +1,7 @@
 <template>
     <div class="bg-[#F7F8FA]">
         <HomeGlobalMarketEstimate>
-            <Header/>
+            <Header class="fixed top-0 z-50 "/>
         </HomeGlobalMarketEstimate>
         <ExpressOptimalShippingServiceForSellers
         topic="Chuyển phát Tiktok Shop US"

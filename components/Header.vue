@@ -1,25 +1,23 @@
 <template>
-  <header class="w-full flex items-center justify-center hover:bg-white transition duration-500 group">
+  <header class="w-full flex items-center justify-center bg-[#00000082] hover:bg-white transition duration-500 group">
     <div
-      class="w-full max-w-[1440px] h-[64px] bg-[#1310] flex flex-row items-center justify-between
+      class="w-full max-w-[1440px] h-[64px] flex flex-row items-center justify-between
       ">
       <!-- 1 -->
-      <div class="flex flex-row items-center ">
+      <div class="flex flex-row items-center">
         <!-- img -->
-        <div
+        <a
           class="my-[14px] ml-[80px] cursor-pointer
           max-size-xl1:ml-[30px]
           max-size-lg:ml-[30px]
           max-size-xs:ml-[10px] 
           "
-          @click="(() => {
-            $router.push('/')
-          })"
+          href="/"
         >
           <img class="w-[104px] flex group-hover:hidden transition duration-500" src="/public/img/logoHeader.svg"/>
           <img class="w-[104px] hidden group-hover:flex transition duration-500" src="/public/img/logoHeaderBlue.svg"/>
 
-        </div>
+        </a>
         <!-- option -->
         <div
           class="flex flex-row justify-between ml-[109px]

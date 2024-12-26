@@ -1,5 +1,5 @@
 <template>
-  <BaseLayout ref="currentElementRef" class="home-service">
+  <BaseLayout ref="currentElementRef" class="home-service overflow-visible">
     <div
       class="px-[100px] max-size-md:px-[50px] max-size-sm:px-[20px] max-size-pro:px-[10px]"
     >
@@ -12,7 +12,8 @@
         max-size-pro:px-[10px] max-size-pro:mt-0
         ">
         <div class="w-full flex flex-col max-size-lg:items-center">
-          <div class="sticky top-0 bg-white z-30">
+          <div class="sticky top-0 bg-white w-full h-[64px]"></div>
+          <div class="sticky top-[50px] bg-white z-30">
             <p
               class="text-[40px] text-[#1E1F24] font-[500] leading-[60px] tracking-[-0.8px] mt-[44px] max-size-lg:text-center max-size-pro:text-center"
             >
@@ -29,8 +30,10 @@
           <div class="mt-[56px] flex flex-row w-full justify-between h-fit">
             <!-- list of contents -->
             <div
-              class="flex flex-col w-[20%] sticky top-[220px] h-fit max-size-lg:w-[30%] max-size-md:hidden"
-            >
+              class="flex flex-col w-[20%] sticky top-[250px] h-fit 
+              max-size-lg:w-[30%] 
+              max-size-md:hidden
+              " >
               <p
                 v-for="(content, index) in listOfContents"
                 :key="index"
@@ -154,9 +157,8 @@
 <script setup>
 import { onMounted } from 'vue'
 
-const router = useRouter()
-
 const currentElementRef = ref()
+const selectedService = ref(0)
 
 const listOfContents = [
   'Chuyển phát tiết kiệm',
@@ -305,7 +307,7 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener("scroll", handleScroll);
 });
-const selectedService = ref(0)
+
 
 const scrollToService = (index) => {
   const target = document.getElementById(`service-${index}`)

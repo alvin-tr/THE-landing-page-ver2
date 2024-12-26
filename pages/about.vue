@@ -1,5 +1,5 @@
 <template>
-  <HeaderWhite />
+  <HeaderWhite class="fixed top-0 z-50"/>
     <div class="bg-[#F7F8FA] ">
         
         <AboutAccompanyingVietnameseBusinesses/>

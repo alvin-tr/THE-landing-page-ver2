@@ -31,7 +31,7 @@
             </span>
             <UButton
               :label="$t('home.register')"
-              class="p-[14px] rounded-[6px] bg-white text-[#1E1F24] w-[180px] items-center justify-center hover:bg-white"
+              class="p-[14px] rounded-[6px] bg-white text-lg text-[#1E1F24] w-[180px] items-center justify-center hover:bg-white"
               to="https://app.thehuman.express/sign-up"
               />
           </div>

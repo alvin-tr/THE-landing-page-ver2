@@ -1,5 +1,5 @@
 <template>
-  <BaseLayout ref="currentElementRef">
+  <BaseLayout  class=" overflow-visible">
     <div
       class="px-[100px] 
       max-size-md:px-[50px]
@@ -8,18 +8,23 @@
       max-size-pro:px-[10px]
       ">
       <div
-        class="px-[60px] w-full max-h-[914px] overflow-hidden rounded-[12px] mt-[100px] 
+        class="px-[60px] w-full rounded-[12px] mt-[100px] 
         max-size-lg:px-[15px] 
         max-size-md:px-0
         max-size-sm:px-0 max-size-sm:mt-[30px]
         max-size-pro:px-[10px] max-size-pro:mt-0
         " >
-        <div class="w-full flex flex-col max-size-lg:items-center">
-          <slot></slot>
+        <div class="w-full flex flex-col 
+        max-size-lg:items-center">
+        
+          <slot class="sticky top-0 z-30"></slot>
           <!--  -->
-          <div class="mt-[56px] flex flex-row w-full justify-between">
+          <div class="mt-[56px] flex flex-row w-full justify-between h-fit">
             <!-- list of contents -->
-            <div class="flex flex-col w-[20%] max-size-lg:w-[30%] max-size-pro:hidden">
+            <div class="flex flex-col w-[20%] sticky top-[100px] h-fit
+            max-size-lg:w-[30%] 
+            max-size-pro:hidden
+            ">
               <p
                 v-for="(content, index) in listOfContents"
                 :key="index"
@@ -37,7 +42,7 @@
             </div>
             <!-- content -->
             <div
-              class="flex flex-col w-[75%] max-h-[914px] overflow-y-auto 
+              class="flex flex-col w-[75%] overflow-y-auto 
               max-size-lg:w-[60%]
               max-size-md:w-[70%]
               max-size-sm:w-[65%]
@@ -102,7 +107,7 @@
                     <button @click="(() => {
                      openModalGetAQuote = true
                     })" class="w-[60%] mt-[30px] max-size-pro:w-full max-size-sm1:w-full">
-                      <div class="bg-[#0066FF] px-[30px] py-[14px] flex flex-row rounded-[6px] items-center justify-center ">
+                      <div class="bg-[#0066FF] px-[30px] py-[14px] flex flex-row rounded-[6px] items-center justify-center">
                         <p class="text-[16px] text-white">Nhận báo giá</p>
                         <UIcon name="mingcute:arrow-right-line" class="text-white text-[20px] ml-[5px]"/>
                       </div>
@@ -124,16 +129,16 @@
 import { onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 
-const route = useRoute()
-
 const currentElementRef = ref();
 const openModalGetAQuote = ref(false)
+const selectedService = ref(0);
 
 const listOfContents = [
   "Chuyển phát tiết kiệm",
   "Chuyển phát Tốc độ",
   "Chuyển phát Đặc biệt",
 ];
+
 const services = [
   {
     image: "/img/economyDelivery.svg",
@@ -210,7 +215,14 @@ const services = [
   
 ];
 
-const selectedService = ref(0);
+onMounted(() => {
+  handleScroll();
+  window.addEventListener("scroll", handleScroll);
+});
+
+onUnmounted(() => {
+  window.removeEventListener("scroll", handleScroll);
+});
 
 const scrollToService = (index) => {
   const target = document.getElementById(`service-${index}`);
@@ -221,35 +233,22 @@ const scrollToService = (index) => {
 };
 
 const handleScroll = () => {
-  const offsets = services.map((_, index) => {
-    const element = document.getElementById(`service-${index}`);
+  const serviceElements = services.map((_, index) =>
+    document.getElementById(`service-${index}`)
+  )
+
+  for (let i = 0; i < serviceElements.length; i++) {
+    const element = serviceElements[i]
     if (element) {
-      return element.getBoundingClientRect().top;
-    }
-    return Number.MAX_VALUE;
-  });
-
-  // Tìm phần tử gần nhất
-  const closestIndex = offsets.findIndex((offset) => offset >= 0 && offset < window.innerHeight / 2);
-  if (closestIndex !== -1) {
-    selectedService.value = closestIndex;
-  }
-};
-
-onMounted(() => {
-      // Lấy ID của mục tiêu từ query params
-      const targetId = route.query.target
-
-      if (targetId) {
-        // Đợi DOM render xong rồi scroll đến mục tiêu
-        nextTick(() => {
-          const targetElement = document.getElementById(targetId)
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        })
+      const rect = element.getBoundingClientRect()
+      // Kiểm tra nếu phần tử này đang trong viewport (top và bottom)
+      if (rect.top >= 0 && rect.bottom <= window.innerHeight / 2) {
+        selectedService.value = i
+        break
       }
-    })
+    }
+  }
+}
 
 </script>
 

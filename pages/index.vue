@@ -1,8 +1,7 @@
 <template>
   <HomeGlobalMarketEstimate class="relative">
     <Header
-        class="fixed top-0 z-50 transition-colors duration-300 hover:bg-white"
-        :class="{ 'bg-black': isScrolled, 'bg-transparent': !isScrolled }"
+        class="fixed top-0 z-50 transition-colors duration-300"
         v-model="isOpenMenu"
       />
   </HomeGlobalMarketEstimate>
@@ -91,27 +90,4 @@
 
 <script setup>
 const isOpenMenu = ref(false)
-const isScrolled = ref(false);
-
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 50;
-};
-
-onMounted(() => {
-  window.addEventListener("scroll", handleScroll);
-});
-
-onUnmounted(() => {
-  window.removeEventListener("scroll", handleScroll);
-});
 </script>
-
-<style scoped>
-.bg-black {
-  background-color: rgba(59, 59, 59, 0.629);
-}
-
-.bg-transparent {
-  background-color: transparent;
-}
-</style>

@@ -5,7 +5,7 @@
     :ui="{ wrapper: 'bg-white mb-2' }"
     v-model="currentQuestion"
     :questions="questions"
-    class="mt-[40px] sticky top-[5vh]"
+    class="mt-[40px] sticky top-[10vh]"
   ></Questions>
   </div>
 </template>

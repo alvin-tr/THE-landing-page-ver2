@@ -1,7 +1,7 @@
 <template>
   <div class="bg-[#F7F8FA]">
     <HomeGlobalMarketEstimate>
-      <Header />
+      <Header class="fixed top-0 z-50 transition-colors duration-300"/>
     </HomeGlobalMarketEstimate>
     <ExpressTHEServiceInternational/>
     <ExpressCustomerExperience :CustomerExperienceItem="CustomerExperienceItem" title="Lựa chọn hàng đầu của doanh nghiệp Việt"/>
