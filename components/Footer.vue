@@ -87,7 +87,7 @@
             Dịch vụ
           </p>
           <a
-            
+            @click="scrollToTop"
             href="/international-express"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer
@@ -95,6 +95,7 @@
             >Chuyển phát quốc tế</a
           >
           <a
+            @click="scrollToTop"
             href="/tiktok-express"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer
@@ -102,6 +103,7 @@
             >Chuyển phát Tiktok US</a
           >
           <a
+            @click="scrollToTop"
             href="/fba-express"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer
@@ -121,6 +123,7 @@
             Hỗ trợ
           </p>
           <a
+            @click="scrollToTop"
             href="/term-policies"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer
@@ -128,6 +131,7 @@
             >Điều khoản & chính sách</a
           >
           <a
+            @click="scrollToTop"
             href="https://thehuman.larksuite.com/wiki/Q6dFwt5e3iAJ7tkuZznuIX2qsOf?fromScene=spaceOverview"
             target="_blank"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
@@ -136,6 +140,7 @@
             >Hướng dẫn sử dụng</a
           >
           <a
+            @click="scrollToTop"
             href="https://docs.thehuman.express/"
             class="text-[14px] text-[#868689] mt-[24px] hover:text-[#0066FF]
             max-size-pro:mt-[10px] cursor-pointer
@@ -254,6 +259,12 @@
 
 <script setup>
 const router = useRouter()
+const scrollToTop = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'auto',
+  })
+}
 </script>
 
 <style lang="scss" scoped></style>
