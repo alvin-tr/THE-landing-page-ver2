@@ -116,7 +116,7 @@
         max-size-lg:mt-[50px] max-size-lg:ml-0
         max-size-md:w-[40%] max-size-md:ml-0
         max-size-sm1:mt-[20px]
-        max-size-pro:mt-[50px]
+        max-size-pro:mt-[50px] max-size-pro:w-full
       
         ">
           <p class="text-[16px] text-[#1E1F24] leading-[24px] font-medium">

@@ -26,6 +26,8 @@
 </template>
 
 <script setup>
+import { onMounted } from 'vue';
+
 
 const scrollToTop = () => {
   window.scrollTo({
@@ -33,6 +35,9 @@ const scrollToTop = () => {
     behavior: 'smooth',
   })
 }
+onMounted(()=>{
+ scrollToTop()
+})
 </script>
 
 <style lang="scss" scoped></style>

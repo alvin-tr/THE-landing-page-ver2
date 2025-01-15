@@ -78,7 +78,7 @@
           <Placeholder class="h-8" />
         </template>
 
-        <HeaderMenuDropdown/>
+        <HeaderMenuDropdown v-model="isOpenMenu"/>
 
         <template #footer>
           <Placeholder class="h-8" />

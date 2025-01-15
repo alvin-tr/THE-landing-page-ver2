@@ -1,7 +1,7 @@
 <template>
     <div class="bg-[#F7F8FA]">
         <HomeGlobalMarketEstimate>
-            <Header class="fixed top-0 z-50 "/>
+            <Header class="fixed top-0 z-50 " v-model="isOpenMenu"/>
         </HomeGlobalMarketEstimate>
         <ExpressOptimalShippingServiceForSellers
         topic="Chuyển phát Tiktok Shop US"
@@ -14,6 +14,59 @@
         <ExpressOperatingProcedure/>
         <HomeRateAndComment class="max-size-sm:mt-[-100px] "/>
         <HomeExperienceTheDifference/>
+        <USlideover v-model="isOpenMenu">
+      <UCard
+        class="flex flex-col flex-1 bg-[#F2F3F5]"
+        :ui="{
+          body: { base: 'flex-1' },
+          ring: '',
+          divide: 'divide-y divide-gray-100 dark:divide-gray-800',
+        }"
+      >
+        <template #header>
+          <div class="flex justify-between items-center w-full">
+            <div class="flex">
+              <UIcon
+                name="i-material-symbols-light-account-circle-outline"
+                class="text-[#0066FF] text-[20px] font-normal"
+              />
+              <a
+                href="https://app.thehuman.express/sign-up"
+                class="text-[#333333] text-[14px] leading-[20px] ml-[4px]"
+                >Đăng ký</a
+              >
+              <p class="text-[#333333] text-[14px] leading-[20px]">/</p>
+              <a
+                href="https://app.thehuman.express/sign-in"
+                class="text-[#333333] text-[14px] leading-[20px]"
+                >Đăng nhập</a
+              >
+            </div>
+            <!-- x -->
+            <div
+              @click="
+                () => {
+                  isOpenMenu = false
+                }
+              "
+              class="flex items-center"
+            >
+              <UIcon
+                name="i-mingcute-close-line"
+                class="text-[#868689] text-[20px] font-normal"
+              />
+            </div>
+          </div>
+          <Placeholder class="h-8" />
+        </template>
+
+        <HeaderMenuDropdown/>
+
+        <template #footer>
+          <Placeholder class="h-8" />
+        </template>
+      </UCard>
+    </USlideover>
     </div>
 </template>
 
@@ -62,6 +115,8 @@ const CustomerExperienceItem = [
         description: 'Với tần suất vận chuyển hàng không đều đặn mỗi ngày, T.H.E cam kết giao hàng nhanh chóng và đúng thời gian, đảm bảo sự hài lòng và giữ vững uy tín cho nhà bán hàng, góp phần nâng cao hiệu quả kinh doanh và tạo dựng lòng tin lâu dài với khách hàng'
     },
 ]
+
+const isOpenMenu = ref(false)
 </script>
 
 <style lang="scss" scoped>

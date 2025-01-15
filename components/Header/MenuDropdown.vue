@@ -13,7 +13,21 @@
 <script setup>
 import Questions from '../Questions.vue'
 const currentDropdowns = ref('1')
-
+const router = useRouter()
+const route = useRoute()
+const handleRedirect = (path) => {
+  if (route.fullPath !== path) {
+    router.push(path)
+    return
+  }
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
+  isOpenMenu.value = false
+  // scrolltoTOp()
+}
+const isOpenMenu=defineModel()
 const dropdowns = ref([
   {
     title: 'Về THE',
@@ -24,7 +38,9 @@ const dropdowns = ref([
         title: 'Giới thiệu về THE',
         key: '1.1',
         status: false,
-        to: '/about',
+        handleClick: () => {
+          handleRedirect('/about')
+        },
         children: [],
       },
       {
@@ -52,20 +68,27 @@ const dropdowns = ref([
         title: 'Chuyển phát quốc tế',
         key: '2.1',
         status: false,
+        handleClick: () => {
+          handleRedirect('/international-express')
+        },
         children: [],
       },
       {
         title: 'Chuyển phát Tiktok US',
         key: '2.2',
         status: false,
-        to: '/',
+        handleClick: () => {
+          handleRedirect('/tiktok-express')
+        },
         children: [],
       },
       {
         title: 'Chuyển phát hàng FBA',
         key: '2.3',
         status: false,
-        to: '/',
+        handleClick: () => {
+          handleRedirect('/fba-express')
+        },
         children: [],
       },
     ],
@@ -79,21 +102,27 @@ const dropdowns = ref([
         title: 'Điều khoản & chính sách',
         key: '3.1',
         status: false,
-        to: '/',
+        handleClick: () => {
+          handleRedirect('/term-policies')
+        },
         children: [],
       },
       {
         title: 'Hướng dẫn sử dụng',
         key: '3.2',
         status: false,
-        to: '/',
+        handleClick: () => {
+          handleRedirect('/')
+        },
         children: [],
       },
       {
         title: 'Kết nối API',
         key: '3.3',
         status: false,
-        to: '/',
+        handleClick: () => {
+          handleRedirect('/')
+        },
         children: [],
       },
     ],

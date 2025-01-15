@@ -1,37 +1,34 @@
 <template>
-  <header class="w-full flex items-center justify-center bg-[#00000082] hover:bg-white transition duration-500 group">
+  <header
+    class="w-full flex items-center justify-center bg-[#00000082] hover:bg-white transition duration-500 group"
+  >
     <div
-      class="w-full max-w-[1440px] h-[64px] flex flex-row items-center justify-between
-      ">
+      class="w-full max-w-[1440px] h-[64px] flex flex-row items-center justify-between"
+    >
       <!-- 1 -->
       <div class="flex flex-row items-center">
         <!-- img -->
         <a
-          class="my-[14px] ml-[80px] cursor-pointer
-          max-size-xl1:ml-[30px]
-          max-size-lg:ml-[30px]
-          max-size-xs:ml-[10px] 
-          "
+          class="my-[14px] ml-[80px] cursor-pointer max-size-xl1:ml-[30px] max-size-lg:ml-[30px] max-size-xs:ml-[10px]"
           href="/"
         >
-          <img class="w-[104px] flex group-hover:hidden transition duration-500" src="/public/img/logoHeader.svg"/>
-          <img class="w-[104px] hidden group-hover:flex transition duration-500" src="/public/img/logoHeaderBlue.svg"/>
-
+          <img
+            class="w-[104px] flex group-hover:hidden transition duration-500"
+            src="/public/img/logoHeader.svg"
+          />
+          <img
+            class="w-[104px] hidden group-hover:flex transition duration-500"
+            src="/public/img/logoHeaderBlue.svg"
+          />
         </a>
         <!-- option -->
         <div
-          class="flex flex-row justify-between ml-[109px]
-          max-size-xl1:ml-[50px]
-          max-size-lg:ml-[30px] 
-          max-size-lg1:hidden 
-          
-          ">
+          class="flex flex-row justify-between ml-[109px] max-size-xl1:ml-[50px] max-size-lg:ml-[30px] max-size-lg1:hidden"
+        >
           <!-- Về THE -->
           <div
-            class="text-[14px] p-[10px] leading-[20px] font-medium text-[#FFFFFF99] cursor-pointer relative group/aboutTHE
-            transition duration-500
-            group-hover:text-[#1E1F24]
-            ">
+            class="text-[14px] p-[10px] leading-[20px] font-medium text-[#FFFFFF99] cursor-pointer relative group/aboutTHE transition duration-500 group-hover:text-[#1E1F24]"
+          >
             Về THE
             <!-- hover -->
             <div
@@ -44,9 +41,11 @@
                   v-for="itemHover in hoverAboutTHE"
                   :key="itemHover.title"
                   class="px-[20px] py-[14px] flex flex-row w-full min-w-[208px] hover:bg-[#D8ECFF] rounded-[8px]"
-                  @click="(() => {
-                    $router.push(itemHover.to)
-                  })"
+                  @click="
+                    () => {
+                      $router.push(itemHover.to)
+                    }
+                  "
                 >
                   <img :src="itemHover.icon" class="mr-[10px] w-[25px]" />
                   <p
@@ -60,21 +59,15 @@
           </div>
           <!-- Dịch vụ -->
           <div
-            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative 
-            group/service transition duration-500
-            group-hover:text-[#1E1F24]
-            max-size-xl1:ml-[30px]
-            max-size-lg:ml-[50px]
-            ">
+            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative group/service transition duration-500 group-hover:text-[#1E1F24] max-size-xl1:ml-[30px] max-size-lg:ml-[50px]"
+          >
             Dịch vụ
             <!-- hover -->
             <div
               class="group-hover/service:flex hidden absolute top-[10px] w-full h-[50px]"
             >
               <div
-                class="hidden absolute top-[40px] right-[-700px] group-hover/service:flex flex-row bg-white rounded-[8px] 
-                max-size-xl1:right-[-600px]
-                max-size-lg:right-[-615px]"
+                class="hidden absolute top-[40px] right-[-700px] group-hover/service:flex flex-row bg-white rounded-[8px] max-size-xl1:right-[-600px] max-size-lg:right-[-615px]"
               >
                 <a
                   :href="itemService.to"
@@ -98,11 +91,7 @@
           </div>
           <!-- Hỗ trợ -->
           <div
-            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative 
-            group/support transition duration-500
-            group-hover:text-[#1E1F24]
-            max-size-xl1:ml-[30px]
-            max-size-lg:ml-[50px]"
+            class="text-[14px] leading-[20px] p-[10px] font-medium text-[#FFFFFF99] ml-[80px] cursor-pointer relative group/support transition duration-500 group-hover:text-[#1E1F24] max-size-xl1:ml-[30px] max-size-lg:ml-[50px]"
           >
             Hỗ trợ
             <!-- hover -->
@@ -119,7 +108,7 @@
                 :to="itemHover.to"
               >
                 <a
-                  :href="itemHover.to"
+                  @click.prevent="handleLinkClick(itemHover.to)"
                   class="flex items-center w-full"
                   :target="itemHover.to ? '_blank' : '_self'"
                   rel="noopener noreferrer"
@@ -138,12 +127,8 @@
       </div>
       <!-- right -->
       <div
-        class="flex flex-row px-[100px] items-center 
-        max-size-xl1:px-[30px]
-        max-size-lg:px-[30px] 
-        max-size-pro:px-[10px] 
-        max-size-xs:px-[10px]
-        ">
+        class="flex flex-row px-[100px] items-center max-size-xl1:px-[30px] max-size-lg:px-[30px] max-size-pro:px-[10px] max-size-xs:px-[10px]"
+      >
         <!-- EN | VN -->
         <!-- <div class="mr-[24px] max-size-xs:hidden">
           <span class="text-white">
@@ -153,27 +138,38 @@
         </div> -->
         <!-- phone -->
         <span
-          class="flex flex-row px-[14px] py-[10px] bg-white rounded-[6px] items-center justify-center mr-[24px]
-          group-hover:bg-[#0066FF] transition duration-500"
+          class="flex flex-row px-[14px] py-[10px] bg-white rounded-[6px] items-center justify-center mr-[24px] group-hover:bg-[#0066FF] transition duration-500"
         >
           <UIcon
             name="mingcute:phone-line"
             class="text-[#0066FF] text-[18px] mr-[8px] group-hover:text-white transition duration-500"
           />
-          <p class="text-[#1E1F24] leading-[20px] font-medium group-hover:text-white transition duration-500">0974877007</p>
+          <p
+            class="text-[#1E1F24] leading-[20px] font-medium group-hover:text-white transition duration-500"
+          >
+            0974877007
+          </p>
         </span>
         <!-- sign in / sign up -->
-        <div class="flex flex-row items-center justify-center max-size-lg1:hidden">
+        <div
+          class="flex flex-row items-center justify-center max-size-lg1:hidden"
+        >
           <UIcon
             name="mingcute:user-4-line"
             class="mr-[4px] text-[20px] text-white group-hover:text-[#0066FF] transition duration-500"
           />
           <div class="flex flex-row">
-            <a href="https://app.thehuman.express/sign-up" class="text-white group-hover:text-[#0066FF] transition duration-500"
+            <a
+              href="https://app.thehuman.express/sign-up"
+              class="text-white group-hover:text-[#0066FF] transition duration-500"
               ><p class="hover:text-black">Đăng ký</p></a
             >
-            <span class="group-hover:text-[#0066FF] transition duration-500"> | </span>
-            <a href="https://app.thehuman.express/sign-in" class="text-white group-hover:text-[#0066FF] transition duration-500"
+            <span class="group-hover:text-[#0066FF] transition duration-500">
+              |
+            </span>
+            <a
+              href="https://app.thehuman.express/sign-in"
+              class="text-white group-hover:text-[#0066FF] transition duration-500"
               ><p class="hover:text-black">Đăng nhập</p></a
             >
           </div>
@@ -201,17 +197,17 @@ const hoverAboutTHE = [
   {
     icon: '/icon/hoverAboutTHE/warning-hoverAboutTHE.svg',
     title: 'Giới thiệu về THE',
-    to: '/about'
+    to: '/about',
   },
   {
     icon: '/icon/hoverAboutTHE/headphone-hoverAboutTHE.svg',
     title: 'Liên hệ',
-    to: ''
+    to: '',
   },
   {
     icon: '/icon/hoverAboutTHE/user-hoverAboutTHE.svg',
     title: 'Tuyển dụng',
-    to: ''
+    to: '',
   },
 ]
 const hoverService = [
@@ -219,21 +215,21 @@ const hoverService = [
     img: '/icon/hoverServiceHeader/internationalExpress.svg',
     title: 'Chuyển phát quốc tế',
     description: 'Dịch vụ chuyển phát nhanh quốc tế đáp ứng mọi nhu cầu.',
-    to: "/international-express"
+    to: '/international-express',
   },
   {
     img: '/icon/hoverServiceHeader/tiktokExpress.svg',
     title: 'Chuyển phát Tiktok US',
     description:
       'Dịch vụ vận chuyển chuyên biệt dành cho các seller Tiktok US.',
-      to: "/tiktok-express"
+    to: '/tiktok-express',
   },
   {
     img: '/icon/hoverServiceHeader/fbaExpress.svg',
     title: 'Chuyển phát hàng FBA',
     description:
       'Dịch vụ vận chuyển hàng đến các kho FBA của Amazon một cách nhanh chóng và hiệu quả.',
-      to: "/fba-express"
+    to: '/fba-express',
   },
 ]
 const hoverSupport = [
@@ -255,6 +251,28 @@ const hoverSupport = [
 ]
 
 const isOpenMenu = defineModel<boolean>()
+
+onMounted(() => {
+  if ("scrollRestoration" in history) {
+    history.scrollRestoration = "manual";
+  }
+});
+
+// Hàm xử lý cuộn và điều hướng
+const handleLinkClick = (url) => {
+  // Cuộn lên đầu trang
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+
+  // Điều hướng sử dụng Nuxt Router
+  if (url) {
+    setTimeout(() => {
+      router.push(url);
+    }, 300); // Đợi cuộn xong rồi điều hướng
+  }
+};
 </script>
 
 <style lang="scss" scoped></style>
